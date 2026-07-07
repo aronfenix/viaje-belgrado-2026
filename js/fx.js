@@ -80,6 +80,7 @@
   D.eventos.forEach((e) => add(e.nombre, `Evento ${e.fecha.slice(8)}/jul · ${e.lugar}`, "#/agenda", e.genero));
   D.paseos.forEach((p) => { add("Paseo: " + p.nombre, `${p.dur} · ${p.dist}`, "#/paseos", p.resumen + " " + p.paradas.map((s) => s.n).join(" ")); });
   D.glosario.forEach((g) => add(g.t, "Diccionario para pedir", "#/comer", g.d));
+  D.escena.bloques.forEach((b) => { add(b.titulo, "Cine y música", "#/escena", b.texto); b.sitios.forEach((s) => add(s.nombre, `Cine y música · ${s.zona}`, "#/escena", s.nota)); });
   D.transporte.aeropuerto.opciones.forEach((o) => add(o.nombre, "Aeropuerto → casa", "#/transporte", o.como));
   add("El dilema del 30 de julio", "Subotica vs Budapest vs Belgrado", "#/dilema", "tren subotica szeged budapest");
   add("Conversor EUR ⇄ RSD", "Práctico", "#/practico", "dinares cambio dinero");

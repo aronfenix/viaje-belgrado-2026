@@ -23,6 +23,11 @@ const DATA = {
       zona: "Savski Venac — zona central y funcional entre Slavija, Savamala y la estación Beograd Centar. Más útil que monumental: la base perfecta, no la postal.",
     },
     moneda: { codigo: "RSD", nombre: "dinar serbio", cambioAprox: "1 € ≈ 117 RSD", cambioNota: "Cambio orientativo (jul 2026). Casas de cambio (menjačnica) por toda la ciudad, mejor tipo que en el aeropuerto.", fiab: "ver" },
+    prologo: {
+      titulo: "Prólogo",
+      texto: "Hay ciudades que se visitan y ciudades que se atraviesan, como se atraviesa una historia. Belgrado es de las segundas. La han quemado, sitiado y bombardeado unas cuarenta veces —celtas, romanos, turcos, austríacos, nazis, la OTAN— y las cuarenta veces ha vuelto a ponerse en pie, cada vez con menos postal y más verdad encima.\n\nA una ciudad así no se viene a tachar monumentos. Se viene a andarla —y vosotros andáis—, a sentarse donde se sientan los que la habitan, a pedir la segunda cerveza cuando la noche empieza a estar de acuerdo, a leerla en sus fachadas quemadas y en sus mercados de julio. Nueve días, dos ríos, un hermano y una hermana. No hay lista de deberes en estas páginas: hay materiales para construir cada día a vuestra manera, que es la única que importa.",
+      firma: "— Vuestra guía, que estuvo leyendo mucho para esto"
+    },
   },
 
   /* ---------- AGENDA: reglas semanales + eventos por día ---------- */
@@ -395,7 +400,7 @@ const DATA = {
 
   /* ---------- COMER Y BEBER (con testimonios) ---------- */
   comer: {
-    intro: "Guía construida sobre lo que repiten viajeros independientes y locales (Reddit, blogs personales, Spotted by Locals), no sobre listas de agencia. Precios orientativos de julio de 2026: burek 150–300 RSD, pljeskavica 350–600 RSD, menú en kafana 1.200–2.500 RSD/persona con bebida, café 150–250 RSD.",
+    intro: "En Serbia no se come: se insiste. Las raciones dan para dos, el pan llega sin pedirlo y a la tercera visita el camarero ya os trata de sobrinos. Esta guía está construida sobre lo que repiten viajeros independientes y locales — Reddit, blogs personales, Spotted by Locals —, no sobre listas de agencia. Precios de referencia (jul. 2026): burek 150–300 RSD, pljeskavica 350–600, menú de kafana 1.200–2.500 por cabeza con bebida, café 150–250.",
     bloques: [
       {
         titulo: "Desayuno: pekara + yogur",
@@ -445,7 +450,7 @@ const DATA = {
 
   /* ---------- LA NOCHE (cervezas, no discotecas) ---------- */
   noche: {
-    intro: "El plan que os gusta —salir a tomar cervezas por la noche y charlar— es exactamente el punto fuerte de Belgrado. Cerveza artesana 250–600 RSD, terrazas hasta tarde (con el calor de julio la vida es nocturna), y cero prisa por cerrar. Las discotecas y splavovi de fiesta existen pero son otro deporte.",
+    intro: "Vuestro plan favorito —cervezas nocturnas y conversación larga— tiene aquí su capital europea no oficial. En julio Belgrado vive de noche: las terrazas se llenan cuando cae el calor y nadie, jamás, os pedirá la mesa. Cerveza artesana a 250–600 RSD, craft serbio serio (Kabinet, Dogma, Salto) y cero prisa institucional. Las discotecas y los splavovi de fiesta existen, pero son otro deporte; el vuestro se juega en patios.",
     zonas: [
       {
         nombre: "Cetinjska 15", cuando: "De 20:00 a muy tarde", coords: [44.8180, 20.4660],
@@ -514,9 +519,48 @@ const DATA = {
     },
   ],
 
+  /* ---------- ESCENA: CINE Y MÚSICA ---------- */
+  escena: {
+    intro: "Preguntasteis por el cine y la música en directo, y Belgrado responde con generosidad: aquí no se dobla ni una película, la cinemateca es de las grandes de Europa y en julio la ciudad entera se convierte en sala de verano. Esto es lo verificado.",
+    bloques: [
+      {
+        titulo: "La regla de oro: nada doblado",
+        texto: "Serbia subtitula todo el cine extranjero (solo se dobla el infantil). Cualquier estreno americano o europeo se ve en versión original con subtítulos en serbio — que, spoiler, no molestan nada. Entrada de multicine: ≈500–700 RSD, la mitad que en Madrid.",
+        sitios: [
+          { nombre: "Cineplexx Galerija", zona: "A 10 min de casa", coords: [44.8036, 20.4487], nota: "El multicine del centro comercial junto al río: estrenos en VO, aire acondicionado de emergencia para la siesta de las 15:00.", fiab: "ok" },
+        ]
+      },
+      {
+        titulo: "Kinoteka: el templo",
+        texto: "La Cinemateca Yugoslava (1949) es una de las grandes filmotecas de Europa — Hitchcock llegó a donarle material. Ciclos temáticos que cambian cada mes, clásicos restaurados y entradas a precio de café. El programa de julio, en kinoteka.org.rs.",
+        sitios: [
+          { nombre: "Jugoslovenska kinoteka", zona: "Uzun Mirkova 1, junto a Kalemegdan", coords: [44.8190, 20.4565], nota: "El edificio histórico, de camino a la fortaleza. Sesión de tarde + Kalemegdan al salir = combinación perfecta.", fiab: "ok", fuente: "kinoteka.org.rs · ver. 7-jul-2026" },
+        ]
+      },
+      {
+        titulo: "Cine bajo las estrellas (gratis)",
+        texto: "En julio, Belgrado proyecta gratis al aire libre. Dos pantallas verificadas — la programación exacta sale semana a semana:",
+        sitios: [
+          { nombre: "Admiral Open Air Cinema", zona: "Sava Promenada, junto a Galerija", coords: [44.8045, 20.4500], nota: "Viernes y sábados de verano, clásicos y taquillazos gratis EN VUESTRA CALLE. Difícil ponerlo más fácil.", fiab: "ver", fuente: "galerijabelgrade.com · ver. 7-jul-2026" },
+          { nombre: "Smoki Open Air Cinema", zona: "Kalemegdan (tras el Museo de Historia Natural)", coords: [44.8225, 20.4535], nota: "Jueves a domingo a las 20:00, gratis, dentro del parque de la fortaleza. Peliculón + murallas + anochecer.", fiab: "ver", fuente: "Programación en su página; verificar semana del viaje" },
+        ]
+      },
+      {
+        titulo: "Música en directo",
+        texto: "Vuestra semana ya tiene cartel (está cruzado en la Agenda, día a día). Para lo demás: Belgradist y Resident Advisor publican la programación pequeña con pocos días de antelación — mirad ya en la ciudad.",
+        sitios: [
+          { nombre: "Zappa Barka", zona: "Barcaza en el Sava", coords: [44.7990, 20.4430], nota: "Conciertos en una barcaza amarrada: rock, balkan, cosas raras y buenas. El 29-jul toca Nogu Svelo! aquí.", fiab: "ver" },
+          { nombre: "Dorćol Platz", zona: "Dorćol", coords: [44.8225, 20.4660], nota: "El patio industrial-cultural: conciertos, mercadillos, cerveza. Programación en su Instagram.", fiab: "ver" },
+          { nombre: "KC Grad", zona: "Savamala", coords: [44.8135, 20.4515], nota: "Centro cultural pionero de Savamala: exposiciones, DJ, conciertos íntimos. A 12 min de casa.", fiab: "sug" },
+          { nombre: "Kafanas con música", zona: "Skadarlija", coords: [44.8172, 20.4653], nota: "La versión tradicional: orquestas de kafana tocando starogradska (música urbana vieja) entre mesas. Turístico y auténtico a la vez — pasa poco, aquí pasa.", fiab: "ok" },
+        ]
+      },
+    ]
+  },
+
   /* ---------- HISTORIA ---------- */
   historia: {
-    intro: "Belgrado no es una ciudad de postal: es una ciudad de capas. Ha sido destruida y reconstruida decenas de veces — cada imperio dejó un estrato, y todos se ven paseando.",
+    intro: "Belgrado significa «ciudad blanca», pero su color verdadero es el de la ceniza de la que lleva dos mil años levantándose. Destruida y reconstruida unas cuarenta veces — no es retórica de guía turística: es su biografía documentada. Cada reconstrucción dejó una capa, y las cinco se ven paseando.",
     capas: [
       {
         epoca: "La fortaleza eterna", años: "s. I – 1867",
@@ -571,7 +615,7 @@ const DATA = {
     { icono: "🚰", titulo: "Agua del grifo: sí", texto: "El agua de Belgrado es potable y segura. Con 33 °C en julio, botella rellenable siempre encima. Fuentes públicas en parques." },
     { icono: "🕰️", titulo: "Ritmo balcánico", texto: "Se cena tarde (21:00 es normal), las terrazas se llenan aún más tarde y «polako» (despacio) es filosofía nacional. Encajaréis bien." },
     { icono: "⛪", titulo: "En iglesias ortodoxas", texto: "Hombros cubiertos, silencio, y las velas se encienden abajo (por los difuntos) o arriba (por los vivos). Entrar es libre y bienvenido." },
-    { icono: "✊", titulo: "Sobre las protestas", texto: "El movimiento estudiantil sigue activo en 2026. Son mayoritariamente pacíficas pero ha habido choques (mayo 2026). Consejo estándar: si veis concentración grande o policía antidisturbios, cambiar de calle y seguir con el día. Como turistas no os afecta más que algún corte de tráfico." },
+    { icono: "✊", titulo: "Sobre las protestas (importante)", texto: "El movimiento estudiantil que nació con la tragedia de Novi Sad (nov. 2024) sigue muy activo en 2026: grandes concentraciones, y en episodios recientes bloqueos de calles y puentes en Belgrado con presencia policial fuerte. A los turistas no os busca nadie, pero sí puede tocaros logística: cortes de tráfico, buses desviados, un puente cerrado una tarde. Regla doble: (1) si veis concentración grande o antidisturbios, cambiad de calle y seguid con vuestro día; (2) la semana del viaje, echad un ojo a las noticias locales (N1info.rs tiene edición en inglés) por si hay convocatorias grandes. Verificado el 7-jul-2026; la situación evoluciona." },
   ],
   idioma: {
     intro: "El serbio usa cirílico y latino indistintamente — los carteles oficiales suelen ir en cirílico, así que reconocer las letras ayuda de verdad. Con inglés os entendéis con casi todo el mundo joven; una palabra en serbio abre sonrisas.",
@@ -654,7 +698,7 @@ const DATA = {
   /* ---------- PRÁCTICO ---------- */
   practico: {
     clima: { titulo: "Clima a finales de julio", texto: "Pleno verano continental: máximas habituales 30–35 °C (olas de calor por encima), mínimas 18–22 °C, tormentas de tarde ocasionales. Anochece ~20:30. Estrategia local: mañanas y noches en la calle, museos o siesta a mediodía.", fiab: "ok" },
-    dinero: { titulo: "Dinero", texto: "Dinar serbio (RSD), 1 € ≈ 117 RSD. Serbia NO usa euro. Cambiar en menjačnica (mejor tipo, sin comisión habitualmente) o sacar de cajero de banco (evitar Euronet). Tarjeta va bien en restaurantes y súper; efectivo para pekare, mercados, A1 y museo Tesla.", fiab: "ver" },
+    dinero: { titulo: "Dinero", texto: "Dinar serbio (RSD), 1 € ≈ 117 RSD. Serbia NO usa euro. Cambiar en menjačnica (mejor tipo, sin comisión habitualmente) o sacar de cajero de banco serbio (evitar Euronet: comisiones piratas). Truco importante: si un datáfono o cajero ofrece cobrar «en euros» (DCC), decid siempre QUE NO — en dinares sale entre un 3 y un 8% mejor. Tarjeta va bien en restaurantes y súper; efectivo para pekare, mercados, el A1 y el museo Tesla.", fiab: "ok" },
     conectividad: { titulo: "Móvil y datos", texto: "Serbia está FUERA del roaming UE: ojo, los datos de vuestra tarifa española no valen (o cobran). Opciones: eSIM de viaje (Airalo/Holafly y similares, se activa antes de salir) o SIM local de prepago (Yettel, MTS, A1) en cualquier kiosco por pocos euros. El apartamento tendrá wifi.", fiab: "ok" },
     emergencias: { titulo: "Emergencias", texto: "Número general europeo 112 (funciona). Policía 192 · Bomberos 193 · Ambulancia 194. Embajada de España en Belgrado: Prote Mateje 45, +381 11 344 0231.", fiab: "ver" },
     documentos: { titulo: "Documentación", texto: "Serbia no es UE: se entra con DNI no — hace falta PASAPORTE en vigor (los españoles no necesitan visado, hasta 90 días). Comprobad los pasaportes YA. En teoría hay que registrar la estancia (el apartamento suele hacerlo — preguntad al anfitrión el «beli karton»).", fiab: "ok" },

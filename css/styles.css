@@ -823,6 +823,99 @@ html[data-theme="dark"] .page[data-page="paseos"] { --sec: #eb9268; }
   content: "✦"; position: absolute; left: 4px; top: 9px; color: var(--sec); font-size: .9rem;
 }
 
+/* ==========================================================
+   v5 — pasada editorial: profundidad, capitulares, prólogo
+   ========================================================== */
+
+/* ---- page-head con número gigante outline ---- */
+.page-head { padding-top: 44px; }
+.ph-outline {
+  position: absolute; left: -10px; top: -6px; z-index: 0;
+  font-family: var(--serif); font-weight: 800; font-size: 7.2rem; line-height: 1;
+  color: transparent; -webkit-text-stroke: 1.6px color-mix(in srgb, var(--sec) 60%, transparent);
+  opacity: .28; pointer-events: none; letter-spacing: -.02em;
+}
+.page-head h2, .page-head .ph-num, .page-head .ph-rule { position: relative; z-index: 1; }
+.page[data-page="escena"] { --sec: #8a4bb8; }
+html[data-theme="dark"] .page[data-page="escena"] { --sec: #c49aec; }
+.page-head .ph-rule {
+  width: 92px; height: 4px; border-radius: 2px;
+  background: linear-gradient(90deg, var(--sec), color-mix(in srgb, var(--sec) 10%, transparent));
+}
+
+/* ---- capitular en las intros ---- */
+.page-intro { font-size: 1rem; line-height: 1.75; }
+.page-intro::first-letter {
+  font-family: var(--serif); font-weight: 800; font-size: 3.1em; line-height: .82;
+  float: left; padding: 4px 10px 0 0; color: var(--sec);
+}
+
+/* ---- tarjetas con jerarquía: hairline superior + profundidad ---- */
+.card { position: relative; border-radius: 20px; overflow: hidden;
+  box-shadow: 0 1px 2px rgba(20, 15, 5, .06), 0 8px 24px -14px rgba(20, 15, 5, .28); }
+html[data-theme="dark"] .card { box-shadow: 0 1px 2px rgba(0, 0, 0, .3), 0 10px 28px -14px rgba(0, 0, 0, .6); }
+.card::before {
+  content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--sec), color-mix(in srgb, var(--sec) 8%, transparent) 70%);
+  opacity: .75;
+}
+.card h3 { font-size: 1.24rem; }
+.card:hover { box-shadow: 0 2px 4px rgba(20, 15, 5, .08), 0 14px 34px -14px rgba(20, 15, 5, .34); }
+
+/* ---- prólogo editorial ---- */
+.prologo-card {
+  position: relative; margin-top: 18px; padding: 30px 26px 24px;
+  background:
+    radial-gradient(140% 100% at 0% 0%, color-mix(in srgb, var(--accent) 7%, transparent), transparent 60%),
+    var(--card);
+  border: 1px solid var(--line); border-radius: 22px; box-shadow: var(--shadow);
+}
+.prologo-card::before {
+  content: "„"; position: absolute; top: -34px; right: 14px;
+  font-family: var(--serif); font-size: 7rem; color: var(--accent); opacity: .16; line-height: 1;
+}
+.pr-tag {
+  display: inline-block; font-size: .64rem; font-weight: 800; letter-spacing: .34em;
+  text-transform: uppercase; color: var(--accent); margin-bottom: 12px;
+}
+.prologo-card p {
+  font-family: var(--serif); font-size: 1.06rem; line-height: 1.8; margin: 0 0 14px;
+}
+.prologo-card p:first-of-type::first-letter {
+  font-weight: 800; font-size: 3.4em; line-height: .8; float: left;
+  padding: 6px 10px 0 0; color: var(--accent);
+}
+.pr-firma {
+  display: block; text-align: right; font-family: var(--serif); font-style: italic;
+  font-size: .9rem; color: var(--muted);
+}
+
+/* ---- home tiles con más vida ---- */
+.home-tile { overflow: hidden; }
+.home-tile::after {
+  content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
+  background: radial-gradient(120% 90% at 100% 100%, color-mix(in srgb, var(--tile, var(--accent)) 10%, transparent), transparent 55%);
+  opacity: 0; transition: opacity .25s ease;
+}
+.home-tile:hover::after { opacity: 1; }
+.home-tile .ht-num {
+  display: inline-block; background: color-mix(in srgb, var(--tile, var(--accent)) 12%, transparent);
+  padding: 3px 9px; border-radius: 999px;
+}
+
+/* ---- títulos con presencia en oscuro ---- */
+html[data-theme="dark"] .page-head h2,
+html[data-theme="dark"] .hero-cyr { text-shadow: 0 1px 0 rgba(0,0,0,.6), 0 0 34px color-mix(in srgb, var(--sec) 22%, transparent); }
+
+/* ---- testimonios más rotundos ---- */
+.testimonio { border-left: 3px solid var(--sec); font-size: 1.02rem; }
+
+/* ---- separador de ola (Sava) ---- */
+.wave-div {
+  height: 26px; margin: 26px 0 4px; opacity: .5;
+  background: no-repeat center / auto 100% url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='26' viewBox='0 0 220 26'%3E%3Cpath d='M0 13 Q 27 0 55 13 T 110 13 T 165 13 T 220 13' fill='none' stroke='%232e7d76' stroke-width='2.5' stroke-linecap='round'/%3E%3C/svg%3E");
+}
+
 /* reduced motion */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }

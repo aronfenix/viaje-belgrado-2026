@@ -1,5 +1,5 @@
 /* БЕОГРАД 26 · service worker — offline-first */
-const VERSION = "bg26-v5";
+const VERSION = "bg26-v6";
 const PRECACHE = [
   "./",
   "./index.html",

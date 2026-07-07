@@ -207,6 +207,7 @@
     { id: "mapa", sub: "Todo geolocalizado + radios a pie", ico: "◎" },
     { id: "comer", sub: "Burek, grill y kafanas — con testimonios", ico: "♨" },
     { id: "noche", sub: "Cervezas, patios y el río", ico: "☾" },
+    { id: "escena", sub: "Cine en VO, Kinoteka y directos", ico: "▸" },
     { id: "alrededores", sub: "Novi Sad y más allá, sin coche", ico: "⇢" },
     { id: "historia", sub: "Cinco capas de ciudad", ico: "◔" },
     { id: "costumbres", sub: "Rakija, cirílico y tu nombre en serbio", ico: "☕" },
@@ -280,6 +281,16 @@
     $("#todayCard").innerHTML = `<div class="today-card reveal">${inner}</div>`;
   }
 
+  function renderPrologo() {
+    const box = $("#prologo"); if (!box || box.innerHTML) return;
+    const p = DATA.viaje.prologo;
+    box.innerHTML = `<div class="prologo-card reveal">
+      <span class="pr-tag">${esc(p.titulo)}</span>
+      ${p.texto.split("\n\n").map((t) => `<p>${esc(t)}</p>`).join("")}
+      <span class="pr-firma">${esc(p.firma)}</span>
+    </div>`;
+  }
+
   function renderStamps() {
     const box = $("#stampsBox"); if (!box) return;
     const sellos = getSellos().filter((id) => DATA.sitios.some((s) => s.id === id));
@@ -305,6 +316,7 @@
     return `<div class="wrap">
       <div class="page-head">
         <span class="ph-cyr">${m.cyr}</span>
+        <span class="ph-outline" aria-hidden="true">${m.num}</span>
         <span class="ph-num">SECCIÓN ${m.num}</span>
         <h2>${m.title}</h2>
         <div class="ph-rule"></div>
@@ -361,7 +373,7 @@
         <ul class="day-list">${items}</ul></article>`;
     }).join("");
     el.innerHTML = pageShell("agenda",
-      "Sin itinerario impuesto: cada día, lo que abre, lo que cierra y lo que pasa. Con «＋ plan» en cualquier ficha construyes tu propio día — y con ↗ se lo mandas a Laura.",
+      "Los días buenos no se planifican: se preparan. Aquí está lo que abre, lo que cierra y lo que suena cada jornada — el resto se decide andando. Con «＋ plan» en cualquier ficha construyes tu día; con ↗ se lo mandas a Laura.",
       cards + `<p class="muted small">${esc(DATA.eventosNota)}</p>`);
     $$("[data-share-day]", el).forEach((b) => b.addEventListener("click", () => shareDay(b.dataset.shareDay)));
   }
@@ -390,7 +402,7 @@
       <p><a href="#/mapa" data-fly="${b.coords.join(",")}">Ver en el mapa →</a></p>
     </article>`).join("");
     el.innerHTML = pageShell("barrios",
-      "Belgrado no es una postal compacta: es una ciudad de capas. Estas son sus piezas, vistas desde vuestra base en Savski Venac.", cards);
+      "Belgrado no tiene un centro: tiene capas que no terminaron de irse. Cada barrio es una época con terraza. Estas son las piezas del tablero, medidas desde vuestra puerta de Savski Venac.", cards);
   }
 
   /* --- PASEOS --- */
@@ -456,7 +468,7 @@
       </article>`;
     }).join("");
     el.innerHTML = pageShell("ver",
-      "El estado «abierto / cerrado» se calcula con la hora real de tu móvil. «＋ plan» lo manda a un día de la agenda; el sello, al pasaporte del viaje.", cards);
+      "Diecinueve lugares que justifican el billete, del coloso de mosaico a la iglesia con lámparas hechas de balas. El estado «abierto / cerrado» se calcula con la hora real de tu móvil; «＋ plan» lo manda a un día, y el sello, al pasaporte del viaje.", cards);
   }
 
   /* --- MAPA --- */
@@ -500,6 +512,19 @@
     el.innerHTML = pageShell("noche", esc(DATA.noche.intro), zonas);
   }
 
+  /* --- ESCENA: CINE Y MÚSICA --- */
+  function renderEscena(el) {
+    const bloques = DATA.escena.bloques.map((b) => `<article class="card reveal">
+      <h3>${esc(b.titulo)}</h3><p>${esc(b.texto)}</p>
+      ${b.sitios.map((s) => `<h4>${esc(s.nombre)} ${fiab(s.fiab)}</h4>
+        <p class="muted small">📍 ${esc(s.zona)}</p>
+        <p>${esc(s.nota)}</p>
+        ${s.fuente ? `<p class="fuente">${esc(s.fuente)}</p>` : ""}
+        ${s.coords ? `<p class="small"><a href="#/mapa" data-fly="${s.coords.join(",")}">mapa</a> · <a href="https://www.google.com/maps/search/?api=1&query=${s.coords.join(",")}" target="_blank" rel="noopener">navegar</a></p>` : ""}`).join("")}
+    </article>`).join("");
+    el.innerHTML = pageShell("escena", esc(DATA.escena.intro), bloques);
+  }
+
   /* --- ALREDEDORES --- */
   function renderAlrededores(el) {
     const cards = DATA.alrededores.map((a) => `<article class="card reveal">
@@ -513,7 +538,7 @@
       <p class="fuente">${fiab(a.fiab)} ${esc(a.fuente || "")}</p>
     </article>`).join("");
     el.innerHTML = pageShell("alrededores",
-      "Escapadas realistas sin coche y sin palizas de bus — el criterio Laura se aplica de serie.", cards);
+      "Todo lo que merece la pena fuera de la ciudad, filtrado con dos criterios innegociables: sin coche y sin palizas de autobús. Lo que sobrevive a ese filtro — el criterio Laura — es esto.", cards);
   }
 
   /* --- HISTORIA --- */
@@ -906,7 +931,7 @@
   /* ---------- ROUTER ---------- */
   const RENDER = {
     agenda: renderAgenda, barrios: renderBarrios, paseos: renderPaseos, ver: renderVer, mapa: renderMapa,
-    comer: renderComer, noche: renderNoche, alrededores: renderAlrededores,
+    comer: renderComer, noche: renderNoche, escena: renderEscena, alrededores: renderAlrededores,
     historia: renderHistoria, costumbres: renderCostumbres, transporte: renderTransporte,
     dilema: renderDilema, cuaderno: renderCuaderno, practico: renderPractico, gastos: renderGastos,
   };
@@ -921,7 +946,7 @@
       rendered.add(target);
       observeReveals();
     }
-    if (target === "home") { renderBoarding(); todayCard(); renderStamps(); observeReveals(); }
+    if (target === "home") { renderBoarding(); todayCard(); renderStamps(); renderPrologo(); observeReveals(); }
     if (target === "mapa") requestAnimationFrame(() => window.BGMap && BGMap.invalidate());
     if (target === "cuaderno" && window.__pendingCoords) {
       const c = window.__pendingCoords; window.__pendingCoords = null;
