@@ -692,6 +692,7 @@ body.pretrip #heroPlane { opacity: 1; animation: fly 26s linear infinite; }
   display: grid; place-items: center; text-align: center; color: #f4efe6;
   transition: opacity .6s ease, transform .6s ease;
 }
+#splash[hidden] { display: none; }
 #splash.out { opacity: 0; transform: scale(1.06); pointer-events: none; }
 .splash-inner { padding: 24px; animation: rise 1s .2s ease both; }
 .sp-kicker { font-size: .72rem; letter-spacing: .34em; opacity: .8; }
