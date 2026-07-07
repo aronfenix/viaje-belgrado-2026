@@ -234,9 +234,19 @@
       a.style.setProperty("--tile", getComputedStyle(probe).getPropertyValue("--sec"));
     });
   }
-  $("#homeGrid").innerHTML = SECCIONES.map(tile).join("");
+  /* Índice del río: navegación tipográfica, sin cajas */
+  const RIO_GRANDES = new Set(["agenda", "cartas", "mapa", "comer", "cuaderno", "dilema"]);
+  function rioItem(s, i) {
+    const m = pageMeta(s.id);
+    return `<a class="rio-item reveal ${RIO_GRANDES.has(s.id) ? "ri-big" : ""} ${i % 2 ? "ri-alt" : ""}" href="#/${s.id}" data-page-ref="${s.id}">
+      <span class="ri-num">${m.num}</span>
+      <span class="ri-title">${m.title}</span>
+      <span class="ri-sub">${s.sub}</span>
+    </a>`;
+  }
+  $("#rioItems").innerHTML = SECCIONES.map(rioItem).join("");
   $("#guideGrid").innerHTML = SECCIONES.map(tile).join("");
-  addEventListener("bg26:theme", () => { paintTiles($("#homeGrid")); paintTiles($("#guideGrid")); });
+  addEventListener("bg26:theme", () => { paintTiles($("#rioItems")); paintTiles($("#guideGrid")); });
   paintTiles(document);
 
   /* ---------- HOME: boarding pass + today + stamps ---------- */

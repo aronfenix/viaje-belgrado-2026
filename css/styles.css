@@ -998,6 +998,159 @@ html[data-theme="dark"] .carta-aviso a { color: #e08585; }
   background: no-repeat center / auto 100% url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='26' viewBox='0 0 220 26'%3E%3Cpath d='M0 13 Q 27 0 55 13 T 110 13 T 165 13 T 220 13' fill='none' stroke='%232e7d76' stroke-width='2.5' stroke-linecap='round'/%3E%3C/svg%3E");
 }
 
+/* ==========================================================
+   v7 — LA MESA DEL VIAJERO: la home deja de ser cajas
+   ========================================================== */
+
+/* ---- el billete es un billete: girado, perforado, con celo ---- */
+.boarding {
+  transform: rotate(-1.4deg); border-radius: 10px;
+  box-shadow: 0 2px 3px rgba(20,15,5,.1), 0 16px 34px -16px rgba(20,15,5,.4);
+  position: relative; margin-top: 26px;
+}
+.boarding::before {
+  content: ""; position: absolute; top: -11px; left: 50%; transform: translateX(-70%) rotate(-3deg);
+  width: 92px; height: 24px; z-index: 2; border-radius: 2px;
+  background: color-mix(in srgb, var(--gold) 26%, transparent);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--gold) 18%, transparent);
+  backdrop-filter: blur(1px);
+}
+.bp-stub { border-left: 2px dashed var(--line); position: relative; }
+.bp-stub::before, .bp-stub::after {
+  content: ""; position: absolute; left: -8px; width: 14px; height: 14px; border-radius: 50%;
+  background: var(--bg);
+}
+.bp-stub::before { top: -8px; } .bp-stub::after { bottom: -8px; }
+
+/* ---- el prólogo es una carta sobre la mesa ---- */
+.prologo-card { transform: rotate(.7deg); border-radius: 8px; margin-top: 26px;
+  background:
+    repeating-linear-gradient(0deg, transparent 0 29px, color-mix(in srgb, var(--ink) 4%, transparent) 29px 30px),
+    radial-gradient(140% 100% at 0% 0%, color-mix(in srgb, var(--accent) 6%, transparent), transparent 60%),
+    var(--card);
+}
+.prologo-card::after {
+  content: ""; position: absolute; top: -10px; right: 26px; transform: rotate(5deg);
+  width: 78px; height: 22px; border-radius: 2px;
+  background: color-mix(in srgb, var(--sava) 22%, transparent);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--sava) 16%, transparent);
+}
+
+/* ---- la nota de hoy va clavada con chincheta ---- */
+.today-card { transform: rotate(-.6deg); border-radius: 8px; margin-top: 30px; position: relative; }
+.today-card::before {
+  content: ""; position: absolute; top: -9px; left: 50%; transform: translateX(-50%);
+  width: 16px; height: 16px; border-radius: 50%;
+  background: radial-gradient(circle at 34% 30%, #e26d5a, #a03d3d 62%, #6d2424);
+  box-shadow: 0 3px 5px rgba(0,0,0,.35), inset 0 0 0 1px rgba(255,255,255,.25);
+  z-index: 2;
+}
+
+/* ---- el panel en vivo es un tablón de salidas ---- */
+.live-dash {
+  background: #0f1524; border-color: #232c45; color: #e8ecf5;
+  border-radius: 10px;
+  box-shadow: 0 3px 6px rgba(0,0,0,.3), 0 18px 40px -18px rgba(0,0,0,.6);
+}
+.live-dash::before {
+  content: "ОДЛАСЦИ · EN DIRECTO DESDE BELGRADO";
+  display: block; text-align: center; font-size: .6rem; font-weight: 800;
+  letter-spacing: .34em; color: #ffd27d; opacity: .85; margin-bottom: 12px;
+  border-bottom: 1px dashed #2a3554; padding-bottom: 9px;
+}
+.live-dash .ld-label { color: #7f8aa5; }
+.live-dash .ld-row b { color: #ffd27d; font-family: var(--sans); font-weight: 800; letter-spacing: .04em; }
+.live-dash .ld-sub { color: #98a3bd; }
+.live-dash .ld-day { background: #161e33; border-color: #2a3554; color: #cfd6e6; }
+.live-dash .ld-day i { color: #7f8aa5; }
+.live-dash .ld-day.trip { border-color: #ffd27d88; background: #ffd27d14; }
+.live-dash .ld-strip-tag { color: #ffd27d; }
+.live-dash .ahora-btn { background: transparent; border: 1.5px solid #ffd27d; color: #ffd27d; }
+.live-dash .ahora-btn:hover { background: #ffd27d; color: #0f1524; }
+
+/* ---- el pasaporte parece un pasaporte ---- */
+.stamps-card { border-radius: 10px; transform: rotate(.5deg); position: relative; overflow: hidden; }
+.stamps-card .st-head h3 { letter-spacing: .06em; }
+.stamps-card::before {
+  content: "РЕПУБЛИКА СРБИЈА · ПУТНА ИСПРАВА"; display: block;
+  font-size: .58rem; letter-spacing: .3em; color: var(--muted); opacity: .8; margin-bottom: 8px;
+}
+.stamps-card::after {
+  content: "P<SRB<ALVARO<<LAURA<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<";
+  display: block; margin-top: 12px; font-family: "Courier New", monospace;
+  font-size: .72rem; letter-spacing: .12em; color: var(--muted); opacity: .65;
+  white-space: nowrap; overflow: hidden; border-top: 1px solid var(--line); padding-top: 8px;
+}
+
+/* ---- EL ÍNDICE DEL RÍO: navegación sin cajas ---- */
+.rio-head { margin: 44px 0 6px; position: relative; }
+.rio-head .rio-cyr {
+  position: absolute; right: -6px; top: -20px; font-family: var(--serif); font-weight: 800;
+  font-size: 3.2rem; opacity: .07; pointer-events: none;
+}
+.rio-head h2 { font-family: var(--serif); font-weight: 800; font-size: 1.7rem; margin: 0; }
+.rio-head p { margin: 3px 0 0; font-size: .85rem; color: var(--muted); font-style: italic; }
+
+.rio { position: relative; padding: 18px 0 8px 44px; }
+.rio-line {
+  position: absolute; left: 8px; top: 0; bottom: 0; width: 24px; height: 100%;
+  color: var(--sava); opacity: .5;
+}
+.rio-item {
+  position: relative; display: block; padding: 13px 0 13px 14px;
+  color: var(--ink); text-decoration: none;
+  border-bottom: 1px solid color-mix(in srgb, var(--line) 55%, transparent);
+  transition: transform .22s ease;
+}
+.rio-item:last-child { border-bottom: none; }
+.rio-item:hover { text-decoration: none; transform: translateX(6px); }
+.rio-item::before {
+  content: ""; position: absolute; left: -40px; top: 50%; transform: translateY(-50%);
+  width: 11px; height: 11px; border-radius: 50%;
+  background: var(--bg); border: 3px solid var(--tile, var(--sava));
+  transition: transform .22s ease, background .22s ease;
+}
+.rio-item:hover::before { transform: translateY(-50%) scale(1.45); background: var(--tile, var(--sava)); }
+.ri-num {
+  font-size: .64rem; font-weight: 800; letter-spacing: .26em;
+  color: var(--tile, var(--accent)); display: inline-block; margin-right: 8px; vertical-align: middle;
+}
+.ri-title {
+  font-family: var(--serif); font-weight: 800; font-size: 1.22rem; line-height: 1.15;
+  display: inline-block; vertical-align: middle; transition: color .2s ease;
+}
+.rio-item:hover .ri-title { color: var(--tile, var(--accent)); }
+.ri-big .ri-title { font-size: 1.85rem; }
+.ri-sub { display: block; font-size: .76rem; color: var(--muted); margin-top: 2px; }
+.ri-alt { padding-left: 34px; } /* la orilla opuesta */
+@media (min-width: 760px) {
+  .rio { padding-left: 64px; }
+  .rio-item::before { left: -56px; }
+  .ri-alt { padding-left: 72px; }
+  .ri-big .ri-title { font-size: 2.2rem; }
+}
+
+/* la home ya no lleva cuadrícula */
+.legend-note { margin-top: 34px; border-top: 1px solid var(--line); padding-top: 14px; }
+
+/* las rotaciones sobreviven al reveal (que resetea transform) */
+.boarding.reveal { transform: rotate(-1.4deg) translateY(18px); }
+.boarding.reveal.in, .boarding.in, .boarding:not(.reveal) { transform: rotate(-1.4deg); }
+.prologo-card.reveal { transform: rotate(.7deg) translateY(18px); }
+.prologo-card.reveal.in { transform: rotate(.7deg); }
+.today-card.reveal { transform: rotate(-.6deg) translateY(18px); }
+.today-card.reveal.in { transform: rotate(-.6deg); }
+.stamps-card.reveal { transform: rotate(.5deg) translateY(18px); }
+.stamps-card.reveal.in { transform: rotate(.5deg); }
+
+/* mesa: en pantallas anchas los objetos se desalinean un poco más */
+@media (min-width: 760px) {
+  .boarding { max-width: 92%; }
+  .prologo-card { max-width: 96%; margin-left: auto; }
+  .today-card { max-width: 90%; }
+  .stamps-card { max-width: 94%; margin-left: auto; }
+}
+
 /* reduced motion */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
