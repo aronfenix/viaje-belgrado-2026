@@ -46,13 +46,30 @@
     });
   }
 
+  let tiles;
+  const TILE_LIGHT = { url: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", opt: { maxZoom: 19, attribution: "© OpenStreetMap" } };
+  const TILE_DARK = { url: "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png", opt: { maxZoom: 19, attribution: "© OpenStreetMap © CARTO" } };
+  function setTiles() {
+    if (!map) return;
+    const dark = document.documentElement.dataset.theme === "dark";
+    const t = dark ? TILE_DARK : TILE_LIGHT;
+    if (tiles) map.removeLayer(tiles);
+    tiles = L.tileLayer(t.url, t.opt).addTo(map);
+  }
+
   function init() {
     const box = document.getElementById("mapBox");
     if (!box || map) { invalidate(); return; }
     map = L.map(box, { zoomControl: true }).setView([44.8125, 20.4550], 13);
-    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-      maxZoom: 19, attribution: "© OpenStreetMap",
-    }).addTo(map);
+    setTiles();
+    addEventListener("bg26:theme", setTiles);
+
+    // anillos de tiempo a pie desde casa (~4,5 km/h)
+    const casa = window.DATA.viaje.alojamiento.coords;
+    [[750, "≈10 min a pie"], [1500, "≈20 min"], [2250, "≈30 min"]].forEach(([m, txt]) => {
+      L.circle(casa, { radius: m, color: "#c0392b", weight: 1.2, dashArray: "5 7", fill: false, opacity: .55 })
+        .bindTooltip(txt, { permanent: false }).addTo(map);
+    });
 
     Object.keys(ETIQ).forEach((k) => { groups[k] = L.layerGroup().addTo(map); });
     notaLayer = groups.nota;
@@ -83,10 +100,29 @@
     setTimeout(invalidate, 120);
   }
 
+  let routeLayer;
+  function drawRoute() {
+    if (!map || !window.__route) return;
+    const pts = window.__route; window.__route = null;
+    if (routeLayer) map.removeLayer(routeLayer);
+    routeLayer = L.layerGroup().addTo(map);
+    const casa = window.DATA.viaje.alojamiento.coords;
+    const coords = [casa, ...pts.map((p) => p.coords)];
+    L.polyline(coords, { color: "#c0392b", weight: 3, dashArray: "8 8", opacity: .8 }).addTo(routeLayer);
+    L.marker(casa, { icon: pin("#c0392b", "🏠") }).bindPopup("<b>Salida: casa</b>").addTo(routeLayer);
+    pts.forEach((p) => {
+      L.marker(p.coords, {
+        icon: L.divIcon({ className: "", iconSize: [28, 28], iconAnchor: [14, 14], html: `<div class="route-pin">${p.n}</div>` }),
+      }).bindPopup(`<b>${p.n}. ${p.nombre}</b><br>` + gmaps(p.coords)).addTo(routeLayer);
+    });
+    map.fitBounds(L.latLngBounds(coords).pad(0.2));
+  }
+
   function invalidate() {
     if (!map) return;
     map.invalidateSize();
     if (window.__flyTo) { map.flyTo(window.__flyTo, 15, { duration: .9 }); window.__flyTo = null; }
+    drawRoute();
   }
 
   window.BGMap = { init, invalidate, refreshNotas };
