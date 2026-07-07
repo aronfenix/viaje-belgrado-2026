@@ -107,9 +107,10 @@
     if (routeLayer) map.removeLayer(routeLayer);
     routeLayer = L.layerGroup().addTo(map);
     const casa = window.DATA.viaje.alojamiento.coords;
-    const coords = [casa, ...pts.map((p) => p.coords)];
+    const sinCasa = window.__routeSinCasa; window.__routeSinCasa = false;
+    const coords = sinCasa ? pts.map((p) => p.coords) : [casa, ...pts.map((p) => p.coords)];
     L.polyline(coords, { color: "#c0392b", weight: 3, dashArray: "8 8", opacity: .8 }).addTo(routeLayer);
-    L.marker(casa, { icon: pin("#c0392b", "🏠") }).bindPopup("<b>Salida: casa</b>").addTo(routeLayer);
+    if (!sinCasa) L.marker(casa, { icon: pin("#c0392b", "🏠") }).bindPopup("<b>Salida: casa</b>").addTo(routeLayer);
     pts.forEach((p) => {
       L.marker(p.coords, {
         icon: L.divIcon({ className: "", iconSize: [28, 28], iconAnchor: [14, 14], html: `<div class="route-pin">${p.n}</div>` }),

@@ -78,6 +78,8 @@
   D.costumbres.forEach((c) => add(c.titulo, "Costumbres", "#/costumbres", c.texto));
   D.idioma.frases.forEach((f) => add(`${f.es} → ${f.sr}`, "Frase", "#/costumbres", f.cir));
   D.eventos.forEach((e) => add(e.nombre, `Evento ${e.fecha.slice(8)}/jul · ${e.lugar}`, "#/agenda", e.genero));
+  D.paseos.forEach((p) => { add("Paseo: " + p.nombre, `${p.dur} · ${p.dist}`, "#/paseos", p.resumen + " " + p.paradas.map((s) => s.n).join(" ")); });
+  D.glosario.forEach((g) => add(g.t, "Diccionario para pedir", "#/comer", g.d));
   D.transporte.aeropuerto.opciones.forEach((o) => add(o.nombre, "Aeropuerto → casa", "#/transporte", o.como));
   add("El dilema del 30 de julio", "Subotica vs Budapest vs Belgrado", "#/dilema", "tren subotica szeged budapest");
   add("Conversor EUR ⇄ RSD", "Práctico", "#/practico", "dinares cambio dinero");

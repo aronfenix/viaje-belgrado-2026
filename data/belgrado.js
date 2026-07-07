@@ -161,6 +161,152 @@ const DATA = {
       desc: "En una antigua central eléctrica. Complemento natural del Tesla si el tema engancha.",
       fiab: "ver", fuente: "Datos previos"
     },
+    {
+      id: "ruzica", nombre: "Iglesia Ružica y Sveta Petka", zona: "Kalemegdan",
+      coords: [44.8245, 20.4525], dur: "30 min", precio: "Gratis",
+      horario: null, siempre: "A diario, aprox. 08:00–18:00 (horario de templo).",
+      desc: "Escondida en la ladera de la fortaleza: la iglesia más antigua de Belgrado, con lámparas hechas con casquillos de balas de la I Guerra Mundial, y al lado la capilla de Sveta Petka con su manantial. Casi nadie la encuentra; vosotros sí.",
+      consejo: "Bajando desde el Pobednik hacia el Danubio, lado noreste. Hombros cubiertos.",
+      fiab: "ver", fuente: "Horario de templo habitual"
+    },
+    {
+      id: "gardos", nombre: "Torre de Gardoš (Zemun)", zona: "Zemun",
+      coords: [44.8497, 20.4046], dur: "45 min + paseo", precio: "≈200–300 RSD subir",
+      horario: null, siempre: "Verano aprox. 10:00–20:00 (verificar).",
+      desc: "La torre del Milenio húngara (1896) sobre el casco viejo de Zemun. La mejor vista del Danubio y de los tejados austrohúngaros. El barrio de callejuelas que la rodea es la mitad del plan.",
+      consejo: "Subir al atardecer y bajar a cenar pescado al kej.",
+      fiab: "ver", fuente: "Confirmar horario en destino"
+    },
+    {
+      id: "nebojsa", nombre: "Torre Nebojša", zona: "Kalemegdan (pie del Danubio)",
+      coords: [44.8270, 20.4480], dur: "45 min", precio: "≈300 RSD",
+      horario: { 1: null, 2: [10, 18], 3: [10, 18], 4: [10, 18], 5: [10, 18], 6: [10, 18], 7: [10, 18] },
+      desc: "El torreón medieval junto al Danubio: fue prisión otomana (aquí murió el héroe griego Rigas Feraios) y hoy museo pequeño y digno. Se visita al pasar por el paseo fluvial.",
+      fiab: "ver", fuente: "Datos previos; confirmar"
+    },
+    {
+      id: "sava-promenada", nombre: "Sava Promenada y Belgrade Waterfront", zona: "Vuestro barrio",
+      coords: [44.8065, 20.4520], dur: "1 h de paseo", precio: "Gratis",
+      horario: null, siempre: "Siempre abierto; terrazas hasta tarde.",
+      desc: "El megaproyecto polémico frente a vuestra puerta: rascacielos nuevos, paseo fluvial impecable y terrazas. Los belgradenses discuten sobre él; mientras discuten, pasean por él. Atardecer estupendo sobre el Sava y Ada.",
+      consejo: "Es vuestro «paseo de después de cenar» natural: 10 min de casa.",
+      fiab: "ok"
+    },
+    {
+      id: "generalstab", nombre: "Ruinas del Generalštab", zona: "Kneza Miloša (5 min de casa)",
+      coords: [44.8058, 20.4620], dur: "15 min (exterior)", precio: "Solo exterior",
+      horario: null, siempre: "Se ve desde la calle, a cualquier hora.",
+      desc: "El Estado Mayor yugoslavo, obra maestra de Nikola Dobrović, bombardeado por la OTAN en 1999 y dejado en ruina deliberada como memorial no declarado. Impresiona más que muchos museos y lo tenéis de camino a todo.",
+      consejo: "Miradlo desde la acera de enfrente; no intentéis entrar (vigilado).",
+      fiab: "ok"
+    },
+  ],
+
+  /* ---------- PASEOS AUTOGUIADOS ---------- */
+  paseos: [
+    {
+      id: "paseo-esencial", nombre: "El eje esencial", dur: "3–4 h", dist: "≈4 km", cuando: "Mejor por la tarde, acabando en Kalemegdan al atardecer",
+      resumen: "El corazón de Belgrado en una tarde: del monumento gigante de Savski trg a la puesta de sol sobre la confluencia. Es EL paseo del primer día.",
+      paradas: [
+        { n: "Savski trg", coords: [44.8086, 20.4562], txt: "Empezad bajo el Stefan Nemanja de 23 metros, frente a la antigua estación de tren (hoy Museo Histórico en obras eternas). A 8 min de casa." },
+        { n: "Casa de Manak", coords: [44.8125, 20.4551], txt: "Casita balcánica de 1830 superviviente entre bloques. Si está abierta, visita de 20 min; si no, la foto vale." },
+        { n: "Savamala · Karađorđeva", coords: [44.8140, 20.4520], txt: "La calle del puerto: fachadas decadentes, murales y el contraste con el Waterfront nuevo al otro lado de las vías." },
+        { n: "Kosančićev venac", coords: [44.8155, 20.4530], txt: "Subida corta a los adoquines del barrio más antiguo. Aquí ardió la Biblioteca Nacional en el bombardeo nazi de 1941 (el solar es memorial)." },
+        { n: "Catedral y kafana «?»", coords: [44.8152, 20.4536], txt: "La Saborna crkva y enfrente la kafana más antigua (1823), que se llama «?» porque nunca acordaron el nombre. Parada de café o limonada." },
+        { n: "Residencia de la Princesa Ljubica", coords: [44.8158, 20.4529], txt: "El Belgrado otomano-serbio en un palacete. 45 min si entra en horario; cierra lunes." },
+        { n: "Knez Mihailova", coords: [44.8175, 20.4570], txt: "La peatonal austrohúngara: palacetes, librerías, helado. Dejaos llevar hacia el parque." },
+        { n: "Plaza de la República", coords: [44.8163, 20.4602], txt: "El caballo (punto de quedada nacional: «kod konja»), el Museo Nacional y el Teatro. Desvío de 3 min si queréis verla y volver." },
+        { n: "Kalemegdan · Pobednik", coords: [44.8232, 20.4504], txt: "Entrad con calma: murallas, el Pobednik y la confluencia Sava-Danubio a vuestros pies. Buscad sitio en el muro oeste ~40 min antes del atardecer." },
+        { n: "Iglesia Ružica", coords: [44.8245, 20.4525], txt: "Remate secreto: la iglesia de las lámparas de balas, escondida en la ladera noreste. Si ya anochece, dejadla para otro día." },
+      ],
+    },
+    {
+      id: "paseo-dorcol", nombre: "Dorćol profundo", dur: "2,5–3 h", dist: "≈3 km", cuando: "Mañana (mercado y cafés) o última hora de la tarde",
+      resumen: "El barrio viejo entre Knez Mihailova y el Danubio: capas otomanas, judías y austrohúngaras, y la mejor densidad de cafés de la ciudad.",
+      paradas: [
+        { n: "Studentski trg", coords: [44.8185, 20.4577], txt: "La plaza universitaria, antaño mercado turco. El Museo Etnográfico hace esquina (cierra miércoles)." },
+        { n: "Mezquita Bajrakli", coords: [44.8189, 20.4592], txt: "La única superviviente de las ~80 mezquitas otomanas de Belgrado (s. XVII). Se contempla desde fuera con respeto; sigue en culto." },
+        { n: "Calle Jevremova", coords: [44.8195, 20.46], txt: "La calle más señorial del viejo Dorćol: palacetes, la casa de Mika Alas (el matemático pescador) y silencio de barrio." },
+        { n: "Museo de Vuk y Dositej", coords: [44.8196, 20.4585], txt: "Casa otomana del XVIII donde nació la lengua serbia moderna. 30 min si abre." },
+        { n: "Cara Dušana", coords: [44.8215, 20.463], txt: "El eje popular: panaderías, ćevapi en Walter si el hambre aprieta, vida de barrio de verdad." },
+        { n: "Dorćol Platz", coords: [44.8225, 20.466], txt: "Patio industrial reconvertido en espacio cultural: mercadillos, conciertos, cerveza. Mirad qué hay esa tarde." },
+        { n: "Kej del Danubio", coords: [44.827, 20.462], txt: "Bajada al río: paseo fluvial con barcazas-bar tranquilas. El Danubio aquí ya es enorme." },
+        { n: "Torre Nebojša", coords: [44.827, 20.448], txt: "Remate en el torreón-prisión otomano al pie de la fortaleza. Desde aquí se sube a Kalemegdan en 10 min si queda cuerda." },
+      ],
+    },
+    {
+      id: "paseo-novibeograd", nombre: "Hormigón y utopía", dur: "3 h", dist: "≈4 km + tranvía de vuelta", cuando: "Mañana o tarde; evitad el mediodía en julio (poca sombra)",
+      resumen: "Novi Beograd: la ciudad socialista construida de cero sobre el barro. Bloques heroicos, el museo más bello de Yugoslavia y una escala que no existe en Europa occidental.",
+      paradas: [
+        { n: "Puente Branko (a pie)", coords: [44.8155, 20.45], txt: "Cruzad el Sava andando: la vista de Kalemegdan a la izquierda y del skyline nuevo a la derecha es el prólogo perfecto." },
+        { n: "Parque Ušće", coords: [44.8205, 20.439], txt: "El gran parque de la confluencia. A la derecha, la torre Ušće (antigua sede del Partido, bombardeada en el 99 y reconstruida como oficinas)." },
+        { n: "MoCAB", coords: [44.818, 20.443], txt: "El Museo de Arte Contemporáneo, joya modernista de 1965 entre árboles. Cierra martes. Aunque no entréis, rodeadlo." },
+        { n: "Punta de la confluencia", coords: [44.8265, 20.435], txt: "El punto exacto donde el Sava muere en el Danubio, mirando a Kalemegdan desde abajo. Pocos turistas llegan aquí." },
+        { n: "Palata Srbija", coords: [44.82, 20.418], txt: "El palacio federal gigante de la Yugoslavia no alineada (1959): 5.500 habitaciones de mármol para recibir a Nasser y Nehru. Exterior monumental." },
+        { n: "Blokovi 21–23", coords: [44.813, 20.402], txt: "Los bloques residenciales brutalistas más fotogénicos. No es un decorado: aquí viven 30.000 personas. Tranvía 7/9/11 de vuelta al centro (gratis)." },
+      ],
+    },
+    {
+      id: "paseo-zemun", nombre: "Zemun, el otro imperio", dur: "3–4 h", dist: "≈3 km", cuando: "Mañana de mercado o tarde con remate al atardecer en Gardoš",
+      resumen: "Hasta 1918, la frontera austrohúngara pasaba por aquí: Zemun era otro país. Sigue pareciéndolo — casco bajo de pueblo danubiano, mercado, pescado y la torre del Milenio.",
+      paradas: [
+        { n: "Mercado de Zemun", coords: [44.8446, 20.4116], txt: "Bus 83 desde Zeleni Venac (gratis, ~30 min). Empezar en el mercado: quesos, kajmak, fruta de Vojvodina. Domingo temprano, buvljak (rastro) al lado." },
+        { n: "Glavna ulica", coords: [44.844, 20.41], txt: "La calle mayor austrohúngara con sus fachadas de colores desconchados. Panaderías legendarias (buscad la kremšnita, el pastel de crema)." },
+        { n: "Gospodska", coords: [44.8455, 20.4085], txt: "La peatonal señorial hacia el río. Zemun presume de ser más «centroeuropea» que Belgrado, y aquí se entiende." },
+        { n: "Kej del Danubio", coords: [44.848, 20.409], txt: "El paseo fluvial: pescadores, cisnes, barcazas-café. Enfrente, la Gran Isla de Guerra, reserva natural salvaje en plena capital." },
+        { n: "Subida a Gardoš", coords: [44.8492, 20.406], txt: "Callejuelas empedradas de casas bajas trepando la colina. Cada esquina es una foto." },
+        { n: "Torre de Gardoš", coords: [44.8497, 20.4046], txt: "La torre húngara del Milenio (1896). Subid si está abierta (~200-300 RSD): el Danubio entero a los pies." },
+        { n: "Pescado en el kej", coords: [44.8475, 20.4095], txt: "Remate: riblja čorba (sopa de pescado picante) y pescado de río en cualquier terraza del kej con la puesta de sol." },
+      ],
+    },
+    {
+      id: "paseo-vracar", nombre: "Vračar burgués", dur: "2–2,5 h", dist: "≈3 km (con cuestas suaves)", cuando: "Mañana: mercado vivo + templo con luz",
+      resumen: "El barrio de clase media de toda la vida: el templo colosal, el mercado más querido, la casa de Tesla y las mejores calles arboladas para el café de después.",
+      paradas: [
+        { n: "Slavija", coords: [44.8028, 20.466], txt: "La rotonda-caos con la fuente musical (sí, canta). Desde casa: 10 min andando. Solo hay que cruzarla, no amarla." },
+        { n: "Templo de San Sava", coords: [44.7981, 20.4689], txt: "El coloso ortodoxo, visible desde media Serbia. El interior de mosaico dorado (terminado en 2020) deja mudo. Gratis; hombros cubiertos." },
+        { n: "Mercado Kalenić", coords: [44.7998, 20.477], txt: "El mercado más bonito de Belgrado: abuelas de Šumadija, kajmak casero, frambuesas de julio. Mejor antes de las 13:00." },
+        { n: "Museo Nikola Tesla", coords: [44.8048, 20.4707], txt: "Krunska 51: las cenizas, las bobinas y las demos en directo. Efectivo. Visita guiada en inglés a horas fijas — mirad la ficha." },
+        { n: "Njegoševa y alrededores", coords: [44.802, 20.47], txt: "Remate de café de especialidad o limunada en las calles arboladas entre Njegoševa y Molerova. Vračar es esto." },
+      ],
+    },
+    {
+      id: "paseo-novisad", nombre: "Novi Sad en un día", dur: "Día completo (tren 36 min)", dist: "≈5 km andando allí", cuando: "Cualquier día; el Soko de las 8-9h da la mañana entera",
+      resumen: "La excursión redonda: capital de Vojvodina, elegante y llana, con la fortaleza de Petrovaradin al otro lado del Danubio. Cero coche, cero bus: tren rápido y pies.",
+      paradas: [
+        { n: "Beograd Centar → Novi Sad", coords: [44.7959, 20.4519], txt: "Soko de Srbija Voz (36 min, ≈603 RSD, asiento reservado). Comprad ida y vuelta en la app la víspera." },
+        { n: "Estación → centro", coords: [45.2671, 19.8335], txt: "Del andén al centro: bus urbano o 25 min andando por el Bulevar oslobođenja. Novi Sad es plana como Vojvodina entera." },
+        { n: "Trg Slobode", coords: [45.2551, 19.8447], txt: "La plaza de la Libertad: ayuntamiento neorrenacentista y la catedral católica del Nombre de María. Aquí se ve que esto fue Hungría." },
+        { n: "Zmaj Jovina y Dunavska", coords: [45.2554, 19.8452], txt: "Las dos calles doradas del centro: terrazas, heladerías, el palacio del obispo al fondo. Comed aquí o aguantad hasta Petrovaradin." },
+        { n: "Puente Varadin", coords: [45.253, 19.85], txt: "Cruzad el Danubio a pie. A la izquierda, la playa Štrand (si apetece baño en julio, es LA playa fluvial de Serbia)." },
+        { n: "Fortaleza de Petrovaradin", coords: [45.2519, 19.8615], txt: "El «Gibraltar del Danubio»: subid a los bastiones, buscad el reloj con las agujas cambiadas (la grande marca las horas, para verla desde el río) y quedaos un rato. Vistas inolvidables." },
+        { n: "Vuelta (o Sremski Karlovci)", coords: [45.2671, 19.8335], txt: "Trenes de vuelta hasta la noche. Con energía extra: taxi o regional a Sremski Karlovci (15 min) para bermet y barroco, y vuelta a Belgrado desde allí." },
+      ],
+    },
+  ],
+
+  /* ---------- GLOSARIO GASTRONÓMICO ---------- */
+  glosario: [
+    { t: "Burek · бурек", d: "Hojaldre en espiral relleno (queso «sa sirom», carne «sa mesom», espinacas). Desayuno nacional; se acompaña de yogur líquido." },
+    { t: "Pljeskavica · пљескавица", d: "La «hamburguesa» balcánica a la brasa, en pan somun. La versión punjena va rellena de queso y jamón." },
+    { t: "Ćevapi · ћевапи", d: "Rollitos de carne picada a la brasa, por 5 o 10, con cebolla cruda y somun. Los de estilo sarajevés son canon." },
+    { t: "Kajmak · кајмак", d: "Crema láctea entre nata y queso, ligeramente fermentada. Pedidla SIEMPRE sobre la pljeskavica. Cambia la vida." },
+    { t: "Ajvar · ајвар", d: "Pasta de pimiento rojo asado (a veces con berenjena). En septiembre es religión; en julio, de bote pero rica." },
+    { t: "Sarma · сарма", d: "Rollitos de col fermentada rellenos de carne y arroz, cocidos lento. Plato de kafana con alma de abuela." },
+    { t: "Karađorđeva šnicla", d: "Escalope enrollado relleno de kajmak, empanado y frito. Bautizado como el líder del primer levantamiento serbio. Contundencia máxima." },
+    { t: "Gibanica · гибаница", d: "Pastel de capas de masa filo con queso y huevo. En cualquier pekara; caliente es otra cosa." },
+    { t: "Prebranac · пребранац", d: "Alubias blancas al horno con mucha cebolla. El plato humilde que borda cualquier kafana. Apto vegetarianos." },
+    { t: "Punjena paprika", d: "Pimientos rellenos de carne y arroz en salsa de tomate. Comida de casa que sale en los menús del día (dnevni meni)." },
+    { t: "Pasulj · пасуљ", d: "Potaje de alubias, normalmente con ahumados. El «cocido» serbio. En julio quizá no, pero sabedlo." },
+    { t: "Riblja čorba", d: "Sopa de pescado de río, rojiza y con picante suave. Pedidla en el kej de Zemun mirando al Danubio." },
+    { t: "Šopska salata", d: "Tomate, pepino, cebolla y una nevada de queso blanco rallado por encima. La ensalada de cabecera con todo grill." },
+    { t: "Urnebes · урнебес", d: "«Caos» literal: crema picante de queso y pimiento. Untad en somun mientras llega la carne." },
+    { t: "Palačinke · палачинке", d: "Crepes, dulces (eurokrem, plazma, nueces) o saladas. Merienda-cena nacional; hay palačinkarnice por todas partes." },
+    { t: "Moskva šnit", d: "El pastel del Hotel Moskva (1974): almendra, guindas y nata. Se merienda en la terraza del propio hotel, con siglo y cuarto de historia alrededor." },
+    { t: "Rakija · ракија", d: "El aguardiente. Šljivovica (ciruela) es la clásica; dunja (membrillo) y kajsija (albaricoque) las amables. Chupito lento, nunca de golpe, con «živeli!»." },
+    { t: "Bermet · бермет", d: "Vino dulce especiado de Sremski Karlovci que viajaba en la carta del Titanic. Souvenir líquido perfecto." },
+    { t: "Domaća kafa", d: "Café «doméstico» al estilo turco: molido fino, cocido en džezva, con posos. Se espera, se bebe despacio, no se remueve el fondo." },
+    { t: "Cerveza local", d: "Industriales: Jelen y Lav (de grifo, baratísimas). Craft serbia que merece caza: Kabinet, Dogma, Salto — en Samo Pivo tienen media carta." },
   ],
 
   /* ---------- BARRIOS ---------- */
@@ -278,6 +424,15 @@ const DATA = {
         ]
       },
       {
+        titulo: "Dulces y cafés de especialidad",
+        texto: "Belgrado meriende fuerte: palačinke (crepes), tartas de hotel con historia y una escena de café de especialidad sorprendentemente buena y barata (flat white 250–350 RSD).",
+        sitios: [
+          { nombre: "Hotel Moskva", zona: "Terazije", coords: [44.8135, 20.4605], nota: "El café del hotel Secesión de 1908: la tarta Moskva šnit (almendra, guindas, nata) en la terraza donde merendó medio siglo XX balcánico.", fiab: "ok" },
+          { nombre: "Kafeterija (Kralja Petra)", zona: "Stari Grad", coords: [44.8180, 20.4570], nota: "La casa madre del specialty coffee serbio, en un patio precioso del casco viejo.", testimonio: { cita: "El mejor flat white de los Balcanes está escondido en un patio de Kralja Petra.", fuente: "Síntesis de reseñas de viajeros, 2025-26" }, fiab: "sug" },
+          { nombre: "Pržionica D59 by Zaokret", zona: "Dorćol", coords: [44.8225, 20.4655], nota: "Tostadero de barrio con bancos al sol; parada natural del paseo de Dorćol.", fiab: "sug" },
+        ]
+      },
+      {
         titulo: "Mercados",
         texto: "Los mercados (pijaca) funcionan a diario ~06:00–19:00, mejor por la mañana. Fruta de temporada de julio: sandía, melocotón, frambuesa. Kalenić (Vračar) es el grande y bonito; Zeleni Venac el céntrico; Zemun el de ambiente de pueblo.",
         sitios: [
@@ -389,6 +544,16 @@ const DATA = {
         donde: "Belgrade Waterfront y Sava Promenada, pintadas y carteles por toda la ciudad"
       },
     ],
+    curiosidades: [
+      "Belgrado ha sido destruida y reconstruida alrededor de 40 veces: es de las capitales más arrasadas de la historia. «Beograd» significa «ciudad blanca».",
+      "Kalemegdan viene del turco: kale (fortaleza) + meydan (campo de batalla). El parque más romántico de la ciudad se llama, literalmente, «campo de batalla de la fortaleza».",
+      "El cine llegó pronto: los operadores de los Lumière proyectaron en Belgrado en 1896, seis meses después del estreno de París, en una kafana llamada Zlatni krst.",
+      "En el Museo Militar hay restos del F-117 «invisible» derribado en 1999. La broma serbia del momento: «Perdón, no sabíamos que era invisible».",
+      "La hiperinflación de 1993-94 fue de las peores jamás registradas: llegó a imprimirse un billete de 500.000 millones de dinares. Los precios se doblaban cada día y medio.",
+      "La torre Genex (1977), la puerta oeste de la ciudad, es el icono brutalista que veréis al venir del aeropuerto: dos torres unidas por un puente con un restaurante giratorio que nunca giró demasiado.",
+      "La kafana «?» se llama así desde 1892: la Iglesia protestó porque el bar se llamaba «Junto a la Catedral», el dueño colgó un interrogante «provisional»… y ahí sigue, 130 años después.",
+      "En 1991 el Estrella Roja ganó la Copa de Europa y su estadio, el Marakana, metía 100.000 personas. A finales de julio suele haber previas europeas: si os pica el fútbol, mirad el calendario de crvenazvezdafk.com esa semana.",
+    ],
     libros: [
       { titulo: "El puente sobre el Drina", autor: "Ivo Andrić (Nobel 1961)", nota: "LA novela de los Balcanes: cuatro siglos alrededor de un puente. Andrić vivía junto a Kalemegdan." },
       { titulo: "Diario de invierno / colecciones de Kiš", autor: "Danilo Kiš", nota: "El gran escritor yugoslavo-belgradense del s. XX." },
@@ -423,6 +588,12 @@ const DATA = {
       { es: "No hablo serbio", sr: "Ne govorim srpski", cir: "Не говорим српски", pron: "ne GO-vo-rim SRP-ski" },
       { es: "¿Dónde está…?", sr: "Gde je…?", cir: "Где је…?", pron: "gde ye" },
       { es: "Estación de tren", sr: "Železnička stanica", cir: "Железничка станица", pron: "zhe-LEZ-nich-ka STA-ni-tsa" },
+      { es: "Una mesa para dos", sr: "Sto za dvoje", cir: "Сто за двоје", pron: "sto za DVO-ye" },
+      { es: "¿Puedo pagar con tarjeta?", sr: "Mogu li karticom?", cir: "Могу ли картицом?", pron: "MO-gu li KAR-ti-tsom" },
+      { es: "¿Dónde está el baño?", sr: "Gde je toalet?", cir: "Где је тоалет?", pron: "gde ye to-a-LET" },
+      { es: "Sin carne, por favor", sr: "Bez mesa, molim", cir: "Без меса, молим", pron: "bez ME-sa MO-lim" },
+      { es: "¡Está buenísimo!", sr: "Odlično je!", cir: "Одлично је!", pron: "OD-lich-no ye" },
+      { es: "¡Ayuda!", sr: "Upomoć!", cir: "Упомоћ!", pron: "U-po-moch" },
     ],
     cirilico: [
       ["А а", "a"], ["Б б", "b"], ["В в", "v"], ["Г г", "g"], ["Д д", "d"], ["Ђ ђ", "dj"], ["Е е", "e"],
@@ -488,6 +659,9 @@ const DATA = {
     emergencias: { titulo: "Emergencias", texto: "Número general europeo 112 (funciona). Policía 192 · Bomberos 193 · Ambulancia 194. Embajada de España en Belgrado: Prote Mateje 45, +381 11 344 0231.", fiab: "ver" },
     documentos: { titulo: "Documentación", texto: "Serbia no es UE: se entra con DNI no — hace falta PASAPORTE en vigor (los españoles no necesitan visado, hasta 90 días). Comprobad los pasaportes YA. En teoría hay que registrar la estancia (el apartamento suele hacerlo — preguntad al anfitrión el «beli karton»).", fiab: "ok" },
     seguridad: { titulo: "Seguridad", texto: "Belgrado es una capital segura para el turista; delito violento contra visitantes, raro. Lo habitual: ojo con carteristas en buses llenos y taxis sin licencia. Protestas: ver la tarjeta en Costumbres.", fiab: "ok" },
+    fumar: { titulo: "Se fuma dentro (en serio)", texto: "Serbia es de los últimos países europeos donde se fuma en interiores de bares y muchas kafanas. En julio se vive en terrazas y apenas se nota, pero si un local cerrado os pica los ojos, ya sabéis por qué. Los restaurantes suelen tener zona; preguntad «nepušačka zona» (zona de no fumadores).", fiab: "ok" },
+    taxis: { titulo: "Taxis: lo único con truco", texto: "El único timo clásico de Belgrado son los taxis piratas del aeropuerto y de zonas turísticas: sin taxímetro y tarifa inventada. Regla simple: en el aeropuerto, SOLO mostrador de vouchers; en ciudad, apps (Yandex Go, CarGo, Pink Taxi) o taxis con matrícula TX y taxímetro corriendo. Un trayecto normal por el centro: 300–600 RSD.", fiab: "ok" },
+    salud: { titulo: "Botiquín y farmacias", texto: "Farmacias (apoteka, АПОТЕКА, cruz verde) por todas partes, con guardias 24 h en el centro. El agua del grifo es potable y hay fuentes públicas. Con 33 °C: sales/electrolitos, gorra y las visitas gordas antes de las 12:00. Sanidad: la Tarjeta Sanitaria Europea NO cubre Serbia (no es UE) — un seguro de viaje básico es buena idea; verificad si alguna tarjeta bancaria vuestra ya lo incluye.", fiab: "ok" },
     checklist: ["Pasaportes (¡no DNI!) y fotocopia/foto", "eSIM activada o plan de SIM local", "Dinares o euros en efectivo para cambiar", "Reserva Srbija Voz para Novi Sad (app)", "Calzado cómodo de verdad (adoquines + cuestas)", "Gorra y protector solar (33 °C)", "Botella de agua rellenable", "Adaptador no hace falta (enchufe europeo tipo F)", "Entradas/reservas: Royal Compound si interesa (sábado 25)", "Revisar vuelo de vuelta de Laura antes de decidir el día 30"]
   },
 };

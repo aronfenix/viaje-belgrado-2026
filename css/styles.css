@@ -780,6 +780,48 @@ body.pretrip #heroPlane { opacity: 1; animation: fly 26s linear infinite; }
 /* colores de sección nuevos */
 .page[data-page="gastos"] { --sec: #2e7d76; }
 html[data-theme="dark"] .page[data-page="gastos"] { --sec: #63c9be; }
+.page[data-page="paseos"] { --sec: #b5522c; }
+html[data-theme="dark"] .page[data-page="paseos"] { --sec: #eb9268; }
+
+/* ==========================================================
+   v4 — paseos, glosario, curiosidades
+   ========================================================== */
+
+.paseo-head { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; }
+.paseo-paradas {
+  list-style: none; counter-reset: parada; margin: 14px 0 6px; padding: 0;
+}
+.paseo-paradas li {
+  counter-increment: parada; position: relative;
+  padding: 0 0 14px 44px; font-size: .88rem;
+}
+.paseo-paradas li::before {
+  content: counter(parada); position: absolute; left: 0; top: 0;
+  width: 28px; height: 28px; border-radius: 50%;
+  background: var(--sec); color: #fff; font-weight: 800; font-size: .8rem;
+  display: grid; place-items: center; font-family: var(--sans);
+}
+.paseo-paradas li:not(:last-child)::after {
+  content: ""; position: absolute; left: 13.2px; top: 30px; bottom: 2px; width: 2px;
+  background: color-mix(in srgb, var(--sec) 35%, transparent); border-radius: 2px;
+}
+.paseo-paradas b { font-family: var(--serif); font-size: 1rem; display: block; margin-bottom: 1px; }
+.paseo-paradas span { color: var(--muted); }
+
+.glosario { display: grid; grid-template-columns: 1fr; gap: 2px; margin-top: 8px; }
+@media (min-width: 700px) { .glosario { grid-template-columns: 1fr 1fr; gap: 2px 20px; } }
+.glo-item { padding: 9px 0; border-bottom: 1px dashed var(--line); font-size: .86rem; }
+.glo-item b { font-family: var(--serif); color: var(--sec); display: block; }
+.glo-item span { color: var(--muted); }
+
+.curio-list { list-style: none; margin: 8px 0 0; padding: 0; }
+.curio-list li {
+  position: relative; padding: 9px 0 9px 30px; font-size: .89rem;
+  border-bottom: 1px dashed var(--line);
+}
+.curio-list li::before {
+  content: "✦"; position: absolute; left: 4px; top: 9px; color: var(--sec); font-size: .9rem;
+}
 
 /* reduced motion */
 @media (prefers-reduced-motion: reduce) {

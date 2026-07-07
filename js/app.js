@@ -79,6 +79,7 @@
   DATA.noche.zonas.forEach((z) => reg("n-" + slug(z.nombre), z.nombre, "noche", "☾", z.coords));
   DATA.alrededores.forEach((a) => reg(a.id, a.nombre, "alrededores", "⇢", a.coords));
   DATA.barrios.forEach((b) => reg("b-" + b.id, b.nombre, "barrios", "⌂", b.coords));
+  DATA.paseos.forEach((p) => reg(p.id, "Paseo: " + p.nombre, "paseos", "➾", p.paradas[0].coords));
 
   /* ---------- distancias a pie desde casa ---------- */
   const CASA = DATA.viaje.alojamiento.coords;
@@ -201,6 +202,7 @@
   const SECCIONES = [
     { id: "agenda", sub: "Día a día + tu propio plan", ico: "▦" },
     { id: "barrios", sub: "La ciudad por capas y zonas", ico: "⌂" },
+    { id: "paseos", sub: "6 rutas a pie con paradas en el mapa", ico: "➾" },
     { id: "ver", sub: "Museos con horarios en vivo y sellos", ico: "◈" },
     { id: "mapa", sub: "Todo geolocalizado + radios a pie", ico: "◎" },
     { id: "comer", sub: "Burek, grill y kafanas — con testimonios", ico: "♨" },
@@ -391,6 +393,35 @@
       "Belgrado no es una postal compacta: es una ciudad de capas. Estas son sus piezas, vistas desde vuestra base en Savski Venac.", cards);
   }
 
+  /* --- PASEOS --- */
+  function renderPaseos(el) {
+    const cards = DATA.paseos.map((p) => `<article class="card paseo-card reveal">
+      <div class="paseo-head">
+        <h3>${esc(p.nombre)}</h3>
+        ${planBtn(p.id)}
+      </div>
+      <div class="sitio-meta"><span>⏱ <b>${esc(p.dur)}</b></span><span>📏 ${esc(p.dist)}</span></div>
+      <p class="muted small">🕐 ${esc(p.cuando)}</p>
+      <p>${esc(p.resumen)}</p>
+      <ol class="paseo-paradas">
+        ${p.paradas.map((s) => `<li><b>${esc(s.n)}</b><span>${esc(s.txt)}</span></li>`).join("")}
+      </ol>
+      <button class="ruta-btn" data-ruta-paseo="${p.id}">🗺 Dibujar este paseo en el mapa</button>
+    </article>`).join("");
+    el.innerHTML = pageShell("paseos",
+      "Seis rutas a pie diseñadas para vosotros: paradas ordenadas, contexto en cada una y el trazado en el mapa con un toque. Son piezas, no obligaciones — combinadlas con la agenda como queráis.",
+      cards);
+  }
+  document.addEventListener("click", (e) => {
+    const b = e.target.closest("[data-ruta-paseo]");
+    if (!b) return;
+    const p = DATA.paseos.find((x) => x.id === b.dataset.rutaPaseo);
+    if (!p) return;
+    window.__route = p.paradas.map((s, i) => ({ coords: s.coords, n: i + 1, nombre: s.n }));
+    window.__routeSinCasa = p.id === "paseo-novisad"; // el de Novi Sad no arranca en casa
+    location.hash = "#/mapa";
+  });
+
   /* --- QUÉ VER --- */
   function estadoSitio(s, ref) {
     const now = ref || new Date();
@@ -448,7 +479,11 @@
         <p>${esc(s.nota)}</p>${testimonioHtml(s.testimonio)}
         ${s.coords ? `<p class="small"><a href="#/mapa" data-fly="${s.coords.join(",")}">mapa</a> · <a href="https://www.google.com/maps/search/?api=1&query=${s.coords.join(",")}" target="_blank" rel="noopener">navegar</a></p>` : ""}`).join("")}
     </article>`).join("");
-    el.innerHTML = pageShell("comer", esc(DATA.comer.intro), bloques);
+    const glosario = `<article class="card reveal"><h3>📖 Diccionario para pedir sin miedo</h3>
+      <p class="muted small">Los ${DATA.glosario.length} términos que agotan el 90% de cualquier carta serbia. También salen en el buscador (🔍).</p>
+      <div class="glosario">${DATA.glosario.map((g) => `<div class="glo-item"><b>${esc(g.t)}</b><span>${esc(g.d)}</span></div>`).join("")}</div>
+    </article>`;
+    el.innerHTML = pageShell("comer", esc(DATA.comer.intro), bloques + glosario);
   }
 
   /* --- NOCHE --- */
@@ -488,10 +523,13 @@
       <p>${esc(c.texto)}</p>
       <p class="tl-donde"><b>Se ve en:</b> ${esc(c.donde)}</p>
     </div>`).join("");
+    const curio = `<article class="card reveal"><h3>¿Sabíais que…?</h3>
+      <ul class="curio-list">${DATA.historia.curiosidades.map((c) => `<li>${esc(c)}</li>`).join("")}</ul>
+    </article>`;
     const libros = `<article class="card reveal"><h3>Para leer antes (o durante)</h3>
       ${DATA.historia.libros.map((l) => `<p><b>${esc(l.titulo)}</b> — ${esc(l.autor)}<br><span class="muted small">${esc(l.nota)}</span></p>`).join("")}
     </article>`;
-    el.innerHTML = pageShell("historia", esc(DATA.historia.intro), `<div class="tl">${capas}</div>${libros}`);
+    el.innerHTML = pageShell("historia", esc(DATA.historia.intro), `<div class="tl">${capas}</div>${curio}${libros}`);
   }
 
   /* --- COSTUMBRES / IDIOMA --- */
@@ -846,7 +884,7 @@
       </div>
       <p class="muted small" id="fxNota">Cargando tipo de cambio…</p>
       <div class="fx-refs" id="fxRefs"></div></article>`;
-    const bloques = ["clima", "dinero", "conectividad", "documentos", "emergencias", "seguridad"].map((k) => {
+    const bloques = ["clima", "dinero", "conectividad", "documentos", "emergencias", "seguridad", "taxis", "fumar", "salud"].map((k) => {
       const b = p[k];
       return `<article class="card reveal"><h3>${esc(b.titulo)}</h3><p>${esc(b.texto)}</p><p class="fuente">${fiab(b.fiab)}</p></article>`;
     }).join("");
@@ -867,7 +905,7 @@
 
   /* ---------- ROUTER ---------- */
   const RENDER = {
-    agenda: renderAgenda, barrios: renderBarrios, ver: renderVer, mapa: renderMapa,
+    agenda: renderAgenda, barrios: renderBarrios, paseos: renderPaseos, ver: renderVer, mapa: renderMapa,
     comer: renderComer, noche: renderNoche, alrededores: renderAlrededores,
     historia: renderHistoria, costumbres: renderCostumbres, transporte: renderTransporte,
     dilema: renderDilema, cuaderno: renderCuaderno, practico: renderPractico, gastos: renderGastos,
