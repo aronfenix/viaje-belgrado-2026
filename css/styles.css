@@ -910,6 +910,88 @@ html[data-theme="dark"] .hero-cyr { text-shadow: 0 1px 0 rgba(0,0,0,.6), 0 0 34p
 /* ---- testimonios más rotundos ---- */
 .testimonio { border-left: 3px solid var(--sec); font-size: 1.02rem; }
 
+/* ==========================================================
+   v6 — cartas selladas, playlist, tranvía y pájaros
+   ========================================================== */
+
+/* ---- sección cartas ---- */
+.page[data-page="cartas"] { --sec: #a03d3d; }
+html[data-theme="dark"] .page[data-page="cartas"] { --sec: #e08585; }
+
+.carta { font-family: var(--serif); }
+.carta .carta-num { font-family: var(--sans); font-size: .66rem; font-weight: 800; letter-spacing: .2em; text-transform: uppercase; color: var(--sec); }
+.carta h3 { font-size: 1.35rem; margin-top: 4px; }
+
+.carta-sellada {
+  text-align: center; padding: 34px 18px 26px; overflow: visible;
+  background:
+    repeating-linear-gradient(-45deg, transparent 0 12px, color-mix(in srgb, var(--sec) 3%, transparent) 12px 24px),
+    var(--card);
+}
+.carta-sellada .carta-solapa {
+  position: absolute; top: 0; left: 0; right: 0; height: 54px;
+  background: color-mix(in srgb, var(--sec) 7%, var(--bg2));
+  clip-path: polygon(0 0, 50% 100%, 100% 0);
+  border-bottom: none;
+}
+.carta-lacre {
+  position: relative; z-index: 1; width: 58px; height: 58px; margin: 6px auto 10px;
+  border-radius: 50%; display: grid; place-items: center;
+  background: radial-gradient(circle at 32% 30%, color-mix(in srgb, var(--sec) 82%, #fff), var(--sec) 58%, color-mix(in srgb, var(--sec) 72%, #000));
+  color: #fff; font-family: var(--serif); font-weight: 800; font-size: 1rem;
+  box-shadow: 0 4px 12px -3px color-mix(in srgb, var(--sec) 55%, transparent), inset 0 0 0 4px color-mix(in srgb, #fff 18%, transparent);
+}
+.carta-fecha { color: var(--muted); font-style: italic; font-weight: 600; }
+.carta-cerrada-txt { font-family: var(--sans); font-size: .78rem; color: var(--muted); }
+
+.carta-abierta .carta-cuerpo p { font-size: 1.04rem; line-height: 1.85; margin: 0 0 14px; }
+.carta-abierta .carta-cuerpo p:first-of-type::first-letter {
+  font-weight: 800; font-size: 3em; line-height: .82; float: left; padding: 5px 9px 0 0; color: var(--sec);
+}
+.carta-firma { display: block; text-align: right; font-size: 1.3rem; font-weight: 800; color: var(--sec); }
+.carta-nueva { outline: 2px solid var(--sec); outline-offset: 3px; animation: cartapulse 2.2s ease-in-out infinite; }
+@keyframes cartapulse { 50% { outline-color: transparent; } }
+.carta-abrir { font-family: var(--sans); margin-top: 4px; }
+.carta-cuerpo { animation: cartaopen .7s ease both; }
+@keyframes cartaopen { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+.carta-aviso a {
+  display: block; background: #a03d3d18; border: 1.5px dashed #a03d3d88;
+  border-radius: 12px; padding: 9px 13px; font-weight: 700; font-size: .88rem;
+  color: #a03d3d; margin: 8px 0;
+}
+html[data-theme="dark"] .carta-aviso a { color: #e08585; }
+
+/* ---- playlist ---- */
+.playlist-card {
+  background:
+    radial-gradient(130% 110% at 100% 0%, #1db95418, transparent 55%),
+    var(--card);
+}
+.playlist-card .pl-tag {
+  display: inline-block; font-size: .64rem; font-weight: 800; letter-spacing: .28em;
+  text-transform: uppercase; color: #1db954; margin-bottom: 6px;
+}
+.playlist-card .btn { background: #1db954; }
+
+/* ---- tranvía y pájaros ---- */
+#heroTram { animation: tram 34s linear infinite; }
+@keyframes tram {
+  0%   { transform: translate(820px, 328px); }
+  100% { transform: translate(-120px, 341px); }
+}
+.birds { opacity: 0; transition: opacity 1s ease; }
+.hero.day .birds { opacity: .8; }
+.bird1 { animation: bird1 26s linear infinite; }
+.bird2 { animation: bird2 33s linear infinite 4s; }
+@keyframes bird1 {
+  0%   { transform: translate(840px, 180px); }
+  100% { transform: translate(-60px, 130px); }
+}
+@keyframes bird2 {
+  0%   { transform: translate(-40px, 150px); }
+  100% { transform: translate(860px, 200px); }
+}
+
 /* ---- separador de ola (Sava) ---- */
 .wave-div {
   height: 26px; margin: 26px 0 4px; opacity: .5;

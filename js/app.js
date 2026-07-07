@@ -201,6 +201,7 @@
   /* ---------- SECTIONS INDEX ---------- */
   const SECCIONES = [
     { id: "agenda", sub: "Día a día + tu propio plan", ico: "▦" },
+    { id: "cartas", sub: "Nueve cartas selladas — una por día", ico: "✉" },
     { id: "barrios", sub: "La ciudad por capas y zonas", ico: "⌂" },
     { id: "paseos", sub: "6 rutas a pie con paradas en el mapa", ico: "➾" },
     { id: "ver", sub: "Museos con horarios en vivo y sellos", ico: "◈" },
@@ -267,6 +268,7 @@
     let inner;
     if (enViaje) {
       inner = `<span class="today-tag">Hoy · ${DIAS_SEM[wd]} ${now.getDate()} de ${MESES[now.getMonth()]}</span>
+        ${cartaHoyPendiente() ? '<p class="carta-aviso"><a href="#/cartas">✉ Hay una carta de Belgrado sin abrir — es de hoy</a></p>' : ""}
         <h3>${esc(regla.titulo)}</h3>
         ${regla.cierran.length ? `<p>✕ Cierran: ${esc(regla.cierran.slice(0, 4).join(", "))}${regla.cierran.length > 4 ? "…" : ""}</p>` : ""}
         ${regla.abren.length ? `<p>✓ ${esc(regla.abren[0])}</p>` : ""}
@@ -512,9 +514,66 @@
     el.innerHTML = pageShell("noche", esc(DATA.noche.intro), zonas);
   }
 
+  /* --- CARTAS DE BELGRADO --- */
+  const CARTAS_KEY = "bg26_cartas";
+  function renderCartas(el) {
+    const leidas = new Set(JSON.parse(localStorage.getItem(CARTAS_KEY) || "[]"));
+    const hoy = new Date().toISOString().slice(0, 10);
+    const cards = DATA.cartas.items.map((c, i) => {
+      const f = new Date(c.fecha + "T12:00:00");
+      const wd = ((f.getDay() + 6) % 7) + 1;
+      const abierta = hoy >= c.fecha;
+      const leida = leidas.has(c.fecha);
+      if (!abierta) {
+        return `<article class="card carta carta-sellada reveal">
+          <div class="carta-solapa"></div>
+          <div class="carta-lacre">А&Л</div>
+          <span class="carta-num">Carta ${i + 1} de 9</span>
+          <h3 class="carta-fecha">${DIAS_SEM[wd]} ${f.getDate()} de julio</h3>
+          <p class="carta-cerrada-txt">Sellada. Se abre sola la mañana de su día.</p>
+        </article>`;
+      }
+      return `<article class="card carta carta-abierta reveal ${leida ? "" : "carta-nueva"}" data-carta="${c.fecha}">
+        <span class="carta-num">Carta ${i + 1} de 9 · ${DIAS_SEM[wd]} ${f.getDate()} de julio ${leida ? "" : '<span class="chip chip-sec">NUEVA</span>'}</span>
+        <h3>${esc(c.titulo)}</h3>
+        <div class="carta-cuerpo" ${leida ? "" : "hidden"}>
+          ${c.texto.split("\n\n").map((t) => `<p>${esc(t)}</p>`).join("")}
+          <span class="carta-firma">${esc(DATA.cartas.firma)}</span>
+        </div>
+        ${leida ? "" : `<button class="btn carta-abrir" data-abrir="${c.fecha}">Romper el sello ✉</button>`}
+      </article>`;
+    }).join("");
+    el.innerHTML = pageShell("cartas", esc(DATA.cartas.intro), cards);
+    $$("[data-abrir]", el).forEach((b) => b.addEventListener("click", () => {
+      const fecha = b.dataset.abrir;
+      leidas.add(fecha);
+      localStorage.setItem(CARTAS_KEY, JSON.stringify([...leidas]));
+      const card = b.closest(".carta");
+      card.classList.remove("carta-nueva");
+      card.querySelector(".carta-cuerpo").hidden = false;
+      b.remove();
+      navigator.vibrate && navigator.vibrate([12, 40, 12]);
+    }));
+  }
+  /* aviso de carta nueva en portada durante el viaje */
+  function cartaHoyPendiente() {
+    const hoy = new Date().toISOString().slice(0, 10);
+    if (!(hoy >= "2026-07-22" && hoy <= "2026-07-30")) return false;
+    const leidas = new Set(JSON.parse(localStorage.getItem(CARTAS_KEY) || "[]"));
+    return DATA.cartas.items.some((c) => c.fecha === hoy && !leidas.has(c.fecha));
+  }
+
   /* --- ESCENA: CINE Y MÚSICA --- */
   function renderEscena(el) {
-    const bloques = DATA.escena.bloques.map((b) => `<article class="card reveal">
+    const pl = DATA.escena.playlist;
+    const playlist = `<article class="card playlist-card reveal">
+      <span class="pl-tag">♫ La banda sonora del viaje</span>
+      <h3>${esc(pl.nombre)}</h3>
+      <p>${esc(pl.desc)}</p>
+      <p class="consejo">${esc(pl.consejo)}</p>
+      <p><a class="btn" href="${pl.url}" target="_blank" rel="noopener">▶ Abrir en Spotify</a></p>
+    </article>`;
+    const bloques = playlist + DATA.escena.bloques.map((b) => `<article class="card reveal">
       <h3>${esc(b.titulo)}</h3><p>${esc(b.texto)}</p>
       ${b.sitios.map((s) => `<h4>${esc(s.nombre)} ${fiab(s.fiab)}</h4>
         <p class="muted small">📍 ${esc(s.zona)}</p>
@@ -934,9 +993,10 @@
     comer: renderComer, noche: renderNoche, escena: renderEscena, alrededores: renderAlrededores,
     historia: renderHistoria, costumbres: renderCostumbres, transporte: renderTransporte,
     dilema: renderDilema, cuaderno: renderCuaderno, practico: renderPractico, gastos: renderGastos,
+    cartas: renderCartas,
   };
   const rendered = new Set();
-  const LIVE_PAGES = new Set(["agenda", "ver", "cuaderno", "practico", "gastos"]);
+  const LIVE_PAGES = new Set(["agenda", "ver", "cuaderno", "practico", "gastos", "cartas"]);
   function applyRoute() {
     const id = (location.hash.replace(/^#\//, "") || "home").split("?")[0] || "home";
     const target = $(`.page[data-page="${id}"]`) ? id : "home";

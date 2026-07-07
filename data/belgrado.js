@@ -519,9 +519,59 @@ const DATA = {
     },
   ],
 
+  /* ---------- CARTAS DE BELGRADO (selladas por fecha) ---------- */
+  cartas: {
+    intro: "Nueve cartas, una por día. Las escribe la ciudad y cada una está sellada hasta la mañana de su fecha: no se pueden abrir antes, y esa es exactamente la gracia. (Sí, se puede engañar al reloj del móvil. También se puede abrir un regalo en noviembre. Vosotros sabréis.)",
+    firma: "— Б.",
+    items: [
+      {
+        fecha: "2026-07-22", titulo: "La del aterrizaje",
+        texto: "Bienvenidos. Os vi desde arriba mientras el avión bajaba siguiendo el Danubio, aunque vosotros aún no me veíais a mí. No intentéis conquistarme esta tarde: llevo dos mil años resistiendo asedios y el vuestro no va a ser distinto por ir con maletas. Dejad las cosas en Risanska, salid sin plan y bajad hacia el río, que para eso está a diez minutos. Un paseo corto, una cerveza fría, una pljeskavica si el hambre aprieta. Yo mañana sigo aquí. Llevo siglos siguiendo aquí.\n\nUna cosa más: esta noche canta una inglesa en mi puerto. No es de las mías, pero tiene voz. Si os quedan fuerzas, ya sabéis."
+      },
+      {
+        fecha: "2026-07-23", titulo: "La de las capas",
+        texto: "Hoy empezad por donde empiezo yo: la fortaleza. Pero id andando y sin prisa, que el camino es la mitad del asunto — Savski trg, los adoquines de Kosančićev venac, la kafana que se llama pregunta. En Kalemegdan buscad el muro que mira a los ríos y entended de una vez mi geografía: todo lo que soy pasó por ese cruce de aguas.\n\nMi Museo Nacional hoy abre de doce a ocho, por si el calor aprieta a media tarde y queréis mármol fresco y pintura. Y cuando anochezca, recordad: el atardecer desde mis murallas no se cuenta. Se manda por foto a los que no vinieron, para que les duela un poco."
+      },
+      {
+        fecha: "2026-07-24", titulo: "La de los patios",
+        texto: "Viernes. Hoy os presento a mi barrio favorito, y no se lo digáis a los otros: Dorćol. Callejead sin mapa por Jevremova y Cara Dušana, mirad la única mezquita que me queda de las ochenta que tuve — tratadla con cariño, ha visto demasiado —, tomad café donde lo tuestan y dejad que el barrio haga su trabajo, que es no tener nada obligatorio.\n\nY cuando caiga el sol, Cetinjska 15. Era una fábrica de cerveza; ahora es un patio donde mi juventud discute, brinda y pone música. Empezad en el bar de los veinte grifos. El resto de la noche se organiza sola, siempre lo hace."
+      },
+      {
+        fecha: "2026-07-25", titulo: "La del sábado",
+        texto: "Sábado: día de mercados y de reyes, elegid vosotros el orden. Si madrugáis algo, Kalenić está en su mejor hora — compradle fruta a la señora más seria que encontréis, es siempre la que mejor fruta tiene — y el templo de San Sava queda a un paseo, con su bóveda de oro que no se acaba nunca.\n\nSi hoy tocaba palacio — el complejo real solo recibe los sábados, con reserva — ya lo sabíais de antes. Si no, no habéis perdido nada que no pueda esperar a otra vida. Por la noche, si el cuerpo pide río, mi Sava Promenada está a diez minutos de vuestra cama, y en verano pongo cine gratis en ella. Miradlo."
+      },
+      {
+        fecha: "2026-07-26", titulo: "La del domingo",
+        texto: "Domingo, y os hago dos regalos. El primero: mi Museo Nacional hoy es gratis — sí, gratis, entrad aunque sea media hora, que Paja Jovanović no se ve todos los días por cero dinares. El segundo es más raro: si sois capaces de madrugar, en Zemun hay un rastro dominical donde mis vecinos venden de todo desde hace décadas. No es bonito. Es verdadero, que vale más.\n\nY ya que estáis allí: quedaos. Gardoš, el kej, los cisnes, una sopa de pescado con el Danubio delante. Zemun fue de otro imperio y todavía se le nota el acento. Es mi manera de mandaros de viaje sin que salgáis de mí."
+      },
+      {
+        fecha: "2026-07-27", titulo: "La del lunes",
+        texto: "Lunes: hoy mis museos duermen, casi todos, y no pienso disculparme — hasta las ciudades necesitan cerrar por dentro un día a la semana. Pero os dejé abiertos los importantes para un lunes: el de Tesla, con sus rayos y sus cenizas, que abre cuando los demás no. Y el etnográfico, por si queréis saber cómo vestía yo antes de todo esto.\n\nO ninguno. También está Ada, mi lago de los veranos, donde mis habitantes fingen que el mar existe y casi lo consiguen. Con el calor que hace, un lunes de agua y chiringuito no es escaparse del viaje: es entenderlo. Los sellos del pasaporte pueden esperar un día."
+      },
+      {
+        fecha: "2026-07-28", titulo: "La de la hermana pequeña",
+        texto: "Hoy os presto a mi hermana pequeña, Novi Sad. Treinta y seis minutos de tren — cuando yo era joven eso era un día a caballo, no os quejéis de nada. Ella es más ordenada que yo, más austrohúngara, más de plaza con catedral de colores. No se lo tengáis en cuenta: alguien en la familia tenía que salir formal.\n\nCruzad su puente hasta Petrovaradin y buscad el reloj de la torre: la aguja grande marca las horas y la pequeña los minutos, al revés del mundo entero, para que los barcos lo leyeran de lejos. Llevo trescientos años riéndome de esa solución. Volved en el tren de la tarde y contadme si mi hermana os trató bien. Siempre lo hace."
+      },
+      {
+        fecha: "2026-07-29", titulo: "La penúltima",
+        texto: "Penúltimo día, y las penúltimas veces son las mejores: ya sin nervios de estreno y todavía sin pena de final. Hoy no os mando a ningún sitio. Hoy es el día de las deudas pequeñas: ese barrio que os quedó a medias, esa pekara a la que dijisteis «mañana volvemos», ese museo que cerró en vuestras narices el lunes. Saldadlas sin prisa.\n\nY esta noche, si os apetece algo raro, unos rusos tocan en una barcaza amarrada en mi río. O simplemente buscad el patio que más os gustó esta semana y repetid. Repetir es la forma más seria de decir que algo estuvo bien."
+      },
+      {
+        fecha: "2026-07-30", titulo: "La última",
+        texto: "Ya está. Nueve días, y os vais como se van los buenos huéspedes: sabiendo dónde está el pan y a qué hora entra la luz en la fortaleza. Hoy no os organizo nada; solo os pido el final de siempre: subid una última vez a Kalemegdan, mirad los dos ríos y no digáis nada durante un minuto. Es mi manera de firmar.\n\nCuidaos ese equipaje nuevo que no pesa: los nueve días andados juntos, las cervezas de los patios, el idioma de carteles que ya medio leéis. Los hermanos que viajan juntos se llevan algo que no vendo en ninguna tienda de recuerdos. Buen viaje a Budapest, Álvaro. Buen regreso, Laura. Aquí se os quiere. Volved."
+      },
+    ]
+  },
+
   /* ---------- ESCENA: CINE Y MÚSICA ---------- */
   escena: {
     intro: "Preguntasteis por el cine y la música en directo, y Belgrado responde con generosidad: aquí no se dobla ni una película, la cinemateca es de las grandes de Europa y en julio la ciudad entera se convierte en sala de verano. Esto es lo verificado.",
+    playlist: {
+      nombre: "Rock y Nueva Ola Yugoslava",
+      url: "https://open.spotify.com/playlist/6PCo2PsZxV0jDPzCWcr4an",
+      desc: "La banda sonora del viaje, creada para vosotros y ya viva en el Spotify de Álvaro: Ekatarina Velika, Idoli, Šarlo Akrobata, Električni Orgazam, Partibrejkers, trompetas de Boban Marković… El novi talas (la nueva ola yugoslava de los 80) fue una de las escenas más brillantes de Europa, y nació en gran parte en estas calles. Para el tren a Novi Sad, para las cenas, para después.",
+      consejo: "Descargadla antes de salir (Serbia está fuera del roaming UE) y dadle al modo aleatorio cruzando el puente Branko.",
+    },
     bloques: [
       {
         titulo: "La regla de oro: nada doblado",
