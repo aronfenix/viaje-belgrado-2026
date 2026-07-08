@@ -319,47 +319,65 @@ const DATA = {
     {
       id: "savski-venac", nombre: "Savski Venac · Savamala", tag: "Vuestra base",
       coords: [44.8050, 20.4560],
-      desc: "Central, funcional, ferroviaria y administrativa. No es la postal, es el cuartel general: entre Slavija, la antigua estación (Savski trg), el Palacio de Justicia y el río. Panaderías, cafés de barrio, supermercados y casas de cambio a mano.",
-      cerca: "Sava Promenada y Belgrade Waterfront (paseo del río, 10-15 min a pie), Savamala vieja, Casa de Manak, centro comercial Galerija.",
+      desc: "Vuestro barrio no sale en las postales, y eso es una ventaja: aquí Belgrado hace su vida sin actuar para nadie. Es la ciudad ferroviaria y administrativa de hace un siglo —la estación que recibía al Orient Express, los ministerios, el Palacio de Justicia— conviviendo con el megaproyecto más polémico del país, el Waterfront, que le crece enfrente. Entre ambos, Savamala: el viejo barrio del puerto que fue capital alternativa y de murales antes de que llegaran las grúas.",
+      hacer: "Pasear la Sava Promenada al anochecer (vuestro «paseo de después de cenar»), pararse ante la ruina del Generalštab en Kneza Miloša, buscar los murales que quedan en Savamala, y usar Galerija para lo prosaico: súper, cine con aire, cajero decente.",
+      parada: "El burek de Trpković a cinco minutos de casa — la cola de las 8:00 es el mejor espectáculo gratuito del barrio.",
+      dato: "En la antigua estación de Savski trg paraba el Orient Express camino de Estambul. Hoy la plaza la preside un Stefan Nemanja de 23 metros que los belgradenses discutieron durante meses. Ganó la costumbre.",
+      cerca: "Sava Promenada y Belgrade Waterfront (10-15 min a pie), Savamala vieja, Casa de Manak, Galerija.",
       comoLlegar: "Estáis en él. Todo el casco viejo queda a 20–30 min a pie o un bus corto (gratis).",
       fiab: "ok"
     },
     {
       id: "stari-grad", nombre: "Stari Grad · Knez Mihailova", tag: "El centro",
       coords: [44.8163, 20.4602],
-      desc: "El corazón peatonal: plaza de la República, Museo Nacional, Teatro Nacional y la calle Knez Mihailova hasta Kalemegdan. Aquí se concentra el Belgrado clásico y también el más turístico.",
-      cerca: "Kalemegdan al final de la calle, Kosančićev venac bajando hacia el Sava.",
+      desc: "El salón de la ciudad. Knez Mihailova es una de las peatonales más antiguas de Europa del Este y lo tiene todo a la vez: palacetes académicos, librerías centenarias, franquicias, músicos callejeros y medio Belgrado paseando arriba y abajo porque pasear aquí es un deporte local con siglo y medio de historia. En la plaza de la República, el caballo del príncipe Mihailo es EL punto de encuentro nacional: «kod konja» — «donde el caballo».",
+      hacer: "Recorrerla entera sin prisa de plaza a parque (20 min si no picáis en nada; una hora si sois humanos), entrar al Museo Nacional, desviarse dos calles a la Kinoteka, y rematar en Kalemegdan, que espera al final como un premio.",
+      parada: "La terraza del Hotel Moskva con una Moskva šnit: merienda de 1908, precios de 2026 pero razonables.",
+      dato: "Bajo vuestros pies hay una ciudad romana: Singidunum asoma en cada obra de metro que empiezan y no acaban. Los escaparates cambian; la calle lleva 150 años siendo la misma pasarela.",
+      cerca: "Kalemegdan al final de la calle, Kosančićev venac bajando hacia el Sava, Kinoteka.",
       comoLlegar: "≈25 min a pie desde Risanska, o cualquier bus hacia Zeleni Venac (gratis).",
       fiab: "ok"
     },
     {
       id: "kosancicev", nombre: "Kosančićev venac", tag: "El rincón bonito",
       coords: [44.8155, 20.4530],
-      desc: "Adoquines, la Catedral ortodoxa, el Patriarcado, la Residencia de Ljubica y vistas al Sava. La esquina con más encanto del casco viejo, y de camino entre vuestra zona y Kalemegdan.",
-      cerca: "Kafana «?» (Znak pitanja), la más antigua de la ciudad, frente a la Catedral.",
+      desc: "Si Belgrado tuviera que enseñar una sola esquina para enamorar, sería esta: la colina de adoquines sobre el Sava donde nació la ciudad serbia moderna. Casas bajas del XIX, la Catedral ortodoxa con su torre barroca, el Patriarcado, faroles, silencio — y de pronto, un solar vacío con una placa: aquí ardió la Biblioteca Nacional el 6 de abril de 1941, con 350.000 libros y manuscritos medievales dentro, el primer día del bombardeo nazi. El barrio entero es belleza con memoria.",
+      hacer: "Subir desde Savamala al atardecer, asomarse al mirador sobre el río, visitar la Residencia de la Princesa Ljubica (cierra lunes) y sentarse donde llevan sentándose belgradenses desde 1823.",
+      parada: "La kafana «?» (Znak pitanja), frente a la Catedral: la más antigua de la ciudad, comida serbia honesta bajo un techo otomano. Turística, sí; impostada, no.",
+      dato: "El solar de la Biblioteca sigue vacío a propósito. Hay ciudades que construyen encima de sus heridas; esta prefirió dejarla a la vista.",
+      cerca: "Catedral, Patriarcado, Residencia de Ljubica, y Kalemegdan a cinco minutos.",
       comoLlegar: "A pie: subida desde Savamala (cuestas, pero cortas).",
       fiab: "ok"
     },
     {
       id: "dorcol", nombre: "Dorćol", tag: "Para callejear",
       coords: [44.8215, 20.4620],
-      desc: "El barrio viejo entre Knez Mihailova y el Danubio: cafés, bares con carácter, restos otomanos (mezquita Bajrakli), diseño y vida local. Probablemente el mejor barrio para perderse sin plan.",
-      cerca: "Museo Etnográfico, Vuk y Dositej, Ciencia y Tecnología, Dorćol Platz, y bajando, el paseo del Danubio.",
+      desc: "El nombre lo dice todo: «dört yol», cuatro caminos en turco, el cruce donde durante siglos se mezclaron serbios, turcos, judíos sefardíes y austríacos. Hoy es el barrio con mejor pulso de la ciudad: señoras regando geranios sobre bares de vinos naturales, la única mezquita superviviente a la vuelta de un tostadero de specialty coffee, palacetes cansados y patios que de noche se encienden. Es el Belgrado que los belgradenses jóvenes eligen para vivir.",
+      hacer: "Perderse sin mapa entre Jevremova y Cara Dušana (el paseo «Dorćol profundo» de esta guía ordena ese caos si lo preferís), respetar la Bajrakli desde la acera, curiosear Dorćol Platz y bajar hasta el Danubio cuando el barrio se acabe.",
+      parada: "Café en Pržionica D59 y, si el hambre es seria, los ćevapi de Walter — institución del barrio con colas de fe.",
+      dato: "La calle Jevremova era el corazón del Belgrado sefardí: aquí se habló judeoespañol —ladino, el castellano del siglo XV— hasta la Segunda Guerra Mundial. Escuchad los nombres de las placas.",
+      cerca: "Museo Etnográfico, Vuk y Dositej, Ciencia y Tecnología, Dorćol Platz, el kej del Danubio.",
       comoLlegar: "A pie desde el centro; desde casa ≈35 min o bus a Studentski trg.",
       fiab: "ok"
     },
     {
       id: "skadarlija", nombre: "Skadarlija · Cetinjska", tag: "Bohemia + noche",
       coords: [44.8172, 20.4653],
-      desc: "Skadarlija es la calle bohemia de kafanas con música tradicional — bonita y sí, turística. Justo detrás, el complejo de la antigua cervecera en Cetinjska 15 es su contrapunto: bares alternativos, patios y música hasta tarde.",
-      cerca: "Bajbokana, Dva jelena y Tri šešira (kafanas clásicas); Samo Pivo, Polet, Zaokret en Cetinjska.",
+      desc: "Una sola calle empedrada y en cuesta que fue el Montmartre balcánico: aquí vivieron y bebieron los poetas y actores del Belgrado de 1900 —Đura Jakšić murió en su casa, hoy museo— y las kafanas conservan los nombres de entonces: Tri šešira (Tres Sombreros), Dva jelena (Dos Ciervos). ¿Es turística? Completamente. ¿Es falsa? Para nada: las orquestas tocan de verdad, la comida es seria y los serbios también vienen a emocionarse con las canciones viejas. Y justo detrás, la jugada maestra: Cetinjska 15, la antigua fábrica de cerveza tomada por los bares de la generación siguiente.",
+      hacer: "Reservar una noche para el ritual completo: cena con orquesta en Skadarlija (pedid una canción, se dejan 200-500 RSD en la funda del violín) y después cruzar la trasera a Cetinjska para el contraste generacional en veinte pasos.",
+      parada: "Tri šešira si buscáis el clásico; Samo Pivo en Cetinjska si la sed es de grifos.",
+      dato: "El truco de local: en Skadarlija se cena; en Cetinjska se sigue. Los dos mundos se dan la espalda y comparten manzana, y esa esquizofrenia ES Belgrado.",
+      cerca: "Bajbokana, Dva jelena y Tri šešira; Samo Pivo, Polet, Zaokret en Cetinjska.",
       comoLlegar: "≈30 min a pie desde casa o bus al centro + 10 min.",
       fiab: "ok"
     },
     {
       id: "vracar", nombre: "Vračar · Slavija", tag: "Residencial agradable",
       coords: [44.8000, 20.4720],
-      desc: "El barrio burgués: el templo de San Sava, el museo Tesla, el mercado Kalenić y calles arboladas con cafés. Sube cuesta desde vuestra zona, pero Slavija queda a 10 minutos andando.",
+      desc: "El barrio donde a los belgradenses les gustaría vivir: calles arboladas, fachadas burguesas de entreguerras, el mercado más querido y una densidad de buenos cafés que compite con Dorćol. Todo orbita alrededor del coloso: el templo de San Sava, levantado justo donde los otomanos quemaron las reliquias del santo en 1595 — la venganza arquitectónica más paciente de Europa, cuatro siglos después y con la cúpula de mosaico dorado más grande del mundo ortodoxo moderno.",
+      hacer: "Entrar a San Sava dos veces (de día por el mosaico, al atardecer por la luz), comprar fruta en Kalenić antes de las 13:00, peregrinar al museo Tesla y dejarse caer por las terrazas de Njegoševa.",
+      parada: "Cualquier café de especialidad entre Njegoševa y Molerova; el barrio inventó la sobremesa de dos horas con un solo cortado.",
+      dato: "Vračar significa «brujo» — la colina de los adivinos medievales. Hoy los únicos oráculos son los fruteros de Kalenić, y aciertan más.",
       cerca: "San Sava, Tesla, Kalenić, cafeterías de especialidad.",
       comoLlegar: "A pie a Slavija (10 min) y desde ahí llano-suave; o trolebús desde Slavija.",
       fiab: "ok"
@@ -367,7 +385,10 @@ const DATA = {
     {
       id: "novi-beograd", nombre: "Novi Beograd · Ušće", tag: "La otra escala",
       coords: [44.8130, 20.4310],
-      desc: "La ciudad socialista planificada al otro lado del Sava: bloques (blokovi), avenidas enormes, el parque Ušće en la confluencia, MoCAB y arquitectura yugoslava brutalista. Otro planeta a 20 minutos — para entender el siglo XX de la ciudad.",
+      desc: "En 1948, donde solo había pantano, Yugoslavia decidió construir su ciudad del futuro: brigadas de jóvenes voluntarios drenaron el barro y levantaron una capital nueva de bloques heroicos, avenidas de ocho carriles y hormigón con ambición de eternidad. Hoy viven aquí 200.000 personas y el brutalismo yugoslavo que el MoMA expuso en Nueva York se ve gratis desde el tranvía. No es «bonito»: es sobrecogedor, que dura más.",
+      hacer: "Cruzar el puente Branko a pie (el ritual de entrada), pasear el parque Ušće hasta la punta de la confluencia, entrar al MoCAB si no es martes, y fotografiar los blokovi sabiendo que dentro hay vida de barrio de lo más normal.",
+      parada: "Los cafés del parque Ušće o un chiringuito del kej: cerveza mirando la fortaleza desde el lado que casi ningún turista pisa.",
+      dato: "La torre Genex —la «Puerta del Oeste» que visteis al llegar del aeropuerto— tiene un restaurante giratorio en la cima que casi nunca giró. Como metáfora de Yugoslavia funciona dolorosamente bien.",
       cerca: "MoCAB, Palata Srbija, Sava Centar, torre Genex (desde fuera).",
       comoLlegar: "Cruzar el puente Branko a pie hasta Ušće, o cualquier bus que cruce el Sava (gratis).",
       fiab: "ok"
@@ -375,15 +396,21 @@ const DATA = {
     {
       id: "zemun", nombre: "Zemun · Gardoš", tag: "Excursión urbana",
       coords: [44.8455, 20.4110],
-      desc: "Hasta 1918 era otra ciudad — y otro imperio. Casco antiguo austrohúngaro, la torre de Gardoš con vistas al Danubio, mercado, pescado junto al río y ambiente de pueblo dentro de la capital.",
-      cerca: "Paseo fluvial (kej), restaurantes de pescado, mercadillo dominical (buvljak) temprano.",
+      desc: "Durante dos siglos, el río que veis desde Gardoš fue la frontera entre dos mundos: enfrente, el Belgrado otomano; aquí, el último pueblo del Imperio austrohúngaro, con sus campanarios católicos, su cuartel de cuarentena y sus espías de ambos bandos. Zemun no se unió a Belgrado hasta 1934 y todavía no se ha enterado del todo: tiene su propio casco viejo, su propio mercado, su propio orgullo y pescadores que saludan como en un pueblo del Danubio, porque eso es exactamente lo que es.",
+      hacer: "Bus 83 y el circuito clásico: mercado, la calle Glavna con sus fachadas desconchadas de colores, subida por las callejuelas empedradas a la torre de Gardoš, y bajada al kej para la sopa de pescado. Si es domingo temprano, el buvljak (rastro) es un viaje en el tiempo.",
+      parada: "Riblja čorba (sopa de pescado picante) en cualquier terraza del kej con el Danubio a dos metros. De postre, krempita de panadería vieja: el pastel de crema herencia del imperio.",
+      dato: "La torre de Gardoš la construyó Hungría en 1896 para celebrar sus mil años de reino... en su frontera más lejana. Veintidós años después el imperio no existía. La torre sigue ahí, encantada de conocerse.",
+      cerca: "Paseo fluvial (kej), restaurantes de pescado, mercadillo dominical (buvljak) temprano, la Gran Isla de Guerra enfrente.",
       comoLlegar: "Bus 83/78 desde Zeleni Venac (gratis), 25–35 min. Combinable con Novi Beograd.",
       fiab: "ok"
     },
     {
       id: "dedinje", nombre: "Dedinje · Topčider", tag: "Poder y memoria",
       coords: [44.7830, 20.4520],
-      desc: "Colinas verdes de embajadas, villas y memoria política: el Museo de Yugoslavia y la tumba de Tito, el parque Topčider, el estadio del Estrella Roja y el complejo real.",
+      desc: "La colina donde vive el poder desde hace dos siglos, sea cual sea el poder: los príncipes Obrenović plantaron su palacete en Topčider, los reyes Karađorđević construyeron sus palacios, Tito eligió la misma ladera para su residencia —y para su tumba, entre las flores de su invernadero—, y hoy la comparten embajadas, futbolistas y políticos. Verde, silenciosa y llena de historia incómoda: el barrio donde Serbia guarda lo que no sabe si celebrar o enterrar.",
+      hacer: "El Museo de Yugoslavia y la Casa de las Flores piden dos horas largas y las devuelven con intereses. Después, el parque Topčider para digerirlo bajo los plátanos más viejos de la ciudad. Los del fútbol: el Marakana del Estrella Roja está en la falda de la colina.",
+      parada: "El café del parque Topčider, junto al palacete de Miloš: donde meriendan las familias del barrio desde hace generaciones.",
+      dato: "En la Casa de las Flores no hay guardia de honor ni mármol soviético: Tito está enterrado en su jardín de invierno, entre plantas. Lo visitaron cien jefes de Estado; hoy lo visitan nostálgicos de un país que ya no existe y curiosos como vosotros.",
       cerca: "Museo de Yugoslavia, Casa de las Flores, Topčider, Arte Africano.",
       comoLlegar: "Trolebús 40/41 desde el centro (gratis), ≈20 min.",
       fiab: "ok"
@@ -391,7 +418,10 @@ const DATA = {
     {
       id: "ada", nombre: "Ada Ciganlija", tag: "La playa de Belgrado",
       coords: [44.7906, 20.4051],
-      desc: "Isla-península en el Sava convertida en lago de baño con playas, chiringuitos y deporte. Con calor de julio (30-35 °C habituales), media jornada de remojo puede ser oro.",
+      desc: "«El mar de Belgrado», y lo dicen sin ironía: una isla del Sava convertida en lago de siete kilómetros de playas, con bandera azul, agua sorprendentemente limpia y la infraestructura de una ciudad costera entera — chiringuitos, alquiler de kayaks, wakeboard con cable, canchas de todo. En julio es donde está la mitad de la ciudad, y la otra mitad está llegando. No es un plan de relleno: es antropología serbia en bañador.",
+      hacer: "Baño de mediodía cuando el asfalto queme, vuelta a la isla en bici alquilada (una hora tranquila), y caña al atardecer en un café-playa viendo el desfile de remeros, abuelos nadadores y adolescentes eternos.",
+      parada: "Cualquier chiringuito de la orilla norte; se paga la cerveza, no la tumbona del árbol de al lado.",
+      dato: "Ada fue prisión, astillero y coto de caza real antes que playa. La palabra «ciganlija» probablemente viene del celta y no de los gitanos, pero la etimología perdió contra la leyenda hace décadas.",
       cerca: "Alquiler de bicis, kayak, y decenas de cafés-playa.",
       comoLlegar: "Buses hacia Ada desde el centro (gratis); en taxi ≈10 min desde casa.",
       fiab: "ok"
@@ -426,6 +456,20 @@ const DATA = {
           { nombre: "Znak pitanja «?»", zona: "Frente a la Catedral", coords: [44.8152, 20.4535], nota: "La kafana más antigua (1823), en casa otomana. Turística pero legítima: comida serbia de verdad.", fiab: "ok" },
           { nombre: "Tri šešira", zona: "Skadarlija", coords: [44.8175, 20.4650], nota: "El clásico de la calle bohemia, con orquesta. Para vivir el cliché una noche, sabiendo lo que es.", fiab: "sug" },
           { nombre: "Kafana de barrio en Vračar/Dorćol", zona: "—", nota: "El consejo repetido en Reddit: entrar en cualquier kafana llena de locales, sin carta en inglés. Ahí está el país.", testimonio: { cita: "Salta Skadarlija para comer: ve donde no haya carta en inglés y pide lo que tenga la mesa de al lado.", fuente: "Hilo r/serbia (parafraseado), 2025" }, fiab: "sug" },
+        ]
+      },
+      {
+        titulo: "El ritual de la kafana, explicado",
+        texto: "Para que la primera vez no sea a ciegas: se empieza con meze —kajmak, proja, urnebes, algo de pan— y una rakija de apertura (la šljivovica es la canónica; la dunja, más amable para empezar). Después llega la parrilla o el plato de cuchara, con ensalada šopska de guarnición y vino o cerveza. Nadie os traerá la cuenta hasta que la pidáis: la sobremesa es sagrada y «račun, molim» es la única llave. Dos trucos de oro: el «dnevni meni» (menú del día laborable) baja la cuenta a la mitad en muchos sitios, y si hay orquesta, pedir una canción con 200-500 RSD en la funda del violín es costumbre, no cursilada.",
+        sitios: []
+      },
+      {
+        titulo: "Sentarse de verdad: restaurantes",
+        texto: "Para las noches de mantel y sin prisa — la gama alta belgradense cuesta lo que una pizzería madrileña. Reservar por Instagram o teléfono funciona en todos.",
+        sitios: [
+          { nombre: "Manufaktura", zona: "Kralja Petra (centro)", coords: [44.8178, 20.4565], nota: "El túnel de paraguas rojos más fotografiado de Serbia esconde cocina serbia moderna hecha en serio: producto local, carta que explica de dónde viene todo. 2.000-3.500 RSD/persona.", testimonio: { cita: "Es donde llevo a todo el que me visita: serbio de verdad pero sin manteles de cuadros ni folclore forzado.", fuente: "Síntesis de recomendaciones locales en Reddit, 2025-26" }, fiab: "sug" },
+          { nombre: "Ambar", zona: "Beton hala, junto al río", coords: [44.8155, 20.4485], nota: "Cocina balcánica contemporánea en la hilera de restaurantes del muelle: pequeños platos para compartir y la terraza mirando al agua. El sitio para la cena «de celebración». 3.000-4.500 RSD/persona.", fiab: "sug" },
+          { nombre: "Radost Fina Kuhinjica", zona: "Cerca del Sava", coords: [44.8110, 20.4560], nota: "El vegetariano querido de la ciudad, casero y con alma — un respiro si la parrilla os pide tregua a mitad de semana.", fiab: "sug" },
         ]
       },
       {

@@ -1143,6 +1143,40 @@ html[data-theme="dark"] .carta-aviso a { color: #e08585; }
 .stamps-card.reveal { transform: rotate(.5deg) translateY(18px); }
 .stamps-card.reveal.in { transform: rotate(.5deg); }
 
+/* ---- el conversor es un recibo de casa de cambio ---- */
+.cambio-card {
+  position: relative; margin-top: 30px; padding: 18px 18px 26px;
+  background: var(--card); border: 1px solid var(--line);
+  border-radius: 4px 4px 0 0;
+  box-shadow: 0 2px 3px rgba(20,15,5,.08), 0 14px 30px -16px rgba(20,15,5,.35);
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 8px),
+    95% 100%, 90% calc(100% - 8px), 85% 100%, 80% calc(100% - 8px), 75% 100%,
+    70% calc(100% - 8px), 65% 100%, 60% calc(100% - 8px), 55% 100%,
+    50% calc(100% - 8px), 45% 100%, 40% calc(100% - 8px), 35% 100%,
+    30% calc(100% - 8px), 25% 100%, 20% calc(100% - 8px), 15% 100%,
+    10% calc(100% - 8px), 5% 100%, 0 calc(100% - 8px));
+}
+.cambio-card.reveal { transform: rotate(-.8deg) translateY(18px); }
+.cambio-card.reveal.in { transform: rotate(-.8deg); }
+.cx-head {
+  display: block; text-align: center; font-family: "Courier New", monospace;
+  font-size: .7rem; font-weight: 700; letter-spacing: .3em; color: var(--ink);
+  border-bottom: 1px dashed var(--line); padding-bottom: 8px; margin-bottom: 10px;
+}
+.cx-foot {
+  display: block; text-align: center; font-family: "Courier New", monospace;
+  font-size: .64rem; letter-spacing: .2em; color: var(--muted); margin-top: 12px;
+}
+.cambio-card .fx-col input { font-family: "Courier New", monospace; font-weight: 700; }
+.cambio-card #fxNotaH { font-family: "Courier New", monospace; font-size: .68rem; }
+
+/* ---- dato de barrio ---- */
+.barrio-dato {
+  background: color-mix(in srgb, var(--sec) 7%, var(--bg2));
+  border-radius: 12px; padding: 10px 13px; font-size: .87rem;
+  font-family: var(--serif); font-style: italic; margin-top: 10px;
+}
+
 /* mesa: en pantallas anchas los objetos se desalinean un poco más */
 @media (min-width: 760px) {
   .boarding { max-width: 92%; }

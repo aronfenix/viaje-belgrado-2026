@@ -409,6 +409,9 @@
       <span class="chip chip-sec">${esc(b.tag)}</span> ${planBtn("b-" + b.id)}
       <h3>${esc(b.nombre)}</h3>
       <p>${esc(b.desc)}</p>
+      ${b.hacer ? `<h4>Qué hacer</h4><p>${esc(b.hacer)}</p>` : ""}
+      ${b.parada ? `<h4>Dónde parar</h4><p>${esc(b.parada)}</p>` : ""}
+      ${b.dato ? `<p class="barrio-dato">✦ ${esc(b.dato)}</p>` : ""}
       <h4>Cerca</h4><p class="muted">${esc(b.cerca)}</p>
       <h4>Cómo llegar</h4><p class="muted">${esc(b.comoLlegar)}</p>
       <p><a href="#/mapa" data-fly="${b.coords.join(",")}">Ver en el mapa →</a></p>

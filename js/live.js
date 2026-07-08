@@ -119,22 +119,29 @@
     } catch {}
   }
   function pintaFxNota() {
-    const n = $("#fxNota");
-    if (n) n.textContent = `1 € = ${rate.toFixed(1)} RSD · ${rateFecha ? "tipo de hoy (open.er-api.com)" : "tipo aproximado guardado"} · las menjačnica del centro rondan este cambio`;
-    const refs = $("#fxRefs");
-    if (refs) refs.innerHTML = [["☕ café", 200], ["🥐 burek", 250], ["🍺 caña craft", 400], ["🍔 pljeskavica", 500], ["🍽 kafana (2 pers.)", 4000]]
+    const txt = `1 € = ${rate.toFixed(1)} RSD · ${rateFecha ? "tipo de hoy (open.er-api.com)" : "tipo aproximado guardado"} · las menjačnica del centro rondan este cambio`;
+    const refsHtml = [["☕ café", 200], ["🥐 burek", 250], ["🍺 caña craft", 400], ["🍔 pljeskavica", 500], ["🍽 kafana (2 pers.)", 4000]]
       .map(([t, v]) => `<span class="fx-ref">${t}<b>${v} din ≈ ${(v / rate).toFixed(1)} €</b></span>`).join("");
+    ["", "H"].forEach((s) => {
+      const n = $("#fxNota" + s); if (n) n.textContent = txt;
+      const refs = $("#fxRefs" + s); if (refs) refs.innerHTML = refsHtml;
+    });
   }
-  function initFx() {
-    const eur = $("#fxEur"), rsd = $("#fxRsd");
-    if (!eur) return;
+  function wireFx(suffix) {
+    const eur = $("#fxEur" + suffix), rsd = $("#fxRsd" + suffix);
+    if (!eur || eur.dataset.wired) return;
+    eur.dataset.wired = "1";
     const upd = (from) => {
       if (from === "eur") rsd.value = Math.round((+eur.value || 0) * rate);
       else eur.value = ((+rsd.value || 0) / rate).toFixed(2);
     };
     eur.addEventListener("input", () => upd("eur"));
     rsd.addEventListener("input", () => upd("rsd"));
-    upd("eur"); pintaFxNota(); cargarFx();
+    upd("eur");
+  }
+  function initFx() {
+    wireFx(""); wireFx("H");
+    pintaFxNota(); cargarFx();
   }
 
   /* ---------- «¿Y ahora qué?» ---------- */
@@ -191,7 +198,7 @@
   /* ---------- init ---------- */
   dashSkeleton();
   cargarClima();
-  cargarFx();
+  initFx();
   setInterval(cargarClima, 30 * 60 * 1000);
 
   window.BGLive = { initFx };
