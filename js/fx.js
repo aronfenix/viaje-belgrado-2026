@@ -131,8 +131,16 @@
 
   /* ---------- VOZ (serbio) ---------- */
   let voces = [];
-  const cargaVoces = () => { voces = speechSynthesis.getVoices(); };
+  const cargaVoces = () => {
+    voces = speechSynthesis.getVoices();
+    // si el sistema ya cargó voces y no hay ninguna eslava, ocultamos los altavoces
+    if (voces.length) {
+      const hay = voces.some((v) => /^(sr|hr|bs|ru)/i.test(v.lang));
+      document.body.classList.toggle("no-tts", !hay);
+    }
+  };
   if ("speechSynthesis" in window) { cargaVoces(); speechSynthesis.onvoiceschanged = cargaVoces; }
+  else document.body.classList.add("no-tts");
   function speak(txt) {
     if (!("speechSynthesis" in window)) return;
     speechSynthesis.cancel();

@@ -146,7 +146,7 @@
     if (!plan[day].includes(pendingPlan)) plan[day].push(pendingPlan);
     setPlan(plan);
     $("#planSheet").hidden = true;
-    toast(`Añadido al ${DIAS_SEM[((new Date(day + "T12:00:00").getDay() + 6) % 7) + 1]} ${+day.slice(8)} ✓`);
+    toast(`Guardado para el ${DIAS_SEM[((new Date(day + "T12:00:00").getDay() + 6) % 7) + 1]} ${+day.slice(8)}. — Б.`);
     if (rendered.has("agenda")) renderAgenda($('.page[data-page="agenda"]'));
   });
 
@@ -165,7 +165,7 @@
       s.textContent = add ? "✔ sellado" : "◻ sello";
       if (add) {
         navigator.vibrate && navigator.vibrate(18);
-        toast(`Sello nuevo: ${PLANNABLES[id] ? PLANNABLES[id].nombre : id} 🛂`);
+        toast(`Sellado: ${PLANNABLES[id] ? PLANNABLES[id].nombre : id}. — Б. 🛂`);
         if (sellos.length && sellos.length % 5 === 0) confetti();
       }
       renderStamps();
@@ -293,6 +293,46 @@
     $("#todayCard").innerHTML = `<div class="today-card reveal">${inner}</div>`;
   }
 
+  /* Modo calle: atajos operativos durante el viaje */
+  function renderCalle() {
+    const box = $("#calleBar"); if (!box) return;
+    const iso = new Date().toISOString().slice(0, 10);
+    const enViaje = (iso >= "2026-07-22" && iso <= "2026-07-30") || localStorage.getItem("bg26_calle_demo");
+    if (!enViaje) { box.innerHTML = ""; return; }
+    const abiertos = DATA.sitios.filter((s) => s.horario && estadoSitio(s).open).length;
+    box.innerHTML = `<div class="calle-bar reveal in">
+      <span class="cb-tag">MODO CALLE</span>
+      <a href="#/ver">◈ ${abiertos} abiertos ahora</a>
+      <a href="#/mapa">◎ Mapa</a>
+      <button id="cbFx">дин Cambio</button>
+      <a href="#/agenda">▦ Hoy</a>
+    </div>`;
+    $("#cbFx").addEventListener("click", () => $("#cambioBox").scrollIntoView({ block: "center", behavior: "smooth" }));
+  }
+
+  /* Guía de instalación si aún no está en el bolsillo */
+  function renderInstall() {
+    const box = $("#installBox"); if (!box) return;
+    const standalone = matchMedia("(display-mode: standalone)").matches || navigator.standalone;
+    if (standalone) { box.innerHTML = ""; return; }
+    const ios = /iPhone|iPad|iPod/.test(navigator.userAgent);
+    box.innerHTML = `<div class="install-card reveal">
+      <span class="in-tag">📲 Llévame en el bolsillo</span>
+      <p>${ios
+        ? "En iPhone: toca <b>Compartir</b> (el cuadrado con flecha) y elige <b>«Añadir a pantalla de inicio»</b>. Icono propio, pantalla completa y funciono sin conexión."
+        : "En Android: menú <b>⋮</b> del navegador → <b>«Instalar aplicación»</b> (o «Añadir a pantalla de inicio»). Icono propio, pantalla completa y funciono sin conexión."}</p>
+    </div>`;
+  }
+
+  /* Recordatorio de respaldo (una vez por sesión) */
+  function avisoRespaldo() {
+    const items = getNotas().length + getGastos().length;
+    const last = +(localStorage.getItem("bg26_lastexport") || 0);
+    if (items >= 5 && Date.now() - last > 7 * 864e5) {
+      setTimeout(() => toast("Consejo de Б.: exportad copia del cuaderno (✎ → Exportar). Los móviles se pierden; las ciudades, no."), 3500);
+    }
+  }
+
   function renderPrologo() {
     const box = $("#prologo"); if (!box || box.innerHTML) return;
     const p = DATA.viaje.prologo;
@@ -322,6 +362,28 @@
     </div>`;
   }
 
+  /* ---------- VIÑETAS DE SECCIÓN (línea, mismo trazo que el skyline) ---------- */
+  const V = (inner) => `<svg class="ph-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${inner}</svg>`;
+  const VINETAS = {
+    agenda: V('<rect x="8" y="10" width="32" height="30" rx="3"/><line x1="8" y1="19" x2="40" y2="19"/><line x1="16" y1="6" x2="16" y2="13"/><line x1="32" y1="6" x2="32" y2="13"/><circle cx="24" cy="29" r="4"/>'),
+    cartas: V('<rect x="6" y="12" width="36" height="26" rx="3"/><path d="M6 14 L24 28 L42 14"/><circle cx="24" cy="30" r="4" fill="currentColor" stroke="none" opacity=".5"/>'),
+    barrios: V('<path d="M6 40 L6 26 L14 18 L22 26 L22 40"/><path d="M22 40 L22 22 L32 12 L42 22 L42 40"/><line x1="4" y1="40" x2="44" y2="40"/>'),
+    paseos: V('<path d="M10 40 C 16 32, 8 26, 16 20 C 22 15, 30 20, 28 27"/><path d="M28 27 C 26 33, 34 34, 38 28"/><path d="M36 12 l4 -4 M40 16 l4 -4"/>'),
+    ver: V('<polygon points="24,6 44,16 4,16"/><line x1="9" y1="20" x2="9" y2="36"/><line x1="19" y1="20" x2="19" y2="36"/><line x1="29" y1="20" x2="29" y2="36"/><line x1="39" y1="20" x2="39" y2="36"/><line x1="4" y1="40" x2="44" y2="40"/>'),
+    mapa: V('<path d="M24 42 C 24 42, 38 28, 38 18 A 14 14 0 0 0 10 18 C 10 28, 24 42, 24 42 Z"/><circle cx="24" cy="18" r="5"/>'),
+    comer: V('<circle cx="26" cy="26" r="14"/><circle cx="26" cy="26" r="7"/><path d="M8 8 L8 20 M5 8 L5 14 M11 8 L11 14 M8 20 L8 40"/>'),
+    noche: V('<path d="M12 14 L14 40 L32 40 L34 14 Z"/><path d="M34 18 L40 18 A 4 5 0 0 1 40 28 L 33 28"/><path d="M13 20 Q 23 15, 33 20" opacity=".6"/>'),
+    escena: V('<rect x="6" y="18" width="36" height="22" rx="3"/><path d="M6 18 L10 8 L42 12 L40 18"/><line x1="16" y1="9" x2="14" y2="16"/><line x1="24" y1="10" x2="22" y2="17"/><line x1="32" y1="11" x2="30" y2="18"/>'),
+    alrededores: V('<rect x="10" y="8" width="28" height="26" rx="6"/><line x1="10" y1="22" x2="38" y2="22"/><circle cx="17" cy="28" r="2.4"/><circle cx="31" cy="28" r="2.4"/><path d="M14 40 l-3 4 M34 40 l3 4 M18 34 l-2 6 M30 34 l2 6"/>'),
+    historia: V('<path d="M10 42 L10 20 L16 20 L16 14 L20 14 L20 20 L28 20 L28 14 L32 14 L32 20 L38 20 L38 42"/><line x1="6" y1="42" x2="42" y2="42"/><path d="M24 20 L24 8 L32 11 L24 14"/>'),
+    costumbres: V('<path d="M14 20 L14 34 A 8 6 0 0 0 30 34 L30 20 Z"/><path d="M22 20 L22 12 A 4 3 0 0 1 30 12"/><path d="M14 26 L4 22"/><path d="M18 40 L28 40"/>'),
+    transporte: V('<rect x="8" y="8" width="32" height="28" rx="5"/><line x1="8" y1="24" x2="40" y2="24"/><rect x="13" y="13" width="9" height="7" rx="1"/><rect x="26" y="13" width="9" height="7" rx="1"/><circle cx="15" cy="30" r="2.2"/><circle cx="33" cy="30" r="2.2"/><line x1="14" y1="40" x2="12" y2="44"/><line x1="34" y1="40" x2="36" y2="44"/>'),
+    dilema: V('<line x1="24" y1="8" x2="24" y2="44"/><path d="M24 12 L40 12 L44 16 L40 20 L24 20"/><path d="M24 26 L8 26 L4 30 L8 34 L24 34"/>'),
+    cuaderno: V('<rect x="10" y="6" width="28" height="36" rx="3"/><line x1="16" y1="6" x2="16" y2="42"/><line x1="22" y1="16" x2="33" y2="16"/><line x1="22" y1="23" x2="33" y2="23"/><line x1="22" y1="30" x2="29" y2="30"/>'),
+    gastos: V('<ellipse cx="24" cy="14" rx="14" ry="5"/><path d="M10 14 L10 34 A 14 5 0 0 0 38 34 L38 14"/><path d="M10 24 A 14 5 0 0 0 38 24"/>'),
+    practico: V('<rect x="8" y="16" width="32" height="24" rx="4"/><path d="M18 16 L18 10 A 3 3 0 0 1 21 7 L27 7 A 3 3 0 0 1 30 10 L30 16"/><line x1="16" y1="16" x2="16" y2="40"/><line x1="32" y1="16" x2="32" y2="40"/>'),
+  };
+
   /* ---------- PAGE SHELL ---------- */
   function pageShell(id, introHtml, bodyHtml) {
     const m = pageMeta(id);
@@ -329,6 +391,7 @@
       <div class="page-head">
         <span class="ph-cyr">${m.cyr}</span>
         <span class="ph-outline" aria-hidden="true">${m.num}</span>
+        ${VINETAS[id] || ""}
         <span class="ph-num">SECCIÓN ${m.num}</span>
         <h2>${m.title}</h2>
         <div class="ph-rule"></div>
@@ -385,7 +448,7 @@
         <ul class="day-list">${items}</ul></article>`;
     }).join("");
     el.innerHTML = pageShell("agenda",
-      "Los días buenos no se planifican: se preparan. Aquí está lo que abre, lo que cierra y lo que suena cada jornada — el resto se decide andando. Con «＋ plan» en cualquier ficha construyes tu día; con ↗ se lo mandas a Laura.",
+      "Los días buenos no se planifican: se preparan. Aquí está lo que abre, lo que cierra y lo que suena cada jornada — el resto se decide andando. Con «＋ plan» en cualquier ficha construís vuestro día; con ↗ se comparte.",
       cards + `<p class="muted small">${esc(DATA.eventosNota)}</p>`);
     $$("[data-share-day]", el).forEach((b) => b.addEventListener("click", () => shareDay(b.dataset.shareDay)));
   }
@@ -400,7 +463,7 @@
       regla.cierran.length ? `\nOjo, cierra: ${regla.cierran.slice(0, 3).join(", ")}` : "",
       evs.length ? `\n${evs.join("\n")}` : ""].filter(Boolean).join("\n");
     if (navigator.share) navigator.share({ title: "Belgrado 26", text: txt }).catch(() => {});
-    else { navigator.clipboard?.writeText(txt); toast("Día copiado al portapapeles ✓"); }
+    else { navigator.clipboard?.writeText(txt); toast("El día, copiado. — Б."); }
   }
 
   /* --- BARRIOS --- */
@@ -469,7 +532,7 @@
   function renderVer(el) {
     const cards = DATA.sitios.map((s) => {
       const st = estadoSitio(s);
-      return `<article class="card reveal ${getSellos().includes(s.id) ? "sellado" : ""}">
+      return `<article class="card entrada reveal ${getSellos().includes(s.id) ? "sellado" : ""}">
         <h3>${esc(s.nombre)}</h3>
         <div class="sitio-meta">
           <span class="estado ${st.cls}">${st.txt}</span>
@@ -537,17 +600,19 @@
       const wd = ((f.getDay() + 6) % 7) + 1;
       const abierta = hoy >= c.fecha;
       const leida = leidas.has(c.fecha);
+      const mes = MESES[f.getMonth()];
+      const etiqueta = c.extra ? "P. D." : `Carta ${i + 1} de 9`;
       if (!abierta) {
         return `<article class="card carta carta-sellada reveal">
           <div class="carta-solapa"></div>
           <div class="carta-lacre">А&Л</div>
-          <span class="carta-num">Carta ${i + 1} de 9</span>
-          <h3 class="carta-fecha">${DIAS_SEM[wd]} ${f.getDate()} de julio</h3>
-          <p class="carta-cerrada-txt">Sellada. Se abre sola la mañana de su día.</p>
+          <span class="carta-num">${etiqueta}</span>
+          <h3 class="carta-fecha">${c.extra ? "llega cuando tenga que llegar" : `${DIAS_SEM[wd]} ${f.getDate()} de ${mes}`}</h3>
+          <p class="carta-cerrada-txt">${c.extra ? "El correo balcánico tiene sus tiempos." : "Sellada. Se abre sola la mañana de su día."}</p>
         </article>`;
       }
       return `<article class="card carta carta-abierta reveal ${leida ? "" : "carta-nueva"}" data-carta="${c.fecha}">
-        <span class="carta-num">Carta ${i + 1} de 9 · ${DIAS_SEM[wd]} ${f.getDate()} de julio ${leida ? "" : '<span class="chip chip-sec">NUEVA</span>'}</span>
+        <span class="carta-num">${etiqueta} · ${DIAS_SEM[wd]} ${f.getDate()} de ${mes} ${leida ? "" : '<span class="chip chip-sec">NUEVA</span>'}</span>
         <h3>${esc(c.titulo)}</h3>
         <div class="carta-cuerpo" ${leida ? "" : "hidden"}>
           ${c.texto.split("\n\n").map((t) => `<p>${esc(t)}</p>`).join("")}
@@ -728,7 +793,9 @@
     const d = DATA.dilema;
     const ctx = `<article class="card reveal"><h3>${esc(d.contexto.titulo)}</h3><p>${esc(d.contexto.texto)}</p>
       <p class="fuente">${fiab(d.contexto.fiab)} ${esc(d.contexto.fuente)}</p></article>`;
-    const ops = `<div class="dilema-grid">${d.opciones.map((o) => `<article class="card dilema-card reveal">
+    const RUTAS = ["БЕОГРАД → СУБОТИЦА → БУДИМПЕШТА", "БЕОГРАД →→ БУДИМПЕШТА", "БЕОГРАД · · · → БУДИМПЕШТА (31)"];
+    const ops = `<div class="dilema-grid">${d.opciones.map((o, i) => `<article class="card dilema-card billete reveal">
+      <span class="bi-ruta">${RUTAS[i] || ""}</span>
       <h3>${esc(o.nombre)}</h3><p class="muted small">${esc(o.plan)}</p>
       <ul class="pc-list pros">${o.pros.map((p) => `<li>${esc(p)}</li>`).join("")}</ul>
       <ul class="pc-list cons">${o.contras.map((c) => `<li>${esc(c)}</li>`).join("")}</ul>
@@ -788,17 +855,17 @@
         zona: (f.get("zona") || "").trim(), texto: (f.get("texto") || "").trim(),
         coords: coords.length === 2 ? coords : null, fecha: new Date().toISOString().slice(0, 10),
       });
-      setNotas(notas); e.target.reset(); pintarNotas(); toast("Nota guardada ✓");
+      setNotas(notas); e.target.reset(); pintarNotas(); toast("Apuntado. — Б.");
     });
     $("#pickMapa").addEventListener("click", () => {
       window.__pickingNote = true;
       location.hash = "#/mapa";
-      toast("Toca el punto exacto en el mapa 📍");
+      toast("Señala el sitio exacto en mi mapa. — Б. 📍");
     });
     $("#geoBtn").addEventListener("click", () => {
       navigator.geolocation?.getCurrentPosition(
         (p) => { $("#notaCoords").value = `${p.coords.latitude.toFixed(5)},${p.coords.longitude.toFixed(5)}`; },
-        () => toast("No se pudo obtener la ubicación"));
+        () => toast("No os encuentro. ¿Sin GPS? — Б."));
     });
     $("#postalBtn").addEventListener("click", () => makePostal($("#postalMsg").value.trim()));
     $("#expBtn").addEventListener("click", () => {
@@ -806,6 +873,7 @@
       const blob = new Blob([JSON.stringify(payload, null, 2)], { type: "application/json" });
       const a = Object.assign(document.createElement("a"), { href: URL.createObjectURL(blob), download: "belgrado26.json" });
       a.click(); URL.revokeObjectURL(a.href);
+      localStorage.setItem("bg26_lastexport", String(Date.now()));
     });
     $("#impFile").addEventListener("change", async (e) => {
       const file = e.target.files[0]; if (!file) return;
@@ -819,13 +887,13 @@
           if (raw.sellos) setSellos([...new Set([...getSellos(), ...raw.sellos])]);
           if (raw.gastos) { const ids2 = new Set(getGastos().map((g) => g.id)); setGastos([...getGastos(), ...raw.gastos.filter((g) => !ids2.has(g.id))]); }
         }
-        pintarNotas(); renderStamps(); toast("Importado ✓");
-      } catch { toast("Archivo no válido"); }
+        pintarNotas(); renderStamps(); toast("Recibido y archivado. — Б.");
+      } catch { toast("Ese papel no es mío. Archivo no válido."); }
     });
     $("#shareBtn").addEventListener("click", () => {
       const txt = getNotas().map((n) => `• ${n.nombre} (${n.cat})${n.zona ? " — " + n.zona : ""}${n.texto ? "\n  " + n.texto : ""}`).join("\n") || "Cuaderno vacío";
       if (navigator.share) navigator.share({ title: "Cuaderno Belgrado", text: txt }).catch(() => {});
-      else { navigator.clipboard?.writeText(txt); toast("Copiado al portapapeles ✓"); }
+      else { navigator.clipboard?.writeText(txt); toast("Copiado. Repartid. — Б."); }
     });
   }
   function pintarNotas() {
@@ -908,7 +976,7 @@
       }
       const a = Object.assign(document.createElement("a"), { href: URL.createObjectURL(blob), download: "postal-belgrado.png" });
       a.click(); URL.revokeObjectURL(a.href);
-      toast("Postal descargada 🖼");
+      toast("Postal lista. El sello lo pongo yo. — Б.");
     }, "image/png");
   }
 
@@ -948,7 +1016,7 @@
         </div>
         <button class="btn" type="submit">Apuntar</button>
       </form></article>`;
-    const lista = gastos.length ? gastos.map((g) => `<article class="card gasto-item reveal in">
+    const lista = gastos.length ? gastos.map((g) => `<article class="card gasto-item tique reveal in">
         <span class="n-cat">${esc(g.cat)} · ${esc(g.fecha)} · pagó ${g.payer === "A" ? "Álvaro" : "Laura"}</span>
         <button class="n-del" data-gdel="${g.id}" title="Borrar">🗑</button>
         <h3>${esc(g.desc)}</h3>
@@ -962,7 +1030,7 @@
       e.preventDefault();
       const f = new FormData(e.target);
       setGastos([{ id: Date.now(), desc: f.get("desc").trim(), q: +f.get("q"), cur: f.get("cur"), payer: f.get("payer"), cat: f.get("cat"), fecha: new Date().toISOString().slice(0, 10) }, ...getGastos()]);
-      renderGastos(el); toast("Gasto apuntado 💶");
+      renderGastos(el); toast("Anotado en la cuenta común. — Б.");
     });
     $$("[data-gdel]", el).forEach((b) => b.addEventListener("click", () => {
       if (confirm("¿Borrar este gasto?")) { setGastos(getGastos().filter((g) => g.id !== +b.dataset.gdel)); renderGastos(el); }
@@ -995,7 +1063,7 @@
       cb.checked ? done.add(+cb.dataset.ck) : done.delete(+cb.dataset.ck);
       localStorage.setItem(CHECK_KEY, JSON.stringify([...done]));
       cb.closest("li").classList.toggle("done", cb.checked);
-      if (done.size === p.checklist.length) { confetti(); toast("Maleta lista. Belgrado, allá vamos ✈"); }
+      if (done.size === p.checklist.length) { confetti(); toast("Maleta lista. Os espero el 22. — Б. ✈"); }
     }));
     window.BGLive && BGLive.initFx();
   }
@@ -1019,14 +1087,17 @@
       rendered.add(target);
       observeReveals();
     }
-    if (target === "home") { renderBoarding(); todayCard(); renderStamps(); renderPrologo(); observeReveals(); }
+    if (target === "home") { renderBoarding(); todayCard(); renderStamps(); renderPrologo(); renderCalle(); renderInstall(); observeReveals(); }
     if (target === "mapa") requestAnimationFrame(() => window.BGMap && BGMap.invalidate());
     if (target === "cuaderno" && window.__pendingCoords) {
       const c = window.__pendingCoords; window.__pendingCoords = null;
       requestAnimationFrame(() => { const i = $("#notaCoords"); if (i) i.value = c; });
     }
-    $$(".bottomnav [data-nav]").forEach((a) => a.classList.toggle("active",
-      a.dataset.nav === target || (a.dataset.nav === "home" && target === "home")));
+    $$(".bottomnav [data-nav]").forEach((a) => {
+      const on = a.dataset.nav === target || (a.dataset.nav === "home" && target === "home");
+      a.classList.toggle("active", on);
+      if (on) a.setAttribute("aria-current", "page"); else a.removeAttribute("aria-current");
+    });
     scrollTo({ top: 0, behavior: "instant" });
     $("#guideSheet").hidden = true;
   }
@@ -1054,4 +1125,5 @@
   window.BGCore = { estadoSitio, toast, getPlan, getSellos, fechasViaje, esc, fiab, pageMeta };
 
   applyRoute();
+  avisoRespaldo();
 })();

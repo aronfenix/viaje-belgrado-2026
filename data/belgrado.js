@@ -604,6 +604,10 @@ const DATA = {
         fecha: "2026-07-30", titulo: "La última",
         texto: "Ya está. Nueve días, y os vais como se van los buenos huéspedes: sabiendo dónde está el pan y a qué hora entra la luz en la fortaleza. Hoy no os organizo nada; solo os pido el final de siempre: subid una última vez a Kalemegdan, mirad los dos ríos y no digáis nada durante un minuto. Es mi manera de firmar.\n\nCuidaos ese equipaje nuevo que no pesa: los nueve días andados juntos, las cervezas de los patios, el idioma de carteles que ya medio leéis. Los hermanos que viajan juntos se llevan algo que no vendo en ninguna tienda de recuerdos. Buen viaje a Budapest, Álvaro. Buen regreso, Laura. Aquí se os quiere. Volved."
       },
+      {
+        fecha: "2026-08-10", titulo: "La que llega tarde", extra: true,
+        texto: "Ya sé, ya sé: el viaje terminó hace días y las ciudades no deberíamos escribir a destiempo. Pero las cartas que llegan tarde son las que se releen, así que aquí va la mía.\n\nBudapest os habrá parecido más guapa. Lo es, no me duele: ella se conservó y yo me quemé cuarenta veces. Pero apostaría una ronda de rakija a que hay momentos que se os quedaron de mí y no de ella: una cerveza concreta en un patio concreto, la primera vez que leísteis un cartel en cirílico sin ayuda, un atardecer en el muro oeste en el que ninguno dijo nada. Eso era yo, trabajando.\n\nCuidad lo que os llevasteis, que no ocupa maleta. Y cuando alguien os pregunte «¿y Belgrado, qué tal?», no intentéis explicarlo entero: decid «hay que ir» y cambiad de tema, como hacen los que entienden. Aquí quedo, entre dos ríos, guardándoos el sitio.\n\nP. D.: A la orquesta de Skadarlija le debéis todavía una canción."
+      },
     ]
   },
 
@@ -613,8 +617,8 @@ const DATA = {
     playlist: {
       nombre: "Rock y Nueva Ola Yugoslava",
       url: "https://open.spotify.com/playlist/6PCo2PsZxV0jDPzCWcr4an",
-      desc: "La banda sonora del viaje, creada para vosotros y ya viva en el Spotify de Álvaro: Ekatarina Velika, Idoli, Šarlo Akrobata, Električni Orgazam, Partibrejkers, trompetas de Boban Marković… El novi talas (la nueva ola yugoslava de los 80) fue una de las escenas más brillantes de Europa, y nació en gran parte en estas calles. Para el tren a Novi Sad, para las cenas, para después.",
-      consejo: "Descargadla antes de salir (Serbia está fuera del roaming UE) y dadle al modo aleatorio cruzando el puente Branko.",
+      desc: "La banda sonora del viaje, creada para vosotros dos: Ekatarina Velika, Idoli, Šarlo Akrobata, Električni Orgazam, Partibrejkers, trompetas de Boban Marković… El novi talas (la nueva ola yugoslava de los 80) fue una de las escenas más brillantes de Europa, y nació en gran parte en estas calles. Para el tren a Novi Sad, para las cenas, para después.",
+      consejo: "Compartidla entre los dos móviles y descargadla antes de salir (Serbia está fuera del roaming UE). Modo aleatorio cruzando el puente Branko.",
     },
     bloques: [
       {
@@ -764,7 +768,7 @@ const DATA = {
 
   /* ---------- EL DILEMA DEL 30 ---------- */
   dilema: {
-    intro: "El 30 de julio termina la parte de Belgrado y el 31 llega Juan a Budapest. Hay tres formas razonables de jugar esa carta — datos primero, la decisión es tuya.",
+    intro: "El 30 de julio termina la parte de Belgrado y el 31 llega Juan a Budapest. Hay tres formas razonables de jugar esa carta — datos primero, la decisión es vuestra.",
     contexto: { titulo: "Dato clave sobre el tren a Budapest", texto: "El tren directo Belgrado–Budapest (Soko, ~3h15) debía estrenarse en marzo de 2026 y a fecha de esta verificación (6 jul) seguía pospuesto «al menos hasta junio, posiblemente más» por la señalización del lado húngaro. Si arranca antes del viaje, cambia todo el dilema a mejor. La ruta segura hoy: Soko Beograd Centar → Subotica (≈1h15–1h30, ≈9 €) + tren local Subotica → Szeged (≈2 h, ≈6 €) + InterCity Szeged → Budapest (≈2h30, desde 11 €). Total realista: 7–9 h con transbordos. Verificar en srbvoz.rs y jegy.mav.hu la semana del viaje.", fiab: "ver", fuente: "seat61.com · ver. 6-jul-2026" },
     opciones: [
       {
@@ -800,7 +804,7 @@ const DATA = {
     fumar: { titulo: "Se fuma dentro (en serio)", texto: "Serbia es de los últimos países europeos donde se fuma en interiores de bares y muchas kafanas. En julio se vive en terrazas y apenas se nota, pero si un local cerrado os pica los ojos, ya sabéis por qué. Los restaurantes suelen tener zona; preguntad «nepušačka zona» (zona de no fumadores).", fiab: "ok" },
     taxis: { titulo: "Taxis: lo único con truco", texto: "El único timo clásico de Belgrado son los taxis piratas del aeropuerto y de zonas turísticas: sin taxímetro y tarifa inventada. Regla simple: en el aeropuerto, SOLO mostrador de vouchers; en ciudad, apps (Yandex Go, CarGo, Pink Taxi) o taxis con matrícula TX y taxímetro corriendo. Un trayecto normal por el centro: 300–600 RSD.", fiab: "ok" },
     salud: { titulo: "Botiquín y farmacias", texto: "Farmacias (apoteka, АПОТЕКА, cruz verde) por todas partes, con guardias 24 h en el centro. El agua del grifo es potable y hay fuentes públicas. Con 33 °C: sales/electrolitos, gorra y las visitas gordas antes de las 12:00. Sanidad: la Tarjeta Sanitaria Europea NO cubre Serbia (no es UE) — un seguro de viaje básico es buena idea; verificad si alguna tarjeta bancaria vuestra ya lo incluye.", fiab: "ok" },
-    checklist: ["Pasaportes (¡no DNI!) y fotocopia/foto", "eSIM activada o plan de SIM local", "Dinares o euros en efectivo para cambiar", "Reserva Srbija Voz para Novi Sad (app)", "Calzado cómodo de verdad (adoquines + cuestas)", "Gorra y protector solar (33 °C)", "Botella de agua rellenable", "Adaptador no hace falta (enchufe europeo tipo F)", "Entradas/reservas: Royal Compound si interesa (sábado 25)", "Revisar vuelo de vuelta de Laura antes de decidir el día 30"]
+    checklist: ["Pasaporte de Álvaro (¡no DNI!) en vigor + foto/copia", "Pasaporte de Laura (¡no DNI!) en vigor + foto/copia", "eSIM activada (o plan de SIM local) — uno por cabeza", "Dinares o euros en efectivo para cambiar", "Reserva Srbija Voz para Novi Sad (app)", "Playlist descargada en los dos móviles", "Calzado cómodo de verdad (adoquines + cuestas)", "Gorra y protector solar (33 °C)", "Botella de agua rellenable", "Adaptador no hace falta (enchufe europeo tipo F)", "Entradas/reservas: Royal Compound si interesa (sábado 25)", "Revisar vuelo de vuelta de Laura antes de decidir el día 30", "La app instalada en los dos móviles (cuando haya URL)"]
   },
 };
 

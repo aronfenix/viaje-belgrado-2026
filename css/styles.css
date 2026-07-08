@@ -1185,6 +1185,92 @@ html[data-theme="dark"] .carta-aviso a { color: #e08585; }
   .stamps-card { max-width: 94%; margin-left: auto; }
 }
 
+/* ==========================================================
+   v9 — encargos del comité
+   ========================================================== */
+
+/* ---- Íker: contraste y focos ---- */
+.fiab-ok  { color: #1f6a63; }
+.fiab-ver { color: #82600e; background: #b98a2e33; }
+.fiab-sug { color: #5d4186; }
+html[data-theme="dark"] .fiab-ok  { color: #7edcd1; }
+html[data-theme="dark"] .fiab-ver { color: #e6c06a; }
+html[data-theme="dark"] .fiab-sug { color: #c8b0ea; }
+:focus-visible {
+  outline: 3px solid var(--sec, var(--accent)); outline-offset: 2px; border-radius: 4px;
+}
+
+/* ---- Marta: modo calle ---- */
+.calle-bar {
+  position: relative; z-index: 7; margin-top: -30px; margin-bottom: 14px;
+  display: flex; flex-wrap: wrap; gap: 7px; align-items: center;
+  background: var(--ink); border-radius: 14px; padding: 10px 12px;
+  box-shadow: var(--shadow);
+}
+.cb-tag { font-size: .58rem; font-weight: 800; letter-spacing: .26em; color: var(--gold); flex-basis: 100%; }
+.calle-bar a, .calle-bar button {
+  flex: 1; text-align: center; background: color-mix(in srgb, var(--bg) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--bg) 25%, transparent);
+  color: var(--bg); border-radius: 999px; padding: 8px 6px;
+  font-family: var(--sans); font-size: .76rem; font-weight: 700; cursor: pointer;
+  text-decoration: none; white-space: nowrap;
+}
+.calle-bar a:hover, .calle-bar button:hover { background: var(--bg); color: var(--ink); text-decoration: none; }
+.calle-bar + #liveDash .live-dash { margin-top: 0; }
+
+/* ---- Dani: instalación + actualización ---- */
+.install-card {
+  margin-top: 16px; padding: 14px 16px; border-radius: 12px;
+  border: 1.5px dashed var(--line); background: var(--bg2);
+  transform: rotate(.4deg); font-size: .88rem;
+}
+.install-card .in-tag { font-weight: 800; font-size: .72rem; letter-spacing: .18em; text-transform: uppercase; color: var(--sava); display: block; margin-bottom: 4px; }
+.install-card p { margin: 0; color: var(--muted); }
+.install-card b { color: var(--ink); }
+.update-pill {
+  position: fixed; left: 50%; transform: translateX(-50%);
+  bottom: calc(var(--nav-h) + 16px + env(safe-area-inset-bottom)); z-index: 85;
+  background: var(--accent); color: #fff; border: none; cursor: pointer;
+  padding: 11px 20px; border-radius: 999px; font-family: var(--sans); font-size: .84rem;
+  box-shadow: 0 8px 24px -6px color-mix(in srgb, var(--accent) 60%, transparent);
+  animation: rise .5s ease both;
+}
+.no-tts .tts-btn, .no-tts .tts-all { display: none; }
+
+/* ---- Sofía: viñetas de sección ---- */
+.ph-icon {
+  position: absolute; right: 4px; bottom: 34px; width: 46px; height: 46px;
+  color: var(--sec); opacity: .9; z-index: 1;
+  filter: drop-shadow(0 2px 6px color-mix(in srgb, var(--sec) 25%, transparent));
+}
+@media (min-width: 760px) { .ph-icon { width: 58px; height: 58px; right: 12px; } }
+
+/* ---- Sofía: la ficha de museo es una entrada ---- */
+.entrada { padding-left: 26px; }
+.entrada::after {
+  content: ""; position: absolute; left: 12px; top: 8px; bottom: 8px; width: 0;
+  border-left: 2px dashed color-mix(in srgb, var(--sec) 40%, transparent);
+}
+.entrada .estado { font-family: "Courier New", monospace; letter-spacing: .04em; }
+
+/* ---- Sofía: el gasto es un tique ---- */
+.tique { font-family: "Courier New", monospace; border-radius: 4px; }
+.tique h3 { font-family: "Courier New", monospace; font-size: 1rem; letter-spacing: .02em; }
+.tique .n-cat { font-family: "Courier New", monospace; letter-spacing: .1em; }
+.tique p b { font-size: 1.15rem; }
+
+/* ---- Sofía: las opciones del dilema son billetes de tren ---- */
+.billete { border-top: none; overflow: hidden; }
+.billete::before { height: 30px; opacity: 1;
+  background: var(--sec);
+}
+.bi-ruta {
+  position: relative; z-index: 1; display: block; margin: -18px -18px 12px;
+  padding: 7px 14px; color: #fff; font-size: .62rem; font-weight: 800; letter-spacing: .14em;
+  font-family: "Courier New", monospace; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.billete h3 { margin-top: 2px; }
+
 /* reduced motion */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }

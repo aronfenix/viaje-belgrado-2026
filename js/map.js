@@ -6,8 +6,8 @@
   let map, groups = {}, notaLayer;
 
   const COLORES = {
-    casa: "#c0392b", ver: "#7a5aa0", comer: "#c07a2c", noche: "#4a5fc9",
-    barrio: "#2e7d76", tren: "#3a7ca5", nota: "#5e8d5a",
+    casa: "#d84a36", ver: "#9d6fd6", comer: "#e0912f", noche: "#6d84f5",
+    barrio: "#35a396", tren: "#4a9fd4", nota: "#72b56c",
   };
   const ETIQ = {
     casa: "🏠 Casa", ver: "◈ Qué ver", comer: "♨ Comer", noche: "☾ Noche",

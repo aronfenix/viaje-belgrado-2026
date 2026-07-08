@@ -1,5 +1,5 @@
 /* БЕОГРАД 26 · service worker — offline-first */
-const VERSION = "bg26-v10";
+const VERSION = "bg26-v12";
 const PRECACHE = [
   "./",
   "./index.html",
@@ -58,9 +58,9 @@ self.addEventListener("fetch", (e) => {
     return;
   }
 
-  // Fonts + CDN + app assets: cache first, then network (and store)
+  // Fonts + CDN + app assets: cache first (SOLO la caché de esta versión), luego red
   e.respondWith(
-    caches.match(e.request, { ignoreSearch: false }).then((hit) => {
+    caches.open(VERSION).then((c) => c.match(e.request)).then((hit) => {
       if (hit) return hit;
       return fetch(e.request).then((r) => {
         const cacheable =
