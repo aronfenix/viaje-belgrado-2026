@@ -512,6 +512,9 @@
     location.hash = "#/mapa";
   });
 
+  /* fotos (Wikimedia, con degradación silenciosa si falta el archivo) */
+  const foto = (id, alt) => `<figure class="card-foto"><img src="imgs/${id}.jpg" alt="${esc(alt || "")}" loading="lazy" onerror="this.parentElement.remove()"></figure>`;
+
   /* --- QUÉ VER --- */
   function estadoSitio(s, ref) {
     const now = ref || new Date();
@@ -533,6 +536,7 @@
     const cards = DATA.sitios.map((s) => {
       const st = estadoSitio(s);
       return `<article class="card entrada reveal ${getSellos().includes(s.id) ? "sellado" : ""}">
+        ${foto(s.id, s.nombre)}
         <h3>${esc(s.nombre)}</h3>
         <div class="sitio-meta">
           <span class="estado ${st.cls}">${st.txt}</span>
