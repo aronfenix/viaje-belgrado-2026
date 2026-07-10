@@ -461,7 +461,7 @@ const DATA = {
       "M300 0 C310 85 325 155 365 205 C400 250 430 330 445 430 L505 430 C485 325 455 245 410 195 C370 150 360 75 355 0 Z"
     ],
     zonas: [
-      { id: "zemun", nombre: "Zemun · Gardoš", corto: "ZEMUN", sub: "Danubio austrohúngaro", barrios: ["zemun"], centro: [44.8455, 20.4110], radio: 2.4, path: "M25 35 Q120 10 230 45 L265 130 Q175 165 55 145 Z", label: [135, 82], extras: {
+      { id: "zemun", nombre: "Zemun · Gardoš", corto: "ZEMUN", sub: "Danubio austrohúngaro", barrios: ["zemun"], centro: [44.8455, 20.4110], radio: 2.4, path: "M25 35 Q120 10 230 45 L265 130 Q175 165 55 145 Z", label: [135, 82], visual: "belgrado-zemun", visualExt: "webp", extras: {
         comer: [{ planId: "zx-gardos-restoran", nombre: "Restoran Gardoš", zona: "Junto a la torre de Gardoš", coords: [44.8495, 20.4047], nota: "Terraza con vista sobre los tejados y el Danubio, cocina serbia y pescado. Es la parada cómoda después de subir a la torre; pagáis algo de ubicación, pero la ubicación aquí sí hace el trabajo.", fiab: "ok", fuente: "Web oficial, ver. 10-jul-2026" }],
         beber: [{ planId: "zx-gardos-pub", nombre: "Gardoš Pub", zona: "Visoka 35 · Zemun", coords: [44.8479, 20.4078], nota: "El grifo local: cervezas de Gardoš Pivo en un pub pequeño del barrio. Mejor referencia para beber algo propio de Zemun que volver al centro por inercia.", fiab: "ok", fuente: "gardospivo.rs, ver. 10-jul-2026" }]
       } },
@@ -471,7 +471,7 @@ const DATA = {
         comer: [{ planId: "zx-ada-little-italy", nombre: "Little Italy", zona: "Ada · entre la roca y el bungee", coords: [44.7887, 20.4148], nota: "Pizzería de horno de leña y pasta del día, con veranda. No es comida serbia, pero sí una solución fiable, informal y lógica si el baño os pilla con hambre.", fiab: "ok", fuente: "Directorio oficial de Ada, ver. 10-jul-2026" }],
         beber: [{ planId: "zx-ada-del-mar", nombre: "Del Mar", zona: "Ada · parada 5 del tren", coords: [44.7884, 20.4110], nota: "Chiringuito de tumbonas, café y cerveza fría a unos 150 m del bungee. Referencia sencilla para el atardecer: aquí el plan es el lago, no la mixología.", fiab: "ok", fuente: "Directorio oficial de Ada, ver. 10-jul-2026" }]
       } },
-      { id: "stari-grad", nombre: "Stari Grad · Dorćol", corto: "STARI GRAD", sub: "Fortaleza, centro y bohemia", barrios: ["stari-grad", "kosancicev", "dorcol", "skadarlija"], centro: [44.8190, 20.4595], radio: 1.45, path: "M405 45 Q535 20 660 70 L625 205 Q505 225 395 175 Z", label: [525, 105] },
+      { id: "stari-grad", nombre: "Stari Grad · Dorćol", corto: "STARI GRAD", sub: "Fortaleza, centro y bohemia", barrios: ["stari-grad", "kosancicev", "dorcol", "skadarlija"], centro: [44.8190, 20.4595], radio: 1.45, path: "M405 45 Q535 20 660 70 L625 205 Q505 225 395 175 Z", label: [525, 105], visual: "belgrado-cetinjska", visualExt: "webp" },
       { id: "savski-venac", nombre: "Savski Venac · Savamala", corto: "SAVSKI VENAC", sub: "Vuestra base", barrios: ["savski-venac"], centro: [44.8050, 20.4560], radio: 1.45, path: "M370 220 Q455 185 535 225 L520 315 Q425 330 350 285 Z", label: [445, 255] },
       { id: "vracar", nombre: "Vračar · Slavija", corto: "VRAČAR", sub: "San Sava, mercado y cafés", barrios: ["vracar"], centro: [44.8000, 20.4720], radio: 1.55, path: "M540 220 Q635 195 705 245 L685 350 Q600 360 525 315 Z", label: [620, 270], extras: {
         beber: [{ planId: "zx-riddle-bar", nombre: "Riddle Bar", zona: "Njegoševa 10 · Vračar", coords: [44.8041, 20.4661], nota: "Speakeasy detrás de una falsa barbería, sótano oscuro y cócteles cuidados. Sirve para una copa de verdad sin abandonar Vračar; comprobad el horario del día en Instagram.", fiab: "ver", fuente: "Recomendaciones locales 2026" }]
@@ -506,6 +506,7 @@ const DATA = {
       },
       {
         titulo: "Kafanas: la institución",
+        img: "belgrado-kafana", imgExt: "webp",
         texto: "La kafana es taberna, salón social y patrimonio emocional serbio: manteles de cuadros, raciones contundentes, rakija y a veces música en vivo. En Skadarlija son bonitas y turísticas; las de barrio son más baratas y verdaderas.",
         sitios: [
           { nombre: "Znak pitanja «?»", zona: "Frente a la Catedral", coords: [44.8152, 20.4535], nota: "La kafana más antigua (1823), en casa otomana. Turística pero legítima: comida serbia de verdad.", fiab: "ok" },
@@ -556,6 +557,7 @@ const DATA = {
     zonas: [
       {
         nombre: "Cetinjska 15", cuando: "De 20:00 a muy tarde", coords: [44.8180, 20.4660],
+        img: "belgrado-cetinjska", imgExt: "webp",
         desc: "Antigua fábrica de cerveza convertida en patio de bares alternativos: en un solo complejo puedes saltar entre 6–8 locales distintos. El epicentro de la noche cervecera.",
         testimonio: { cita: "Samo Pivo es el bar de craft más recomendado en todos los hilos de Reddit sobre Belgrado: 20+ grifos rotando lo mejor serbio e internacional.", fuente: "Síntesis de hilos r/beer y r/serbia, 2025-26" },
         sitios: [

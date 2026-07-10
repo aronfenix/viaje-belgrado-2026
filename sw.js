@@ -1,5 +1,5 @@
 /* БЕОГРАД 26 · service worker — offline-first */
-const VERSION = "bg26-v21";
+const VERSION = "bg26-v22";
 const PRECACHE = [
   "./",
   "./index.html",
@@ -14,6 +14,9 @@ const PRECACHE = [
   "./icons/icon-192.png",
   "./icons/icon-512.png",
   "./imgs/socialismo-yugoslavo.webp",
+  "./imgs/belgrado-kafana.webp",
+  "./imgs/belgrado-cetinjska.webp",
+  "./imgs/belgrado-zemun.webp",
   "https://unpkg.com/leaflet@1.9.4/dist/leaflet.css",
   "https://unpkg.com/leaflet@1.9.4/dist/leaflet.js",
 ];
