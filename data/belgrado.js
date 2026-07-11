@@ -4,7 +4,7 @@
      'ok'  → confirmado (fuente y fecha de verificación)
      'ver' → verificar cerca de la fecha / en destino
      'sug' → sugerencia u opinión, no un hecho
-   Verificado online: 6 de julio de 2026.
+   Verificado y ampliado online: 10 de julio de 2026.
    ============================================================ */
 
 const DATA = {
@@ -204,6 +204,30 @@ const DATA = {
       desc: "El Estado Mayor yugoslavo, obra maestra de Nikola Dobrović, bombardeado por la OTAN en 1999 y dejado en ruina deliberada como memorial no declarado. Impresiona más que muchos museos y lo tenéis de camino a todo.",
       consejo: "Miradlo desde la acera de enfrente; no intentéis entrar (vigilado).",
       fiab: "ok"
+    },
+    {
+      id: "palata-srbija", nombre: "Palata Srbija · el palacio de la federación", zona: "Novi Beograd · Ušće",
+      coords: [44.8206, 20.4276], dur: "25 min (exterior)", precio: "Solo exterior",
+      horario: null, siempre: "Edificio administrativo: se contempla desde el parque y el bulevar.",
+      desc: "La antigua sede del Consejo Ejecutivo Federal resume la ambición de la nueva Yugoslavia: 65.000 m², planta en H, salones dedicados a cada república y una escala concebida para recibir al mundo no alineado. Aquí se celebró la primera cumbre del movimiento en 1961. No es un bloque soviético: es la escenografía de un país que quiso ocupar un tercer lugar propio.",
+      consejo: "Vedla desde el parque Ušće y enlazad con el MoCAB; el interior solo abre en ocasiones patrimoniales.",
+      fiab: "ok", fuente: "Ciudad de Belgrado + patrimonio arquitectónico · ver. 10-jul-2026"
+    },
+    {
+      id: "genex", nombre: "Torre Genex · Puerta Occidental", zona: "Novi Beograd · Blok 33",
+      coords: [44.8203, 20.4040], dur: "25–40 min (exterior)", precio: "Gratis",
+      horario: null, siempre: "Exterior y entorno accesibles siempre; no es un mirador visitable.",
+      desc: "Mihajlo Mitrović levantó en 1977 dos torres unidas por un puente y coronadas por un restaurante circular. Era vivienda, oficinas y puerta simbólica de la capital desde la autopista: brutalismo como infraestructura cotidiana, no como decorado. Sigue habitada y bastante cansada; mirarla exige recordar que un icono también es la casa de cientos de personas.",
+      consejo: "Bus corto desde Ušće o parada al ir/volver del aeropuerto. La mejor perspectiva está al otro lado de la autopista: cruzad solo por pasos habilitados.",
+      fiab: "ok", fuente: "Patrimonio de Belgrado · ver. 10-jul-2026"
+    },
+    {
+      id: "blokovi", nombre: "Blokovi 21–23 · urbanismo yugoslavo vivido", zona: "Novi Beograd",
+      coords: [44.8088, 20.4218], dur: "1–1,5 h de paseo", precio: "Gratis",
+      horario: null, siempre: "Barrio residencial abierto; máxima consideración con sus vecinos.",
+      desc: "El socialismo yugoslavo se entiende mejor entre tendederos que ante una estatua. Los bloques 21–23 combinaron vivienda colectiva, escuelas, comercio, zonas verdes y transporte en una supermanzana moderna. El Blok 23, de Aleksandar Stjepanović, está entre las obras maestras residenciales del país: repetición monumental por fuera, comunidad y apropiaciones domésticas por dentro.",
+      consejo: "Ruta tranquila: Sava Centar → Blok 23 → parque entre bloques → ribera. No fotografiéis ventanas de cerca: esto no es un museo.",
+      fiab: "ok", fuente: "Síntesis de DOCOMOMO Serbia y patrimonio urbano · ver. 10-jul-2026"
     },
   ],
 
@@ -428,52 +452,87 @@ const DATA = {
     },
   ],
 
+  /* ---------- MAPA INFOGRÁFICO DE ZONAS ---------- */
+  mapaZonas: {
+    titulo: "Belgrado, por zonas",
+    intro: "No pretende sustituir al callejero: explica de un vistazo cómo se relacionan los barrios, los dos ríos y vuestros planes. Toca una zona para reunir en una sola página su contexto, visitas, comida y noche.",
+    agua: [
+      "M0 170 C170 150 285 170 365 205 C430 235 520 230 720 190 L720 245 C520 270 420 270 345 235 C250 195 135 200 0 218 Z",
+      "M300 0 C310 85 325 155 365 205 C400 250 430 330 445 430 L505 430 C485 325 455 245 410 195 C370 150 360 75 355 0 Z"
+    ],
+    zonas: [
+      { id: "zemun", nombre: "Zemun · Gardoš", corto: "ZEMUN", sub: "Danubio austrohúngaro", barrios: ["zemun"], centro: [44.8455, 20.4110], radio: 2.4, path: "M25 35 Q120 10 230 45 L265 130 Q175 165 55 145 Z", label: [135, 82], visual: "belgrado-zemun", visualExt: "webp", extras: {
+        comer: [{ planId: "zx-gardos-restoran", nombre: "Restoran Gardoš", zona: "Junto a la torre de Gardoš", coords: [44.8495, 20.4047], nota: "Terraza con vista sobre los tejados y el Danubio, cocina serbia y pescado. Es la parada cómoda después de subir a la torre; pagáis algo de ubicación, pero la ubicación aquí sí hace el trabajo.", fiab: "ok", fuente: "Web oficial, ver. 10-jul-2026" }],
+        beber: [{ planId: "zx-gardos-pub", nombre: "Gardoš Pub", zona: "Visoka 35 · Zemun", coords: [44.8479, 20.4078], nota: "El grifo local: cervezas de Gardoš Pivo en un pub pequeño del barrio. Mejor referencia para beber algo propio de Zemun que volver al centro por inercia.", fiab: "ok", fuente: "gardospivo.rs, ver. 10-jul-2026" }]
+      } },
+      { id: "novi-beograd", nombre: "Novi Beograd · Ušće", corto: "NOVI BEOGRAD", sub: "Yugoslavia moderna", barrios: ["novi-beograd"], centro: [44.8130, 20.4250], radio: 2.5, path: "M55 155 Q175 120 310 165 L345 235 Q255 300 95 285 Z", label: [195, 210], visual: "mocab" },
+      { id: "ada", nombre: "Ada Ciganlija", corto: "ADA", sub: "La playa urbana", barrios: ["ada"], centro: [44.7906, 20.4051], radio: 2.1, path: "M25 305 Q140 275 290 315 L315 395 Q155 430 45 390 Z", label: [165, 350], visual: "sava-promenada", extras: {
+        ver: [{ id: "ada-lago", nombre: "Lago Sava y fuente de las brigadas juveniles", zona: "Ada Ciganlija", coords: [44.7879, 20.4088], dur: "1–3 h", precio: "Gratis", desc: "Baño, paseo o bici alrededor del lago y una pequeña pieza de memoria yugoslava: la fuente dedicada a las acciones juveniles de trabajo. Aquí el proyecto colectivo aparece como espacio de ocio todavía usado, no como vitrina.", consejo: "En julio, mañana temprano o desde las 17:00; al mediodía el sol manda.", fiab: "ok", fuente: "Web oficial de Ada Ciganlija, ver. 10-jul-2026" }],
+        comer: [{ planId: "zx-ada-little-italy", nombre: "Little Italy", zona: "Ada · entre la roca y el bungee", coords: [44.7887, 20.4148], nota: "Pizzería de horno de leña y pasta del día, con veranda. No es comida serbia, pero sí una solución fiable, informal y lógica si el baño os pilla con hambre.", fiab: "ok", fuente: "Directorio oficial de Ada, ver. 10-jul-2026" }],
+        beber: [{ planId: "zx-ada-del-mar", nombre: "Del Mar", zona: "Ada · parada 5 del tren", coords: [44.7884, 20.4110], nota: "Chiringuito de tumbonas, café y cerveza fría a unos 150 m del bungee. Referencia sencilla para el atardecer: aquí el plan es el lago, no la mixología.", fiab: "ok", fuente: "Directorio oficial de Ada, ver. 10-jul-2026" }]
+      } },
+      { id: "stari-grad", nombre: "Stari Grad · Dorćol", corto: "STARI GRAD", sub: "Fortaleza, centro y bohemia", barrios: ["stari-grad", "kosancicev", "dorcol", "skadarlija"], centro: [44.8190, 20.4595], radio: 1.45, path: "M405 45 Q535 20 660 70 L625 205 Q505 225 395 175 Z", label: [525, 105], visual: "belgrado-cetinjska", visualExt: "webp" },
+      { id: "savski-venac", nombre: "Savski Venac · Savamala", corto: "SAVSKI VENAC", sub: "Vuestra base", barrios: ["savski-venac"], centro: [44.8050, 20.4560], radio: 1.45, path: "M370 220 Q455 185 535 225 L520 315 Q425 330 350 285 Z", label: [445, 255], visual: "belgrado-savamala", visualExt: "webp" },
+      { id: "vracar", nombre: "Vračar · Slavija", corto: "VRAČAR", sub: "San Sava, mercado y cafés", barrios: ["vracar"], centro: [44.8000, 20.4720], radio: 1.55, path: "M540 220 Q635 195 705 245 L685 350 Q600 360 525 315 Z", label: [620, 270], visual: "san-sava", extras: {
+        beber: [{ planId: "zx-riddle-bar", nombre: "Riddle Bar", zona: "Njegoševa 10 · Vračar", coords: [44.8041, 20.4661], nota: "Speakeasy detrás de una falsa barbería, sótano oscuro y cócteles cuidados. Sirve para una copa de verdad sin abandonar Vračar; comprobad el horario del día en Instagram.", fiab: "ver", fuente: "Recomendaciones locales 2026" }]
+      } },
+      { id: "dedinje", nombre: "Dedinje · Topčider", corto: "DEDINJE", sub: "Tito, palacios y memoria", barrios: ["dedinje"], centro: [44.7830, 20.4520], radio: 2.0, path: "M335 325 Q455 300 585 345 L560 420 L350 420 Z", label: [455, 365], visual: "museo-yugoslavia", extras: {
+        comer: [{ planId: "zx-topciderac-comer", nombre: "Topčiderac", zona: "Junto al parque Topčider", coords: [44.7798, 20.4428], nota: "Restaurante-jardín para cocina serbia y sobremesa larga entre árboles. Es más pulido que una kafana de barrio, pero encaja perfectamente después del Museo de Yugoslavia o del parque.", fiab: "ok", fuente: "Web oficial Topčiderac, ver. 10-jul-2026" }],
+        beber: [{ planId: "zx-topciderac-beber", nombre: "Jardín de Topčiderac", zona: "Topčider", coords: [44.7798, 20.4428], nota: "La misma dirección funciona solo para una cerveza, café o copa en la terraza. En Dedinje-Topčider las distancias son verdes y residenciales: conviene tener un refugio conocido.", fiab: "ok", fuente: "Web oficial Topčiderac, ver. 10-jul-2026" }]
+      } }
+    ]
+  },
+
   /* ---------- COMER Y BEBER (con testimonios) ---------- */
   comer: {
     intro: "En Serbia no se come: se insiste. Las raciones dan para dos, el pan llega sin pedirlo y a la tercera visita el camarero ya os trata de sobrinos. Esta guía está construida sobre lo que repiten viajeros independientes y locales — Reddit, blogs personales, Spotted by Locals —, no sobre listas de agencia. Precios de referencia (jul. 2026): burek 150–300 RSD, pljeskavica 350–600, menú de kafana 1.200–2.500 por cabeza con bebida, café 150–250.",
     bloques: [
       {
-        titulo: "Desayuno: pekara + yogur",
+        titulo: "Desayuno: pekara + yogur", tag: "Desayuno barato", resumen: "Burek caliente, yogur líquido y la cola de camino al trabajo.",
         texto: "El desayuno serbio es de panadería: burek (hojaldre relleno de queso, carne o espinacas) con yogur líquido. Se pide en mostrador, se paga en efectivo casi siempre, y a las 8:00 ya hay cola de gente yendo a trabajar.",
         sitios: [
-          { nombre: "Pekara Trpković", zona: "Nemanjina (≈5 min de casa)", coords: [44.8027, 20.4638], nota: "La panadería más famosa de la ciudad, con colas que dan la vuelta a la esquina. Y os pilla de camino a todo.", testimonio: { cita: "Trpković se ha convertido en la meca del burek; las colas constantes lo dicen todo.", fuente: "Beyond Belgrade (guía local), 2026" }, fiab: "ok" },
+          { nombre: "Pekara Trpković", zona: "Nemanjina (≈5 min de casa)", coords: [44.8027, 20.4638], veredicto: "La elección", precio: "150–350 RSD", pedir: "Burek de carne o queso + yogur", nota: "La panadería más famosa de la ciudad, con colas que dan la vuelta a la esquina. Y os pilla de camino a todo.", testimonio: { cita: "Trpković se ha convertido en la meca del burek; las colas constantes lo dicen todo.", fuente: "Beyond Belgrade (guía local), 2026" }, fiab: "ok" },
           { nombre: "Pekara Čeda", zona: "Vračar", coords: [44.7995, 20.4700], nota: "El clásico de barrio que los locales citan cuando quieren llevar la contraria a Trpković.", testimonio: { cita: "Una joya escondida: el burek de carne repartida uniformemente, el de queso cremoso de verdad.", fuente: "Beyond Belgrade, 2026" }, fiab: "sug" },
         ]
       },
       {
-        titulo: "Grill: pljeskavica y ćevapi",
+        titulo: "Grill: pljeskavica y ćevapi", tag: "Imprescindible", resumen: "La parrilla balcánica: barata, enorme y mejor con kajmak.",
         texto: "La comida nacional es la parrilla. Pljeskavica = hamburguesa balcánica en pan somun, mejor con kajmak (crema láctea). Ćevapi = rollitos de carne a la brasa. Ración enorme, precio pequeño.",
         sitios: [
-          { nombre: "Walter", zona: "Dorćol (Cara Dušana)", coords: [44.8225, 20.4630], nota: "Ćevapi estilo Sarajevo. Institución.", testimonio: { cita: "Porciones generosas, carne jugosa a la perfección con su pan somun recién hecho.", fuente: "Guía local Now in Belgrade, 2026" }, fiab: "ok" },
+          { nombre: "Walter", zona: "Dorćol (Cara Dušana)", coords: [44.8225, 20.4630], veredicto: "Primera vez", precio: "700–1.200 RSD", pedir: "Diez ćevapi con somun, cebolla y kajmak", nota: "Ćevapi estilo Sarajevo. Institución.", testimonio: { cita: "Porciones generosas, carne jugosa a la perfección con su pan somun recién hecho.", fuente: "Guía local Now in Belgrade, 2026" }, fiab: "ok" },
           { nombre: "Pljeskavica Kod Milana", zona: "Vračar", coords: [44.7960, 20.4750], nota: "Pequeño, sin pretensiones, con fama desproporcionada.", testimonio: { cita: "La mayoría de los locales coinciden: Mile es el rey absoluto de la pljeskavica.", fuente: "Spotted by Locals Belgrado", }, fiab: "sug" },
           { nombre: "Ćirino Drvce", zona: "Centro", coords: [44.8140, 20.4620], nota: "Puesto callejero con cola permanente.", testimonio: { cita: "A pesar de la cola constante, la espera merece la pena por ese sabor ahumado.", fuente: "Now in Belgrade, 2026" }, fiab: "sug" },
         ]
       },
       {
         titulo: "Kafanas: la institución",
+        img: "belgrado-kafana", imgExt: "webp", tag: "Ritual serbio", resumen: "Mantel, rakija, sobremesa y, con suerte, una orquesta.",
         texto: "La kafana es taberna, salón social y patrimonio emocional serbio: manteles de cuadros, raciones contundentes, rakija y a veces música en vivo. En Skadarlija son bonitas y turísticas; las de barrio son más baratas y verdaderas.",
         sitios: [
-          { nombre: "Znak pitanja «?»", zona: "Frente a la Catedral", coords: [44.8152, 20.4535], nota: "La kafana más antigua (1823), en casa otomana. Turística pero legítima: comida serbia de verdad.", fiab: "ok" },
+          { nombre: "Znak pitanja «?»", zona: "Frente a la Catedral", coords: [44.8152, 20.4535], veredicto: "Institución", precio: "1.500–2.500 RSD", pedir: "Meze, prebranac o sarma y una rakija", nota: "La kafana más antigua (1823), en casa otomana. Turística pero legítima: comida serbia de verdad.", fiab: "ok" },
           { nombre: "Tri šešira", zona: "Skadarlija", coords: [44.8175, 20.4650], nota: "El clásico de la calle bohemia, con orquesta. Para vivir el cliché una noche, sabiendo lo que es.", fiab: "sug" },
           { nombre: "Kafana de barrio en Vračar/Dorćol", zona: "—", nota: "El consejo repetido en Reddit: entrar en cualquier kafana llena de locales, sin carta en inglés. Ahí está el país.", testimonio: { cita: "Salta Skadarlija para comer: ve donde no haya carta en inglés y pide lo que tenga la mesa de al lado.", fuente: "Hilo r/serbia (parafraseado), 2025" }, fiab: "sug" },
         ]
       },
       {
-        titulo: "El ritual de la kafana, explicado",
+        titulo: "El ritual de la kafana, explicado", tag: "Cómo pedir", resumen: "El orden de la mesa, la cuenta y la propina para la música.",
         texto: "Para que la primera vez no sea a ciegas: se empieza con meze —kajmak, proja, urnebes, algo de pan— y una rakija de apertura (la šljivovica es la canónica; la dunja, más amable para empezar). Después llega la parrilla o el plato de cuchara, con ensalada šopska de guarnición y vino o cerveza. Nadie os traerá la cuenta hasta que la pidáis: la sobremesa es sagrada y «račun, molim» es la única llave. Dos trucos de oro: el «dnevni meni» (menú del día laborable) baja la cuenta a la mitad en muchos sitios, y si hay orquesta, pedir una canción con 200-500 RSD en la funda del violín es costumbre, no cursilada.",
         sitios: []
       },
       {
-        titulo: "Sentarse de verdad: restaurantes",
+        titulo: "Sentarse de verdad: restaurantes", tag: "Cena larga", resumen: "Mesas para reservar, compartir y dejar que llegue la sobremesa.",
         texto: "Para las noches de mantel y sin prisa — la gama alta belgradense cuesta lo que una pizzería madrileña. Reservar por Instagram o teléfono funciona en todos.",
         sitios: [
           { nombre: "Manufaktura", zona: "Kralja Petra (centro)", coords: [44.8178, 20.4565], nota: "El túnel de paraguas rojos más fotografiado de Serbia esconde cocina serbia moderna hecha en serio: producto local, carta que explica de dónde viene todo. 2.000-3.500 RSD/persona.", testimonio: { cita: "Es donde llevo a todo el que me visita: serbio de verdad pero sin manteles de cuadros ni folclore forzado.", fuente: "Síntesis de recomendaciones locales en Reddit, 2025-26" }, fiab: "sug" },
           { nombre: "Ambar", zona: "Beton hala, junto al río", coords: [44.8155, 20.4485], nota: "Cocina balcánica contemporánea en la hilera de restaurantes del muelle: pequeños platos para compartir y la terraza mirando al agua. El sitio para la cena «de celebración». 3.000-4.500 RSD/persona.", fiab: "sug" },
           { nombre: "Radost Fina Kuhinjica", zona: "Cerca del Sava", coords: [44.8110, 20.4560], nota: "El vegetariano querido de la ciudad, casero y con alma — un respiro si la parrilla os pide tregua a mitad de semana.", fiab: "sug" },
+          { nombre: "Restoran Proleće", zona: "Vuka Karadžića 11 · centro", coords: [44.8161, 20.4558], nota: "Casa de comidas abierta en 1950 y todavía muy de Belgrado: sopas, sarma, Karađorđeva y platos de cuchara sin convertir la tradición en parque temático. Está a dos pasos de Knez Mihailova y funciona especialmente bien para almorzar. Principales ~800–1.400 RSD.", fiab: "ok", testimonio: { cita: "El menú actual mantiene cocina serbia reconocible y precios legibles; aquí se viene por continuidad, no por espectáculo.", fuente: "Web y carta oficiales, ver. 10-jul-2026" } },
+          { nombre: "Zavičaj Balkanska", zona: "Gavrila Principa 77 · 12 min de casa", coords: [44.8112, 20.4578], veredicto: "Salvavidas", precio: "1.500–2.800 RSD", pedir: "Meze para compartir y ternera bajo sač", nota: "La opción logística perfecta para una primera o última cena: manteles de cuadros, meze, ternera bajo sač y raciones grandes muy cerca del apartamento. Es una cadena local y lo sabe; precisamente por eso resulta fiable cuando el cansancio no admite investigación de campo.", fiab: "ok", testimonio: { cita: "Seis locales siguen operativos en Belgrado; el de Balkanska es el que os interesa por cercanía.", fuente: "Web oficial Zavičaj, ver. 10-jul-2026" } },
+          { nombre: "Durmitor", zona: "Omladinskih brigada · Novi Beograd", coords: [44.8144, 20.4149], nota: "Desde 1993, institución de Novi Beograd para ternera bajo sač, cordero y cocina montenegrina-serbia. Encaja como remate carnal del paseo por los blokovi: ambiente de comida familiar y de negocios, raciones para compartir y reserva sensata.", fiab: "ok", testimonio: { cita: "Abierto desde 1993 y todavía presentado como una de las mesas tradicionales de referencia de Novi Beograd.", fuente: "Web oficial Durmitor, ver. 10-jul-2026" } },
         ]
       },
       {
-        titulo: "Dulces y cafés de especialidad",
+        titulo: "Dulces y cafés de especialidad", tag: "Merienda", resumen: "Tarta histórica, café serio y una pausa con aire acondicionado.",
         texto: "Belgrado meriende fuerte: palačinke (crepes), tartas de hotel con historia y una escena de café de especialidad sorprendentemente buena y barata (flat white 250–350 RSD).",
         sitios: [
           { nombre: "Hotel Moskva", zona: "Terazije", coords: [44.8135, 20.4605], nota: "El café del hotel Secesión de 1908: la tarta Moskva šnit (almendra, guindas, nata) en la terraza donde merendó medio siglo XX balcánico.", fiab: "ok" },
@@ -482,7 +541,7 @@ const DATA = {
         ]
       },
       {
-        titulo: "Mercados",
+        titulo: "Mercados", tag: "Comprar y picar", resumen: "Fruta de julio, queso, ajvar y vida de barrio por la mañana.",
         texto: "Los mercados (pijaca) funcionan a diario ~06:00–19:00, mejor por la mañana. Fruta de temporada de julio: sandía, melocotón, frambuesa. Kalenić (Vračar) es el grande y bonito; Zeleni Venac el céntrico; Zemun el de ambiente de pueblo.",
         sitios: [
           { nombre: "Kalenić pijaca", zona: "Vračar", coords: [44.7998, 20.4770], nota: "El mercado más querido de la ciudad. Combinable con San Sava y café en Vračar.", fiab: "ok" },
@@ -498,14 +557,24 @@ const DATA = {
     zonas: [
       {
         nombre: "Cetinjska 15", cuando: "De 20:00 a muy tarde", coords: [44.8180, 20.4660],
+        img: "belgrado-cetinjska", imgExt: "webp",
         desc: "Antigua fábrica de cerveza convertida en patio de bares alternativos: en un solo complejo puedes saltar entre 6–8 locales distintos. El epicentro de la noche cervecera.",
         testimonio: { cita: "Samo Pivo es el bar de craft más recomendado en todos los hilos de Reddit sobre Belgrado: 20+ grifos rotando lo mejor serbio e internacional.", fuente: "Síntesis de hilos r/beer y r/serbia, 2025-26" },
-        sitios: ["Samo Pivo (craft, 20+ grifos)", "Polet", "Bluz i pivo (blues en vivo)", "Zaokret"]
+        sitios: [
+          "Samo Pivo · Balkanska 13: 20+ grifos y una pared de latas; el bar para comparar Kabinet, Dogma y Salto. Solo sirve cerveza y conviene llevar efectivo.",
+          "Polet · patio cultural dentro de Cetinjska: exposiciones, sesiones y una terraza donde la conversación gana a la pista.",
+          "Bluz i pivo · blues y rock en directo, pequeño y sudado en el mejor sentido; mirad la pizarra del día.",
+          "Zaokret · café-bar de día, DJ y terraza de noche; el lugar más fácil para aterrizar antes de decidir el siguiente.",
+        ]
       },
       {
         nombre: "Dorćol", cuando: "Tarde-noche", coords: [44.8215, 20.4620],
         desc: "Bares con más diseño, vinos naturales, brewpubs y cócteles. Más tranquilo que Cetinjska, perfecto para empezar la noche cenando y beber sin ruido.",
-        sitios: ["Dorćol Platz (patio cultural)", "Cervecerías y bares de Cara Dušana y alrededores"]
+        sitios: [
+          "Dorćol Platz · patio cultural con conciertos, mercadillos y cine; el programa cambia semana a semana.",
+          "Docker Brewery & Beer Garden · Žorža Klemansoa 27b: gran jardín industrial y muchos grifos propios; útil si queréis cenar algo y quedaros toda la noche.",
+          "Dogma Tap Room · Radnička 3: fábrica-bar con ladrillo, murales y barra hecha con raíles. Está lejos del centro, pero es la visita cervecera más completa.",
+        ]
       },
       {
         nombre: "Skadarlija", cuando: "Cena + primera copa", coords: [44.8172, 20.4653],
@@ -659,6 +728,28 @@ const DATA = {
   /* ---------- HISTORIA ---------- */
   historia: {
     intro: "Belgrado significa «ciudad blanca», pero su color verdadero es el de la ceniza de la que lleva dos mil años levantándose. Destruida y reconstruida unas cuarenta veces — no es retórica de guía turística: es su biografía documentada. Cada reconstrucción dejó una capa, y las cinco se ven paseando.",
+    ensayo: {
+      titulo: "Yugoslavia no fue simplemente «el bloque del Este»",
+      texto: "La ruptura de Tito con Stalin en 1948 abrió un experimento singular: partido único y propiedad social, sí, pero fuera del Pacto de Varsovia, con fronteras relativamente abiertas, pasaporte útil, turismo occidental y millones de trabajadores invitados en Europa. Desde 1950, la autogestión obrera dio a los consejos de trabajadores un papel real en las empresas, aunque nunca eliminó la jerarquía del partido ni las desigualdades regionales. No fue una democracia liberal ni un satélite soviético; entenderla obliga a sostener esas dos verdades a la vez.\n\nBelgrado fue su escaparate. Novi Beograd debía producir una vida moderna —vivienda, escuela, parque, comercio y transporte— y Palata Srbija representar un Estado multinacional ante el mundo. En 1961, la primera cumbre de los No Alineados reunió aquí a dirigentes de países que rechazaban tener que elegir entre Washington y Moscú. La colección del Museo de Arte Africano y los regalos del Museo de Yugoslavia son restos materiales de esa diplomacia, no exotismo decorativo.",
+      claves: [
+        { t: "Autogestión", d: "Las empresas eran de «propiedad social» y sus consejos de trabajadores intervenían en producción y reparto. Hubo participación efectiva, pero dentro de límites fijados por el partido y el mercado yugoslavo." },
+        { t: "No Alineados", d: "Yugoslavia convirtió su posición entre bloques en política exterior: cooperación con India, Egipto, Ghana, Indonesia y decenas de estados descolonizados." },
+        { t: "Bratstvo i jedinstvo", d: "«Hermandad y unidad»: el proyecto de convivencia federal después de una guerra civil y de ocupación atroz. Fue convicción, política pública y también relato oficial que ocultó conflictos no resueltos." },
+        { t: "Yugo-nostalgija", d: "No equivale necesariamente a querer restaurar el Estado: puede ser memoria de seguridad social, movilidad, modernidad compartida o una juventud anterior a las guerras." },
+      ],
+      ruta: {
+        titulo: "La Yugoslavia construida · ruta socialista", dur: "3,5–4,5 h", dist: "≈7 km + un tramo en bus", img: "ruta-socialista-belgrado", imgExt: "webp",
+        texto: "Una lectura de Novi Beograd como proyecto de vida colectiva, no como safari brutalista. Fijaos tanto en la escala monumental como en colegios, comercio, sombra, parques y bancos: la infraestructura pequeña que hacía habitable el gran plan.",
+        paradas: [
+          { n: "MoCAB", txt: "Modernismo federal, cultura y apertura internacional junto a la confluencia.", coords: [44.8194, 20.4426] },
+          { n: "Ušće", txt: "Parque y antigua sede del Comité Central: poder político, espacio verde y memoria de los bombardeos.", coords: [44.8162, 20.4354] },
+          { n: "Palata Srbija", txt: "El gran escenario administrativo de la federación y de la diplomacia no alineada.", coords: [44.8208, 20.4284] },
+          { n: "Blok 23", txt: "Vivienda, patios, escuela y comercio: cómo la gran escala se convierte en barrio cotidiano.", coords: [44.8047, 20.4218] },
+          { n: "Sava Centar", txt: "Escaparate cultural y diplomático de una Yugoslavia segura de su modernidad.", coords: [44.8087, 20.4332] },
+          { n: "Genex", txt: "Oficinas, vivienda y una ciudad que quiso anunciarse desde la autopista.", coords: [44.8205, 20.4043] }
+        ]
+      }
+    },
     capas: [
       {
         epoca: "La fortaleza eterna", años: "s. I – 1867",
@@ -672,7 +763,7 @@ const DATA = {
       },
       {
         epoca: "Yugoslavia de Tito", años: "1945 – 1980",
-        texto: "Capital de un país que ya no existe y que inventó su propia vía: socialismo no alineado entre los dos bloques. Novi Beograd se construye de cero sobre el barro — bloques, hormigón heroico y la sede de los No Alineados. Tito muere en 1980 y un millón de personas pasa ante su tumba.",
+        texto: "Capital de un país que ya no existe y que inventó su propia vía tras romper con Stalin: autogestión obrera, federalismo y liderazgo no alineado, junto a partido único, censura selectiva y represión de disidentes. Novi Beograd se construye sobre el barro con brigadas juveniles y planificación moderna. La apertura al turismo, al consumo y al trabajo en Occidente distinguió la experiencia yugoslava de casi todo el Este. Tito muere en 1980 y una multitud inmensa pasa ante su féretro.",
         donde: "Museo de Yugoslavia y Casa de las Flores, Novi Beograd (blokovi, Palata Srbija, torre Genex), MoCAB, Museo de Arte Africano"
       },
       {
