@@ -561,6 +561,8 @@
 
   /* fotos (Wikimedia, con degradación silenciosa si falta el archivo) */
   const foto = (id, alt, ext = "jpg") => `<figure class="card-foto"><img src="imgs/${id}.${ext}" alt="${esc(alt || "")}" loading="lazy" onerror="this.parentElement.remove()"></figure>`;
+  const syncFolds = (root) => requestAnimationFrame(() => root.querySelectorAll("details.fold-card").forEach((d) => { d.open = matchMedia("(min-width: 681px)").matches; }));
+  matchMedia("(min-width: 681px)").addEventListener("change", () => syncFolds(document));
 
   /* --- QUÉ VER --- */
   function estadoSitio(s, ref) {
@@ -613,34 +615,41 @@
   /* --- COMER --- */
   const testimonioHtml = (t) => t ? `<blockquote class="testimonio">${esc(t.cita)}<span class="t-src">— ${esc(t.fuente)}</span></blockquote>` : "";
   function renderComer(el) {
-    const bloques = DATA.comer.bloques.map((b) => `<article class="card reveal">
-      ${b.img ? foto(b.img, b.titulo, b.imgExt || "jpg") : ""}
-      <h3>${esc(b.titulo)}</h3><p>${esc(b.texto)}</p>
-      ${b.sitios.map((s) => `<h4>${esc(s.nombre)} ${fiab(s.fiab)} ${planBtn("c-" + slug(s.nombre))}</h4>
-        <p class="muted small">📍 ${esc(s.zona)}</p>
-        <p>${esc(s.nota)}</p>${testimonioHtml(s.testimonio)}
-        ${s.coords ? `<p class="small"><a href="#/mapa" data-fly="${s.coords.join(",")}">mapa</a> · <a href="https://www.google.com/maps/search/?api=1&query=${s.coords.join(",")}" target="_blank" rel="noopener">navegar</a></p>` : ""}`).join("")}
-    </article>`).join("");
+    const open = matchMedia("(min-width: 681px)").matches ? " open" : "";
+    const bloques = DATA.comer.bloques.map((b) => `<details class="card reveal fold-card food-block"${open}>
+      <summary class="fold-summary"><span><span class="food-kind">${esc(b.tag || "Para comer")}</span><h3>${esc(b.titulo)}</h3><small>${esc(b.resumen || b.texto.split(".")[0] + ".")}</small></span><i aria-hidden="true">＋</i></summary>
+      <div class="fold-body">
+        ${b.img ? foto(b.img, b.titulo, b.imgExt || "jpg") : ""}
+        <p>${esc(b.texto)}</p>
+        ${b.sitios.map((s) => `<section class="food-place ${s.veredicto ? "food-picked" : ""}">
+          <div class="food-place-head"><h4>${esc(s.nombre)} ${fiab(s.fiab)}</h4>${planBtn("c-" + slug(s.nombre))}</div>
+          <div class="food-chips">${s.veredicto ? `<span>${esc(s.veredicto)}</span>` : ""}${s.precio ? `<span>${esc(s.precio)}</span>` : ""}<span>📍 ${esc(s.zona)}</span></div>
+          ${s.pedir ? `<p class="food-order"><b>Pedid esto:</b> ${esc(s.pedir)}</p>` : ""}
+          <p>${esc(s.nota)}</p>${testimonioHtml(s.testimonio)}
+          ${s.coords ? `<p class="small"><a href="#/mapa" data-fly="${s.coords.join(",")}">mapa</a> · <a href="https://www.google.com/maps/search/?api=1&query=${s.coords.join(",")}" target="_blank" rel="noopener">navegar</a></p>` : ""}
+        </section>`).join("")}
+      </div>
+    </details>`).join("");
     const glosario = `<article class="card reveal"><h3>📖 Diccionario para pedir sin miedo</h3>
       <p class="muted small">Los ${DATA.glosario.length} términos que agotan el 90% de cualquier carta serbia. También salen en el buscador (🔍).</p>
       <div class="glosario">${DATA.glosario.map((g) => `<div class="glo-item"><b>${esc(g.t)}</b><span>${esc(g.d)}</span></div>`).join("")}</div>
     </article>`;
     el.innerHTML = pageShell("comer", esc(DATA.comer.intro), bloques + glosario);
+    syncFolds(el);
   }
 
   /* --- NOCHE --- */
   function renderNoche(el) {
-    const zonas = DATA.noche.zonas.map((z) => `<article class="card reveal">
-      ${z.img ? foto(z.img, z.nombre, z.imgExt || "jpg") : ""}
-      <span class="hora-tag">${esc(z.cuando)}</span> ${planBtn("n-" + slug(z.nombre))}
-      <h3>${esc(z.nombre)}</h3>
-      <div class="sitio-meta">${walkChip(z.coords)}</div>
-      <p>${esc(z.desc)}</p>
-      ${testimonioHtml(z.testimonio)}
-      <ul class="lista-sitios">${z.sitios.map((s) => `<li>${esc(s)}</li>`).join("")}</ul>
-      <p class="small"><a href="#/mapa" data-fly="${z.coords.join(",")}">Ver zona en el mapa →</a></p>
-    </article>`).join("");
+    const zonas = DATA.noche.zonas.map((z) => `<details class="card reveal fold-card">
+      <summary class="fold-summary"><span><span class="hora-tag">${esc(z.cuando)}</span><h3>${esc(z.nombre)}</h3><small>${esc(z.desc.split(".")[0] + ".")}</small></span><i aria-hidden="true">＋</i></summary>
+      <div class="fold-body">${z.img ? foto(z.img, z.nombre, z.imgExt || "jpg") : ""}
+        <div class="sitio-meta">${walkChip(z.coords)}</div><p>${esc(z.desc)}</p>${testimonioHtml(z.testimonio)}
+        <ul class="lista-sitios">${z.sitios.map((s) => `<li>${esc(s)}</li>`).join("")}</ul>
+        <div class="card-actions">${planBtn("n-" + slug(z.nombre))}</div><p class="small"><a href="#/mapa" data-fly="${z.coords.join(",")}">Ver zona en el mapa →</a></p>
+      </div>
+    </details>`).join("");
     el.innerHTML = pageShell("noche", esc(DATA.noche.intro), zonas);
+    syncFolds(el);
   }
 
   /* --- CARTAS DE BELGRADO --- */
@@ -744,16 +753,31 @@
     const libros = `<article class="card reveal"><h3>Para leer antes (o durante)</h3>
       ${DATA.historia.libros.map((l) => `<p><b>${esc(l.titulo)}</b> — ${esc(l.autor)}<br><span class="muted small">${esc(l.nota)}</span></p>`).join("")}
     </article>`;
+    const ruta = DATA.historia.ensayo?.ruta;
+    const rutaHtml = ruta?.paradas ? `<article class="card memoria-route reveal">
+      ${foto(ruta.img, ruta.titulo, ruta.imgExt || "jpg")}
+      <span class="foto-nota">Imagen editorial generada · la ruta se dibuja sobre el mapa real</span>
+      <span class="food-kind">Ruta temática</span><h3>${esc(ruta.titulo)}</h3>
+      <div class="sitio-meta"><span>⏱ <b>${esc(ruta.dur)}</b></span><span>📏 ${esc(ruta.dist)}</span></div>
+      <p>${esc(ruta.texto)}</p><ol class="memory-stops">${ruta.paradas.map((p) => `<li><b>${esc(p.n)}</b><span>${esc(p.txt)}</span></li>`).join("")}</ol>
+      <button class="ruta-btn" data-ruta-memoria>🗺 Dibujar la ruta socialista en el mapa</button>
+    </article>` : "";
     const ensayo = DATA.historia.ensayo ? `<article class="card historia-ensayo reveal">
       <img src="imgs/socialismo-yugoslavo.webp" alt="Interpretación visual de la vida cotidiana y la arquitectura de la Yugoslavia socialista">
       <span class="foto-nota">Imagen editorial generada · recreación histórica, no fotografía documental</span>
       <h3>${esc(DATA.historia.ensayo.titulo)}</h3>
       ${DATA.historia.ensayo.texto.split("\n\n").map((t) => `<p>${esc(t)}</p>`).join("")}
       <div class="glosario">${DATA.historia.ensayo.claves.map((g) => `<div class="glo-item"><b>${esc(g.t)}</b><span>${esc(g.d)}</span></div>`).join("")}</div>
-      <h4>${esc(DATA.historia.ensayo.ruta.titulo)}</h4><p>${esc(DATA.historia.ensayo.ruta.texto)}</p>
     </article>` : "";
-    el.innerHTML = pageShell("historia", esc(DATA.historia.intro), ensayo + `<div class="tl">${capas}</div>${curio}${libros}`);
+    el.innerHTML = pageShell("historia", esc(DATA.historia.intro), ensayo + rutaHtml + `<div class="tl">${capas}</div>${curio}${libros}`);
   }
+  document.addEventListener("click", (e) => {
+    if (!e.target.closest("[data-ruta-memoria]")) return;
+    const r = DATA.historia.ensayo.ruta;
+    window.__route = r.paradas.map((p, i) => ({ coords: p.coords, n: i + 1, nombre: p.n }));
+    window.__routeSinCasa = true;
+    location.hash = "#/mapa";
+  });
 
   /* --- COSTUMBRES / IDIOMA --- */
   function renderCostumbres(el) {

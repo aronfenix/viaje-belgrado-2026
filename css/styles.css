@@ -1381,3 +1381,33 @@ html[data-theme="dark"] .fiab-sug { color: #c8b0ea; }
   pointer-events: none;
 }
 @media (min-width: 760px) { .card-foto { height: 215px; } }
+
+/* Fichas desplegables: compactas en calle, abiertas en escritorio */
+.fold-card { padding: 0; overflow: hidden; }
+.fold-summary { list-style: none; cursor: pointer; padding: 20px 22px; display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; }
+.fold-summary::-webkit-details-marker { display: none; }
+.fold-summary h3 { margin: 4px 0 3px; }
+.fold-summary small { display: block; color: var(--muted); line-height: 1.45; max-width: 66ch; }
+.fold-summary > i { font-style: normal; font-size: 1.35rem; color: var(--sec); transition: transform .2s ease; }
+.fold-card[open] .fold-summary > i { transform: rotate(45deg); }
+.fold-body { padding: 0 22px 22px; border-top: 1px solid var(--line); }
+.fold-body > .card-foto { margin: 18px 0; }
+.food-kind { display: inline-block; font-size: .66rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--sec); }
+.food-place { padding: 18px 0 10px; border-top: 1px dashed var(--line); }
+.food-place:first-of-type { margin-top: 14px; }
+.food-place-head { display: flex; justify-content: space-between; gap: 12px; align-items: flex-start; }
+.food-place-head h4 { margin: 0; }
+.food-picked { border-left: 3px solid var(--sec); padding-left: 14px; }
+.food-chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 7px 0; }
+.food-chips span { font-size: .7rem; color: var(--muted); border: 1px solid var(--line); border-radius: 99px; padding: 3px 8px; }
+.food-order { background: color-mix(in srgb, var(--sec) 9%, transparent); border-radius: 8px; padding: 9px 11px; }
+.memoria-route { border-top: 5px solid var(--sec); }
+.memory-stops { list-style: none; padding: 0; counter-reset: memory; }
+.memory-stops li { display: grid; grid-template-columns: 38px 1fr; gap: 10px; padding: 10px 0; border-bottom: 1px dashed var(--line); }
+.memory-stops li b { width: 30px; height: 30px; display: grid; place-items: center; border-radius: 50%; background: var(--sec); color: white; }
+@media (max-width: 680px) {
+  .fold-summary { padding: 17px 16px; }
+  .fold-body { padding: 0 16px 18px; }
+  .fold-card:not([open]) { margin-bottom: 10px; }
+  .fold-summary small { font-size: .78rem; }
+}
