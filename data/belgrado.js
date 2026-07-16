@@ -44,7 +44,7 @@ const DATA = {
 
   dias: [
     { fecha: "2026-07-22", nota: "Llegada. Vuelo desde Madrid ~16:00 → Belgrado. Tarde/noche para instalarse y primer paseo por Savamala o cena cerca.", tipo: "llegada" },
-    { fecha: "2026-07-30", nota: "Último día en Belgrado. Transición hacia Budapest — ver «El dilema del 30».", tipo: "salida" },
+    { fecha: "2026-07-30", nota: "Día de vuelo: BEG → Budapest, llegada ~14:30 (Álvaro). Mañana tranquila de despedida — última pekara, maletas y al aeropuerto con margen (taxi voucher o bus 72 desde Zeleni Venac, ~1 h puerta a puerta). Laura, buen regreso.", tipo: "salida" },
   ],
 
   eventos: [
@@ -541,6 +541,14 @@ const DATA = {
         ]
       },
       {
+        titulo: "💬 Recomendación de Sara", tag: "Reco de amiga",
+        resumen: "El sitio concreto que manda Sara — patio escondido y Guía Michelin.",
+        texto: "De la lista de amigos que ya estuvieron: la amiga Sara manda un sitio concreto, y viene con estrella de guía.",
+        sitios: [
+          { nombre: "Mezestoran Dvorište", zona: "Svetogorska 46 (centro, cerca de Skadarlija)", coords: [44.8140, 20.4680], nota: "Mezze mediterráneo-griego en un patio escondido: se entra por el portal, se cruza hasta la puerta del fondo y aparece el jardín. Está en la Guía Michelin y aun así es de precio normal. Ojo: cierra los lunes. Tel. +381 11 3246515 · restorandvoriste.rs", testimonio: { cita: "Recomendación directa de Sara — y el patio es de los que no se olvidan.", fuente: "Sara, amiga de Álvaro · jul 2026" }, fiab: "ok", fuente: "011info + Michelin Guide · ver. 16-jul-2026" },
+        ]
+      },
+      {
         titulo: "Mercados", tag: "Comprar y picar", resumen: "Fruta de julio, queso, ajvar y vida de barrio por la mañana.",
         texto: "Los mercados (pijaca) funcionan a diario ~06:00–19:00, mejor por la mañana. Fruta de temporada de julio: sandía, melocotón, frambuesa. Kalenić (Vračar) es el grande y bonito; Zeleni Venac el céntrico; Zemun el de ambiente de pueblo.",
         sitios: [
@@ -616,12 +624,12 @@ const DATA = {
       aviso: "Sugerencia honesta: solo merece la pena como excursión organizada con recogida en hotel. Si no, mejor invertir el día en Novi Sad o Zemun."
     },
     {
-      id: "subotica", nombre: "Subotica y lago Palić", dist: "≈1h15 en Soko", coords: [46.1005, 19.6650],
-      nivel: "Lejos para ir y volver — tiene sentido ligada al viaje a Budapest",
-      como: "Tren Soko Beograd Centar → Subotica por la línea nueva (abierta oct. 2025): salidas aprox. 07:37, 10:37, 13:37, 16:37 en sentido contrario — verificar sentido ida en Srbija Voz. ≈9 € en 2ª clase.",
-      que: "La ciudad más húngara de Serbia: art nouveau delirante (ayuntamiento, sinagoga restaurada), y a 8 km el lago Palić con su balneario de 1900. Medio día-día.",
-      fiab: "ver", fuente: "seat61 · ver. 6-jul-2026; horarios exactos en srbvoz.rs",
-      aviso: "Ver «El dilema del 30»: Subotica encaja mejor como escala hacia Budapest que como ida-y-vuelta."
+      id: "subotica", nombre: "Subotica y lago Palić", dist: "≈1h15 en Soko (ida y vuelta en el día)", coords: [46.1005, 19.6650],
+      nivel: "La excursión ambiciosa — factible en el día con el Soko",
+      como: "Tren Soko desde Beograd Centar por la línea nueva de alta velocidad (abierta oct. 2025): ≈1h15 por trayecto, ≈9 € en 2ª clase, varias frecuencias al día. Comprad ida y vuelta con asiento en la app de Srbija Voz la víspera y confirmad allí los horarios exactos del día elegido.",
+      que: "La ciudad más húngara de Serbia: art nouveau delirante (el ayuntamiento parece un pastel de Gaudí magiar, la sinagoga restaurada es de las más bellas de Europa), cafés de otra época y, a 8 km en bus local o taxi, el lago Palić con su balneario de 1900. Plan redondo de día completo con Laura: salir con el Soko de la mañana, comer allí, y volver con el de media tarde — cero coche, cero bus largo, mucho tren rápido.",
+      fiab: "ver", fuente: "seat61 + Srbija Voz · horarios exactos en srbvoz.rs",
+      aviso: "Consejo de horarios: al ser ida-y-vuelta en el día, la clave es NO fiarse de memoria — mirad el último tren de vuelta en la app antes de salir y poned una alarma una hora antes."
     },
     {
       id: "zemun-exc", nombre: "Zemun (dentro de la ciudad)", dist: "25–35 min en bus urbano gratis", coords: [44.8455, 20.4110],
@@ -804,7 +812,7 @@ const DATA = {
     { icono: "🚰", titulo: "Agua del grifo: sí", texto: "El agua de Belgrado es potable y segura. Con 33 °C en julio, botella rellenable siempre encima. Fuentes públicas en parques." },
     { icono: "🕰️", titulo: "Ritmo balcánico", texto: "Se cena tarde (21:00 es normal), las terrazas se llenan aún más tarde y «polako» (despacio) es filosofía nacional. Encajaréis bien." },
     { icono: "⛪", titulo: "En iglesias ortodoxas", texto: "Hombros cubiertos, silencio, y las velas se encienden abajo (por los difuntos) o arriba (por los vivos). Entrar es libre y bienvenido." },
-    { icono: "✊", titulo: "Sobre las protestas (importante)", texto: "El movimiento estudiantil que nació con la tragedia de Novi Sad (nov. 2024) sigue muy activo en 2026: grandes concentraciones, y en episodios recientes bloqueos de calles y puentes en Belgrado con presencia policial fuerte. A los turistas no os busca nadie, pero sí puede tocaros logística: cortes de tráfico, buses desviados, un puente cerrado una tarde. Regla doble: (1) si veis concentración grande o antidisturbios, cambiad de calle y seguid con vuestro día; (2) la semana del viaje, echad un ojo a las noticias locales (N1info.rs tiene edición en inglés) por si hay convocatorias grandes. Verificado el 7-jul-2026; la situación evoluciona." },
+    { icono: "✊", titulo: "Sobre las protestas (importante)", texto: "El movimiento que nació con la tragedia de Novi Sad (nov. 2024) sigue muy activo, y julio de 2026 viene tenso: a principios de mes hubo una oleada de más de 400 detenciones y la respuesta policial se ha endurecido (lo han criticado la ONU y el Consejo de Europa). Se habla de posibles elecciones anticipadas en otoño, así que el pulso va a seguir vivo durante vuestra estancia. A los turistas no os busca nadie, pero contad con: presencia policial visible en el centro, cortes de tráfico y algún puente o plaza cerrado unas horas. Regla doble: (1) ante concentración grande o antidisturbios, cambiad de calle y seguid con vuestro día — sin fotos de cerca a los cordones; (2) mirad N1info.rs (edición en inglés) por la mañana los días de convocatoria. Verificado el 16-jul-2026." },
   ],
   idioma: {
     intro: "El serbio usa cirílico y latino indistintamente — los carteles oficiales suelen ir en cirílico, así que reconocer las letras ayuda de verdad. Con inglés os entendéis con casi todo el mundo joven; una palabra en serbio abre sonrisas.",
@@ -857,33 +865,6 @@ const DATA = {
     trenes: { titulo: "Trenes de largo recorrido", texto: "Todos salen de Beograd Centar (Prokop), a 15–20 min a pie de casa (o un bus corto). Billetes: app/web de Srbija Voz (srbvoz.rs, 5% dto.), máquinas o taquilla. Para el Soko la reserva de asiento es obligatoria.", fiab: "ok" }
   },
 
-  /* ---------- EL DILEMA DEL 30 ---------- */
-  dilema: {
-    intro: "El 30 de julio termina la parte de Belgrado y el 31 llega Juan a Budapest. Hay tres formas razonables de jugar esa carta — datos primero, la decisión es vuestra.",
-    contexto: { titulo: "Dato clave sobre el tren a Budapest", texto: "El tren directo Belgrado–Budapest (Soko, ~3h15) debía estrenarse en marzo de 2026 y a fecha de esta verificación (6 jul) seguía pospuesto «al menos hasta junio, posiblemente más» por la señalización del lado húngaro. Si arranca antes del viaje, cambia todo el dilema a mejor. La ruta segura hoy: Soko Beograd Centar → Subotica (≈1h15–1h30, ≈9 €) + tren local Subotica → Szeged (≈2 h, ≈6 €) + InterCity Szeged → Budapest (≈2h30, desde 11 €). Total realista: 7–9 h con transbordos. Verificar en srbvoz.rs y jegy.mav.hu la semana del viaje.", fiab: "ver", fuente: "seat61.com · ver. 6-jul-2026" },
-    opciones: [
-      {
-        nombre: "A · Noche en Subotica con Laura",
-        plan: "30: Soko por la mañana a Subotica, tarde de art nouveau y quizá lago Palić, noche allí. 31: tren local a Szeged + IC a Budapest (llegada mediodía-tarde).",
-        pros: ["Rompe el viaje largo en dos tramos suaves — cero palizas (bien para Laura si te acompaña hasta ahí)", "Subotica es la escala natural: ya está de camino", "Ciudad pequeña y vistosa, cómoda de ver en una tarde"],
-        contras: ["Una noche de hotel extra que gestionar", "Laura tendría que volver a Belgrado o volar desde otro sitio — revisar su vuelta", "Los horarios del tramo Subotica–Szeged son pocos y mandan ellos"]
-      },
-      {
-        nombre: "B · Ir antes a Budapest (día extra allí)",
-        plan: "30: viaje completo Belgrado → Budapest (tren con transbordos 7–9 h, o directo ~3h15 si ya funciona; también hay buses directos ~5-6 h y vuelo). Día 31 entero libre en Budapest antes de que llegue Juan.",
-        pros: ["Un día entero para instalarte y ver Budapest a tu aire", "Si el tren directo ya circula, es la opción redonda (3h15 y listo)", "Sin noche de hotel intermedia que organizar"],
-        contras: ["Si el directo no funciona, el día 30 se va entero en transbordos", "Pagas noche del 30 en Budapest (¿está ya reservada? — revisar)", "Menos tiempo en Belgrado"]
-      },
-      {
-        nombre: "C · Apurar Belgrado hasta el 31",
-        plan: "30: día completo en Belgrado (lo que quedó pendiente, Ada con calor, última noche en Cetinjska). 31: madrugar y viajar a Budapest para llegar cuando llega Juan.",
-        pros: ["Un día más en la ciudad, sin mover maletas", "La despedida de Laura sin prisas (según su vuelo)", "Cero logística nueva"],
-        contras: ["El 31 es día de tránsito completo y llegas justo/cansado a la llegada de Juan", "Si algo falla en el tren, llegas tarde a Budapest", "Madrugón asegurado"]
-      }
-    ],
-    consejo: { texto: "Sugerencia (solo eso): la variable que decide es el tren directo. Si a mediados de julio Srbija Voz confirma que circula, la opción B se vuelve muy fácil; si no circula, la A convierte una paliza en dos días agradables. Mirar también el vuelo de vuelta de Laura antes de decidir.", fiab: "sug" }
-  },
-
   /* ---------- PRÁCTICO ---------- */
   practico: {
     clima: { titulo: "Clima a finales de julio", texto: "Pleno verano continental: máximas habituales 30–35 °C (olas de calor por encima), mínimas 18–22 °C, tormentas de tarde ocasionales. Anochece ~20:30. Estrategia local: mañanas y noches en la calle, museos o siesta a mediodía.", fiab: "ok" },
@@ -895,7 +876,7 @@ const DATA = {
     fumar: { titulo: "Se fuma dentro (en serio)", texto: "Serbia es de los últimos países europeos donde se fuma en interiores de bares y muchas kafanas. En julio se vive en terrazas y apenas se nota, pero si un local cerrado os pica los ojos, ya sabéis por qué. Los restaurantes suelen tener zona; preguntad «nepušačka zona» (zona de no fumadores).", fiab: "ok" },
     taxis: { titulo: "Taxis: lo único con truco", texto: "El único timo clásico de Belgrado son los taxis piratas del aeropuerto y de zonas turísticas: sin taxímetro y tarifa inventada. Regla simple: en el aeropuerto, SOLO mostrador de vouchers; en ciudad, apps (Yandex Go, CarGo, Pink Taxi) o taxis con matrícula TX y taxímetro corriendo. Un trayecto normal por el centro: 300–600 RSD.", fiab: "ok" },
     salud: { titulo: "Botiquín y farmacias", texto: "Farmacias (apoteka, АПОТЕКА, cruz verde) por todas partes, con guardias 24 h en el centro. El agua del grifo es potable y hay fuentes públicas. Con 33 °C: sales/electrolitos, gorra y las visitas gordas antes de las 12:00. Sanidad: la Tarjeta Sanitaria Europea NO cubre Serbia (no es UE) — un seguro de viaje básico es buena idea; verificad si alguna tarjeta bancaria vuestra ya lo incluye.", fiab: "ok" },
-    checklist: ["Pasaporte de Álvaro (¡no DNI!) en vigor + foto/copia", "Pasaporte de Laura (¡no DNI!) en vigor + foto/copia", "eSIM activada (o plan de SIM local) — uno por cabeza", "Dinares o euros en efectivo para cambiar", "Reserva Srbija Voz para Novi Sad (app)", "Playlist descargada en los dos móviles", "Calzado cómodo de verdad (adoquines + cuestas)", "Gorra y protector solar (33 °C)", "Botella de agua rellenable", "Adaptador no hace falta (enchufe europeo tipo F)", "Entradas/reservas: Royal Compound si interesa (sábado 25)", "Revisar vuelo de vuelta de Laura antes de decidir el día 30", "La app instalada en los dos móviles (cuando haya URL)"]
+    checklist: ["Pasaporte de Álvaro (¡no DNI!) en vigor + foto/copia", "Pasaporte de Laura (¡no DNI!) en vigor + foto/copia", "eSIM activada (o plan de SIM local) — uno por cabeza", "Dinares o euros en efectivo para cambiar", "Reserva Srbija Voz para Novi Sad (app)", "Playlist descargada en los dos móviles", "Calzado cómodo de verdad (adoquines + cuestas)", "Gorra y protector solar (33 °C)", "Botella de agua rellenable", "Adaptador no hace falta (enchufe europeo tipo F)", "Entradas/reservas: Royal Compound si interesa (sábado 25)", "Tarjeta de embarque BEG → BUD del jueves 30 (llegada ~14:30)", "Vuelo de vuelta de Laura el 30: hora y facturación revisadas", "La app instalada en los dos móviles"]
   },
 };
 

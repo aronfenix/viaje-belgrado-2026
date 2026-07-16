@@ -214,7 +214,6 @@
     { id: "historia", sub: "Cinco capas de ciudad", ico: "◔" },
     { id: "costumbres", sub: "Rakija, cirílico y tu nombre en serbio", ico: "☕" },
     { id: "transporte", sub: "Gratis desde 2025 (en serio)", ico: "▷" },
-    { id: "dilema", sub: "¿Subotica, Budapest o apurar?", ico: "⁇" },
     { id: "cuaderno", sub: "Notas del viaje + postales", ico: "✎" },
     { id: "gastos", sub: "Quién pagó qué — cuentas claras", ico: "€" },
     { id: "practico", sub: "Dinero, eSIM, conversor, checklist", ico: "✚" },
@@ -236,7 +235,7 @@
     });
   }
   /* Índice del río: navegación tipográfica, sin cajas */
-  const RIO_GRANDES = new Set(["agenda", "cartas", "mapa", "comer", "cuaderno", "dilema"]);
+  const RIO_GRANDES = new Set(["agenda", "cartas", "mapa", "comer", "cuaderno", "alrededores"]);
   function rioItem(s, i) {
     const m = pageMeta(s.id);
     return `<a class="rio-item reveal ${RIO_GRANDES.has(s.id) ? "ri-big" : ""} ${i % 2 ? "ri-alt" : ""}" href="#/${s.id}" data-page-ref="${s.id}">
@@ -425,7 +424,6 @@
     historia: V('<path d="M10 42 L10 20 L16 20 L16 14 L20 14 L20 20 L28 20 L28 14 L32 14 L32 20 L38 20 L38 42"/><line x1="6" y1="42" x2="42" y2="42"/><path d="M24 20 L24 8 L32 11 L24 14"/>'),
     costumbres: V('<path d="M14 20 L14 34 A 8 6 0 0 0 30 34 L30 20 Z"/><path d="M22 20 L22 12 A 4 3 0 0 1 30 12"/><path d="M14 26 L4 22"/><path d="M18 40 L28 40"/>'),
     transporte: V('<rect x="8" y="8" width="32" height="28" rx="5"/><line x1="8" y1="24" x2="40" y2="24"/><rect x="13" y="13" width="9" height="7" rx="1"/><rect x="26" y="13" width="9" height="7" rx="1"/><circle cx="15" cy="30" r="2.2"/><circle cx="33" cy="30" r="2.2"/><line x1="14" y1="40" x2="12" y2="44"/><line x1="34" y1="40" x2="36" y2="44"/>'),
-    dilema: V('<line x1="24" y1="8" x2="24" y2="44"/><path d="M24 12 L40 12 L44 16 L40 20 L24 20"/><path d="M24 26 L8 26 L4 30 L8 34 L24 34"/>'),
     cuaderno: V('<rect x="10" y="6" width="28" height="36" rx="3"/><line x1="16" y1="6" x2="16" y2="42"/><line x1="22" y1="16" x2="33" y2="16"/><line x1="22" y1="23" x2="33" y2="23"/><line x1="22" y1="30" x2="29" y2="30"/>'),
     gastos: V('<ellipse cx="24" cy="14" rx="14" ry="5"/><path d="M10 14 L10 34 A 14 5 0 0 0 38 34 L38 14"/><path d="M10 24 A 14 5 0 0 0 38 24"/>'),
     practico: V('<rect x="8" y="16" width="32" height="24" rx="4"/><path d="M18 16 L18 10 A 3 3 0 0 1 21 7 L27 7 A 3 3 0 0 1 30 10 L30 16"/><line x1="16" y1="16" x2="16" y2="40"/><line x1="32" y1="16" x2="32" y2="40"/>'),
@@ -873,22 +871,6 @@
     el.innerHTML = pageShell("transporte", "", gran + aero + ciudad + tren);
   }
 
-  /* --- DILEMA --- */
-  function renderDilema(el) {
-    const d = DATA.dilema;
-    const ctx = `<article class="card reveal"><h3>${esc(d.contexto.titulo)}</h3><p>${esc(d.contexto.texto)}</p>
-      <p class="fuente">${fiab(d.contexto.fiab)} ${esc(d.contexto.fuente)}</p></article>`;
-    const RUTAS = ["БЕОГРАД → СУБОТИЦА → БУДИМПЕШТА", "БЕОГРАД →→ БУДИМПЕШТА", "БЕОГРАД · · · → БУДИМПЕШТА (31)"];
-    const ops = `<div class="dilema-grid">${d.opciones.map((o, i) => `<article class="card dilema-card billete reveal">
-      <span class="bi-ruta">${RUTAS[i] || ""}</span>
-      <h3>${esc(o.nombre)}</h3><p class="muted small">${esc(o.plan)}</p>
-      <ul class="pc-list pros">${o.pros.map((p) => `<li>${esc(p)}</li>`).join("")}</ul>
-      <ul class="pc-list cons">${o.contras.map((c) => `<li>${esc(c)}</li>`).join("")}</ul>
-    </article>`).join("")}</div>`;
-    const cons = `<article class="card reveal"><p>${esc(d.consejo.texto)}</p><p class="fuente">${fiab(d.consejo.fiab)}</p></article>`;
-    el.innerHTML = pageShell("dilema", esc(d.intro), ctx + ops + cons);
-  }
-
   /* --- CUADERNO --- */
   const NOTAS_KEY = "bg26_notas";
   const getNotas = () => { try { return JSON.parse(localStorage.getItem(NOTAS_KEY)) || []; } catch { return []; } };
@@ -1158,7 +1140,7 @@
     agenda: renderAgenda, barrios: renderBarrios, paseos: renderPaseos, ver: renderVer, mapa: renderMapa,
     comer: renderComer, noche: renderNoche, escena: renderEscena, alrededores: renderAlrededores,
     historia: renderHistoria, costumbres: renderCostumbres, transporte: renderTransporte,
-    dilema: renderDilema, cuaderno: renderCuaderno, practico: renderPractico, gastos: renderGastos,
+    cuaderno: renderCuaderno, practico: renderPractico, gastos: renderGastos,
     cartas: renderCartas, zona: renderZona,
   };
   const rendered = new Set();

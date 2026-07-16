@@ -84,7 +84,7 @@
   add("Playlist: " + D.escena.playlist.nombre, "La banda sonora del viaje (Spotify)", "#/escena", "musica yugoslava ekv idoli spotify");
   add("Cartas de Belgrado", "Nueve cartas selladas, una por día", "#/cartas", "cartas sorpresa sellos dias");
   D.transporte.aeropuerto.opciones.forEach((o) => add(o.nombre, "Aeropuerto → casa", "#/transporte", o.como));
-  add("El dilema del 30 de julio", "Subotica vs Budapest vs Belgrado", "#/dilema", "tren subotica szeged budapest");
+  add("Subotica en el día", "Excursión en Soko con Laura", "#/alrededores", "tren subotica palic art nouveau excursion");
   add("Conversor EUR ⇄ RSD", "Práctico", "#/practico", "dinares cambio dinero");
   add("Checklist de maleta", "Práctico", "#/practico", "pasaporte esim");
   add("Gastos a medias", "Quién pagó qué, saldo Álvaro/Laura", "#/gastos", "dinero cuentas dividir pagar deber");
