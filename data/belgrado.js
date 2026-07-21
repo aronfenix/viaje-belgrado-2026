@@ -49,7 +49,8 @@ const DATA = {
 
   eventos: [
     { fecha: "2026-07-22", nombre: "Joss Stone", lugar: "Port of Belgrade", genero: "Pop/Soul", fiab: "ver", fuente: "Songkick, jul 2026" },
-    { fecha: "2026-07-23", nombre: "Sina Bathaie", lugar: "Grad", genero: "Electrónica", fiab: "ver", fuente: "Songkick" },
+    { fecha: "2026-07-23", nombre: "Sina Bathaie (White Lotus World Tour)", lugar: "KC Grad", genero: "Electrónica/ambient", fiab: "ver", fuente: "Songkick, 21-jul" },
+    { fecha: "2026-07-25", nombre: "Of Mice & Men", lugar: "Dom omladine", genero: "Metalcore", fiab: "ver", fuente: "Songkick, 21-jul" },
     { fecha: "2026-07-25", nombre: "Panzerfaust", lugar: "Klub Fest", genero: "Metal", fiab: "ver", fuente: "Songkick" },
     { fecha: "2026-07-25", nombre: "Emi Galvan", lugar: "Mama Shelter", genero: "Dance", fiab: "ver", fuente: "Songkick" },
     { fecha: "2026-07-26", nombre: "Godsmack", lugar: "Hangar, Luka Beograd", genero: "Hard rock", fiab: "ver", fuente: "Songkick" },
@@ -57,7 +58,7 @@ const DATA = {
     { fecha: "2026-07-29", nombre: "Nogu Svelo!", lugar: "Zappa Barka (barcaza)", genero: "Rock ruso", fiab: "ver", fuente: "Songkick" },
     { fecha: "2026-07-29", nombre: "Kaaper", lugar: "Dorćol Platz", genero: "Metal", fiab: "ver", fuente: "Songkick" },
   ],
-  eventosNota: "Son eventos listados en agregadores (Songkick/Bandsintown) a 6-jul-2026 — datos localizados, no un plan. La programación pequeña (clubes, kafanas con música) aparece la misma semana: mirar Belgradist y Resident Advisor allí. BELEF 2026 terminó el 7 de julio; el Beer Fest suele caer en agosto.",
+  eventosNota: "Cartel verificado a 21-jul-2026 (Songkick + tickets.rs). Además, cine de verano GRATIS los jue/vie/sáb 21:00 en la Sava Promenada y otros puntos — ver «Cine y música». La programación pequeña de clubes y kafanas aparece la misma semana: Belgradist y Resident Advisor. El Beer Fest cae en agosto, ya no os pilla.",
 
   /* ---------- QUÉ VER ---------- */
   // horario: por día ISO 1-7, [apertura, cierre] en horas, null = cerrado
@@ -706,28 +707,29 @@ const DATA = {
         ]
       },
       {
-        titulo: "Kinoteka: el templo",
-        texto: "La Cinemateca Yugoslava (1949) es una de las grandes filmotecas de Europa — Hitchcock llegó a donarle material. Ciclos temáticos que cambian cada mes, clásicos restaurados y entradas a precio de café. El programa de julio, en kinoteka.org.rs.",
+        titulo: "Kinoteka: el templo (y qué echan estos días)",
+        texto: "La Cinemateca Yugoslava (1949) es una de las grandes filmotecas de Europa — Hitchcock llegó a donarle material. Confirmado a 21-jul, durante vuestra estancia tienen dos ciclos preciosos: un homenaje a PAVLE VUJISIĆ (el gran rostro del cine yugoslavo, en su centenario) y un ciclo ORSON WELLES en la sala Makavejev, más una selección de historias de amor de verano bajo el título «Kad je letu pedalj do zenita». Entradas a precio de café. OJO: la sala Kosovska está en obras; las sesiones son en Uzun Mirkova.",
         sitios: [
-          { nombre: "Jugoslovenska kinoteka", zona: "Uzun Mirkova 1, junto a Kalemegdan", coords: [44.8190, 20.4565], nota: "El edificio histórico, de camino a la fortaleza. Sesión de tarde + Kalemegdan al salir = combinación perfecta.", fiab: "ok", fuente: "kinoteka.org.rs · ver. 7-jul-2026" },
+          { nombre: "Jugoslovenska kinoteka", zona: "Uzun Mirkova 1, junto a Kalemegdan", coords: [44.8190, 20.4565], nota: "El edificio histórico, de camino a la fortaleza. Sesión de tarde + Kalemegdan al salir = combinación perfecta. Programa del día en kinoteka.org.rs.", fiab: "ok", fuente: "kinoteka.org.rs · ver. 21-jul-2026" },
         ]
       },
       {
-        titulo: "Cine bajo las estrellas (gratis)",
-        texto: "En julio, Belgrado proyecta gratis al aire libre. Dos pantallas verificadas — la programación exacta sale semana a semana:",
+        titulo: "🌟 Cine de verano GRATIS al aire libre",
+        texto: "Esto es de las mejores cosas que os pueden pasar en julio, y confirmado para vuestras fechas: el festival «Open Air Cinema» (patrocinio Frikom) proyecta GRATIS del 8 de julio al 6 de septiembre, todos los JUEVES, VIERNES y SÁBADOS a las 21:00, en varios puntos a la vez — y uno es la SAVA PROMENADA, literalmente vuestra calle. En caso de lluvia se cancela (apuntad esto para el finde lluvioso de llegada). La cartelera semanal sale en beograd.rs y en danubeogradu.rs.",
         sitios: [
-          { nombre: "Admiral Open Air Cinema", zona: "Sava Promenada, junto a Galerija", coords: [44.8045, 20.4500], nota: "Viernes y sábados de verano, clásicos y taquillazos gratis EN VUESTRA CALLE. Difícil ponerlo más fácil.", fiab: "ver", fuente: "galerijabelgrade.com · ver. 7-jul-2026" },
-          { nombre: "Smoki Open Air Cinema", zona: "Kalemegdan (tras el Museo de Historia Natural)", coords: [44.8225, 20.4535], nota: "Jueves a domingo a las 20:00, gratis, dentro del parque de la fortaleza. Peliculón + murallas + anochecer.", fiab: "ver", fuente: "Programación en su página; verificar semana del viaje" },
+          { nombre: "Open Air Cinema · Sava Promenada", zona: "Entrada 4, junto a Galerija · 10 min de casa", coords: [44.8045, 20.4500], nota: "Jue/vie/sáb 21:00, gratis, EN VUESTRA CALLE, con el río al lado. El plan de sobremesa nocturna más fácil del viaje. También proyectan en Tašmajdan, Slavija, la explanada de San Sava y Studentski trg.", fiab: "ok", fuente: "beograd.rs · ver. 21-jul-2026" },
+          { nombre: "A1 Kinoteka — cine en la azotea", zona: "Casa del Ejército, Braće Jugovića 19 (centro)", coords: [44.8168, 20.4622], nota: "Cine de verano en la terraza-azotea de la Casa del Ejército, con vistas de la ciudad, hasta el 31 de agosto. El plan con más encanto de los tres: peli + skyline + copa.", fiab: "ok", fuente: "beograd.rs · ver. 21-jul-2026" },
         ]
       },
       {
-        titulo: "Música en directo",
-        texto: "Vuestra semana ya tiene cartel (está cruzado en la Agenda, día a día). Para lo demás: Belgradist y Resident Advisor publican la programación pequeña con pocos días de antelación — mirad ya en la ciudad.",
+        titulo: "Música en directo (vuestro cartel real)",
+        texto: "La semana viene cargada — esto es lo confirmado a 21-jul, cruzado también en la Agenda día a día. Para lo pequeño de última hora: Belgradist, Resident Advisor y los Instagram de las salas.",
         sitios: [
-          { nombre: "Zappa Barka", zona: "Barcaza en el Sava", coords: [44.7990, 20.4430], nota: "Conciertos en una barcaza amarrada: rock, balkan, cosas raras y buenas. El 29-jul toca Nogu Svelo! aquí.", fiab: "ver" },
-          { nombre: "Dorćol Platz", zona: "Dorćol", coords: [44.8225, 20.4660], nota: "El patio industrial-cultural: conciertos, mercadillos, cerveza. Programación en su Instagram.", fiab: "ver" },
-          { nombre: "KC Grad", zona: "Savamala", coords: [44.8135, 20.4515], nota: "Centro cultural pionero de Savamala: exposiciones, DJ, conciertos íntimos. A 12 min de casa.", fiab: "sug" },
-          { nombre: "Kafanas con música", zona: "Skadarlija", coords: [44.8172, 20.4653], nota: "La versión tradicional: orquestas de kafana tocando starogradska (música urbana vieja) entre mesas. Turístico y auténtico a la vez — pasa poco, aquí pasa.", fiab: "ok" },
+          { nombre: "Zappa Barka", zona: "Barcaza en el Sava", coords: [44.7990, 20.4430], nota: "Conciertos en una barcaza amarrada: rock, balkan, cosas raras y buenas. El miércoles 29 toca Nogu Svelo! aquí — rock ruso festivo, muy del ambiente.", fiab: "ver" },
+          { nombre: "Dom omladine / Dorćol Platz", zona: "Centro / Dorćol", coords: [44.8225, 20.4660], nota: "Dos motores de conciertos del verano: el 25 hay Of Mice & Men en Dom omladine (metalcore), y Dorćol Platz encadena directos y mercadillos casi cada tarde. Programa en tickets.rs y sus redes.", fiab: "ver" },
+          { nombre: "KC Grad", zona: "Savamala · 12 min de casa", coords: [44.8135, 20.4515], nota: "Centro cultural pionero de Savamala: el jueves 23 pasa Sina Bathaie (su gira mundial). Exposiciones, DJ y conciertos íntimos el resto de días.", fiab: "ver" },
+          { nombre: "Grandes citas de la semana", zona: "Varias salas", coords: [44.8206, 20.4520], nota: "Joss Stone (22, Port of Belgrade), Godsmack (26, Hangar), Crowbar (28, Klub studenata) — todo está en la Agenda, día a día, con su fecha y sala.", fiab: "ver" },
+          { nombre: "Kafanas con orquesta", zona: "Skadarlija", coords: [44.8172, 20.4653], nota: "La versión tradicional: orquestas tocando starogradska (música urbana vieja) entre mesas. Turístico y auténtico a la vez — pasa poco en Europa, aquí pasa.", fiab: "ok" },
         ]
       },
     ]
