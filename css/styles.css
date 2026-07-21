@@ -1411,3 +1411,24 @@ html[data-theme="dark"] .fiab-sug { color: #c8b0ea; }
   .fold-card:not([open]) { margin-bottom: 10px; }
   .fold-summary small { font-size: .78rem; }
 }
+
+/* ==========================================================
+   Cartelera Kinoteka (día a día)
+   ========================================================== */
+.cartelera { margin-top: 12px; display: flex; flex-direction: column; gap: 2px; }
+.cart-dia {
+  display: grid; grid-template-columns: 46px 1fr; gap: 12px;
+  padding: 11px 0; border-top: 1px solid var(--line);
+}
+.cart-dia:first-child { border-top: none; }
+.cart-hoy { background: color-mix(in srgb, var(--sec) 9%, transparent); border-radius: 12px; padding: 11px 10px; border-top: none; }
+.cart-fecha { text-align: center; line-height: 1; }
+.cart-fecha b { font-family: var(--serif); font-weight: 800; font-size: 1.5rem; display: block; color: var(--sec); }
+.cart-fecha span { font-size: .6rem; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); }
+.cart-films { list-style: none; margin: 0; padding: 0; }
+.cart-films li { font-size: .82rem; padding: 2px 0; line-height: 1.35; }
+.cart-films .cart-h { display: inline-block; min-width: 40px; font-variant-numeric: tabular-nums; color: var(--muted); font-weight: 700; font-size: .76rem; }
+.cart-films b { font-weight: 600; }
+.cart-films .cart-dir { color: var(--muted); font-size: .72rem; }
+.cart-joya b::before { content: "★ "; color: var(--gold); }
+.cart-joya b { font-weight: 800; }

@@ -698,6 +698,48 @@ const DATA = {
       desc: "La banda sonora del viaje, creada para vosotros dos: Ekatarina Velika, Idoli, Šarlo Akrobata, Električni Orgazam, Partibrejkers, trompetas de Boban Marković… El novi talas (la nueva ola yugoslava de los 80) fue una de las escenas más brillantes de Europa, y nació en gran parte en estas calles. Para el tren a Novi Sad, para las cenas, para después.",
       consejo: "Compartidla entre los dos móviles y descargadla antes de salir (Serbia está fuera del roaming UE). Modo aleatorio cruzando el puente Branko.",
     },
+    kinoteka: {
+      titulo: "🎞 Cartelera Kinoteka · vuestros nueve días",
+      nota: "Programa confirmado a 21-jul (kinoteka.org.rs). Dos ciclos diarios: clásicos de verano a las 17:00 y 19:00, retrospectiva Oliver Stone a las 21:00. Todo en VO subtitulada, ~300 RSD. ★ = joya que yo no me perdería.",
+      dias: [
+        { f: "2026-07-22", films: [
+          { h: "17:00", t: "Amantes de verano", dir: "Randal Kleiser, 1982" },
+          { h: "19:00", t: "Cuentos de verano", dir: "1958" },
+          { h: "21:00", t: "The Doors", dir: "Oliver Stone, 1991", joya: true } ] },
+        { f: "2026-07-23", films: [
+          { h: "17:00", t: "Te querré siempre (Viaje a Italia)", dir: "Rossellini, 1954", joya: true },
+          { h: "19:00", t: "Sonrisas de una noche de verano", dir: "Bergman, 1955", joya: true },
+          { h: "21:00", t: "Nixon", dir: "Oliver Stone, 1995" } ] },
+        { f: "2026-07-24", films: [
+          { h: "17:00", t: "El viejo y el mar", dir: "1958" },
+          { h: "19:00", t: "Vivir y morir en L.A.", dir: "Friedkin, 1985", joya: true },
+          { h: "21:00", t: "El escándalo de Larry Flynt", dir: "Forman, 1996" } ] },
+        { f: "2026-07-25", films: [
+          { h: "17:00", t: "La reina de África", dir: "Huston, 1951", joya: true },
+          { h: "19:00", t: "Easy Rider (Buscando mi destino)", dir: "Hopper, 1969", joya: true },
+          { h: "21:00", t: "Alejandro Magno", dir: "Oliver Stone, 2004" } ] },
+        { f: "2026-07-26", films: [
+          { h: "17:00", t: "El verano en que aprendí a volar", dir: "Radivojević, 2022" },
+          { h: "19:00", t: "Tierra dura", dir: "1973" },
+          { h: "21:00", t: "World Trade Center", dir: "Oliver Stone, 2006" } ] },
+        { f: "2026-07-27", films: [
+          { h: "17:00", t: "La tentación vive arriba", dir: "Wilder, 1955", joya: true },
+          { h: "19:00", t: "Haloa – praznik kurvi", dir: "Bata Čengić, 1988" },
+          { h: "21:00", t: "Wall Street: el dinero nunca duerme", dir: "Oliver Stone, 2010" } ] },
+        { f: "2026-07-28", films: [
+          { h: "17:00", t: "Cuentos de Tokio", dir: "Ozu, 1953", joya: true },
+          { h: "19:00", t: "Extraños en el paraíso", dir: "Jarmusch, 1984", joya: true },
+          { h: "21:00", t: "Salvajes", dir: "Oliver Stone, 2012" } ] },
+        { f: "2026-07-29", films: [
+          { h: "17:00", t: "Seis días de junio", dir: "1985" },
+          { h: "19:00", t: "Mi vida es mía (Cinco piezas fáciles)", dir: "Rafelson, 1970", joya: true },
+          { h: "21:00", t: "Tarde de perros", dir: "Lumet, 1975", joya: true } ] },
+        { f: "2026-07-30", films: [
+          { h: "17:00", t: "Sandra (Vaghe stelle dell'Orsa)", dir: "Visconti, 1965" },
+          { h: "19:00", t: "Copia certificada", dir: "Kiarostami, 2010", joya: true },
+          { h: "21:00", t: "Muerte en Venecia", dir: "Visconti, 1971", joya: true } ] },
+      ],
+    },
     bloques: [
       {
         titulo: "La regla de oro: nada doblado",
@@ -707,10 +749,10 @@ const DATA = {
         ]
       },
       {
-        titulo: "Kinoteka: el templo (y qué echan estos días)",
-        texto: "La Cinemateca Yugoslava (1949) es una de las grandes filmotecas de Europa — Hitchcock llegó a donarle material. Confirmado a 21-jul, durante vuestra estancia tienen dos ciclos preciosos: un homenaje a PAVLE VUJISIĆ (el gran rostro del cine yugoslavo, en su centenario) y un ciclo ORSON WELLES en la sala Makavejev, más una selección de historias de amor de verano bajo el título «Kad je letu pedalj do zenita». Entradas a precio de café. OJO: la sala Kosovska está en obras; las sesiones son en Uzun Mirkova.",
+        titulo: "Kinoteka: el templo (con cartelera de vuestros días)",
+        texto: "La Cinemateca Yugoslava (1949) es una de las grandes filmotecas de Europa — Hitchcock llegó a donarle material. Y la programación que os toca es un caramelo para cinéfilos: dos ciclos en paralelo cada día. A las 17:00 y 19:00, el ciclo «Kad je letu pedalj do zenita» («Cuando al verano le falta un palmo para el cénit»), una antología de clásicos de verano de primer orden; a las 21:00, una RETROSPECTIVA DE OLIVER STONE completa. Todo en versión original con subtítulos serbios — hecho a vuestra medida. Entradas a precio de café (~300 RSD). Sesiones en la sala de Uzun Mirkova (la Kosovska está en obras). Programa del día siempre en kinoteka.org.rs.",
         sitios: [
-          { nombre: "Jugoslovenska kinoteka", zona: "Uzun Mirkova 1, junto a Kalemegdan", coords: [44.8190, 20.4565], nota: "El edificio histórico, de camino a la fortaleza. Sesión de tarde + Kalemegdan al salir = combinación perfecta. Programa del día en kinoteka.org.rs.", fiab: "ok", fuente: "kinoteka.org.rs · ver. 21-jul-2026" },
+          { nombre: "Jugoslovenska kinoteka", zona: "Uzun Mirkova 1, junto a Kalemegdan", coords: [44.8190, 20.4565], nota: "El edificio histórico, de camino a la fortaleza. Sesión de tarde + Kalemegdan al salir = plan perfecto.", fiab: "ok", fuente: "kinoteka.org.rs + danubeogradu.rs · ver. 21-jul-2026" },
         ]
       },
       {

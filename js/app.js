@@ -719,7 +719,21 @@
         ${s.fuente ? `<p class="fuente">${esc(s.fuente)}</p>` : ""}
         ${s.coords ? `<p class="small"><a href="#/mapa" data-fly="${s.coords.join(",")}">mapa</a> · <a href="https://www.google.com/maps/search/?api=1&query=${s.coords.join(",")}" target="_blank" rel="noopener">navegar</a></p>` : ""}`).join("")}
     </article>`).join("");
-    el.innerHTML = pageShell("escena", esc(DATA.escena.intro), bloques);
+    // cartelera Kinoteka día a día
+    const k = DATA.escena.kinoteka;
+    const hoyIso = new Date().toISOString().slice(0, 10);
+    const cartelera = k ? `<article class="card reveal">
+      <h3>${esc(k.titulo)}</h3>
+      <p class="muted small">${esc(k.nota)}</p>
+      <div class="cartelera">${k.dias.map((d) => {
+        const dd = new Date(d.f + "T12:00:00"); const wd = ((dd.getDay() + 6) % 7) + 1;
+        return `<div class="cart-dia ${d.f === hoyIso ? "cart-hoy" : ""}">
+          <div class="cart-fecha"><b>${dd.getDate()}</b><span>${DIAS_SEM[wd].slice(0, 3)}</span></div>
+          <ul class="cart-films">${d.films.map((f) => `<li class="${f.joya ? "cart-joya" : ""}"><span class="cart-h">${esc(f.h)}</span> <b>${esc(f.t)}</b> <span class="cart-dir">${esc(f.dir)}</span></li>`).join("")}</ul>
+        </div>`;
+      }).join("")}</div>
+    </article>` : "";
+    el.innerHTML = pageShell("escena", esc(DATA.escena.intro), bloques + cartelera);
   }
 
   /* --- ALREDEDORES --- */
