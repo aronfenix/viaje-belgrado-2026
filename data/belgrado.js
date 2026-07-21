@@ -48,15 +48,15 @@ const DATA = {
   ],
 
   eventos: [
-    { fecha: "2026-07-22", nombre: "Joss Stone", lugar: "Port of Belgrade", genero: "Pop/Soul", fiab: "ver", fuente: "Songkick, jul 2026" },
-    { fecha: "2026-07-23", nombre: "Sina Bathaie (White Lotus World Tour)", lugar: "KC Grad", genero: "Electrónica/ambient", fiab: "ver", fuente: "Songkick, 21-jul" },
-    { fecha: "2026-07-25", nombre: "Of Mice & Men", lugar: "Dom omladine", genero: "Metalcore", fiab: "ver", fuente: "Songkick, 21-jul" },
-    { fecha: "2026-07-25", nombre: "Panzerfaust", lugar: "Klub Fest", genero: "Metal", fiab: "ver", fuente: "Songkick" },
-    { fecha: "2026-07-25", nombre: "Emi Galvan", lugar: "Mama Shelter", genero: "Dance", fiab: "ver", fuente: "Songkick" },
-    { fecha: "2026-07-26", nombre: "Godsmack", lugar: "Hangar, Luka Beograd", genero: "Hard rock", fiab: "ver", fuente: "Songkick" },
-    { fecha: "2026-07-28", nombre: "Crowbar", lugar: "Klub studenata tehnike", genero: "Metal", fiab: "ver", fuente: "Songkick" },
-    { fecha: "2026-07-29", nombre: "Nogu Svelo!", lugar: "Zappa Barka (barcaza)", genero: "Rock ruso", fiab: "ver", fuente: "Songkick" },
-    { fecha: "2026-07-29", nombre: "Kaaper", lugar: "Dorćol Platz", genero: "Metal", fiab: "ver", fuente: "Songkick" },
+    { fecha: "2026-07-22", nombre: "Joss Stone", lugar: "Port of Belgrade", genero: "Soul", estilo: "Soul y R&B británico de voz enorme (Grammy incluido). Concierto grande y cálido en el puerto — el arranque perfecto para la noche de llegada si aguantáis el vuelo.", fiab: "ver", fuente: "Songkick, 21-jul" },
+    { fecha: "2026-07-23", nombre: "Sina Bathaie (White Lotus World Tour)", lugar: "KC Grad", genero: "Neoclásico/ambient", estilo: "Compositor iraní-canadiense que toca el santur (cítara persa) sobre bases electrónicas: neoclásico cinematográfico, contemplativo, para sentarse y flotar. Íntimo, en el KC Grad de Savamala (a 12 min de casa).", fiab: "ver", fuente: "Songkick, 21-jul" },
+    { fecha: "2026-07-25", nombre: "Of Mice & Men", lugar: "Dom omladine", genero: "Metalcore", estilo: "Metalcore estadounidense: melódico y contundente a partes iguales, gritos y estribillos. Público joven y entregado.", fiab: "ver", fuente: "Songkick, 21-jul" },
+    { fecha: "2026-07-25", nombre: "Panzerfaust", lugar: "Klub Fest", genero: "Black/death metal", estilo: "Black/death metal atmosférico canadiense: oscuro, denso y ritual. Solo para iniciados en lo pesado.", fiab: "ver", fuente: "Songkick" },
+    { fecha: "2026-07-25", nombre: "Emi Galvan", lugar: "Mama Shelter", genero: "House/techno melódico", estilo: "Productor argentino de house y techno melódico/orgánico. Sesión de DJ para bailar sin estridencias, en la terraza del Mama Shelter.", fiab: "ver", fuente: "Songkick" },
+    { fecha: "2026-07-26", nombre: "Godsmack", lugar: "Hangar, Luka Beograd", genero: "Hard rock", estilo: "Pesos pesados del hard rock / post-grunge americano: riffs de estadio, mucho volumen, clásico. El concierto grande de la semana.", fiab: "ver", fuente: "Songkick" },
+    { fecha: "2026-07-28", nombre: "Crowbar", lugar: "Klub studenata tehnike", genero: "Sludge metal", estilo: "Pioneros del sludge de Nueva Orleans: metal lento, grave y aplastante, casi hipnótico. Culto absoluto para los del riff.", fiab: "ver", fuente: "Songkick" },
+    { fecha: "2026-07-29", nombre: "Nogu Svelo!", lugar: "Zappa Barka (barcaza)", genero: "Rock ruso festivo", estilo: "Banda rusa legendaria y gamberra: rock con vientos, ska y humor absurdo. En directo es fiesta pura — y en una barcaza sobre el Sava, plan redondo del rollo vuestro.", fiab: "ver", fuente: "Songkick" },
+    { fecha: "2026-07-29", nombre: "Kaaper", lugar: "Dorćol Platz", genero: "Metal", estilo: "Metal en el patio de Dorćol Platz: ambiente de barrio, cerveza y decibelios al aire libre.", fiab: "ver", fuente: "Songkick" },
   ],
   eventosNota: "Cartel verificado a 21-jul-2026 (Songkick + tickets.rs). Además, cine de verano GRATIS los jue/vie/sáb 21:00 en la Sava Promenada y otros puntos — ver «Cine y música». La programación pequeña de clubes y kafanas aparece la misma semana: Belgradist y Resident Advisor. El Beer Fest cae en agosto, ya no os pilla.",
 
@@ -757,10 +757,10 @@ const DATA = {
       },
       {
         titulo: "🌟 Cine de verano GRATIS al aire libre",
-        texto: "Esto es de las mejores cosas que os pueden pasar en julio, y confirmado para vuestras fechas: el festival «Open Air Cinema» (patrocinio Frikom) proyecta GRATIS del 8 de julio al 6 de septiembre, todos los JUEVES, VIERNES y SÁBADOS a las 21:00, en varios puntos a la vez — y uno es la SAVA PROMENADA, literalmente vuestra calle. En caso de lluvia se cancela (apuntad esto para el finde lluvioso de llegada). La cartelera semanal sale en beograd.rs y en danubeogradu.rs.",
+        texto: "De lo mejor de julio, y os pilla a la puerta. Hay dos redes distintas de cine al aire libre gratis: (1) el «Galerija Open Air Cinema by HONOR» en la SAVA PROMENADA (vuestra calle), del 19 de junio al 29 de agosto, VIERNES y SÁBADOS a las 20:30 — con un detalle genial: es CINE SILENCIOSO, el sonido va por una app a vuestros auriculares, así que llevad móvil + cascos y no molesta a nadie; entre los títulos de la temporada: F1: la película, Barbie, Casablanca y Piratas del Caribe. (2) El «Open Air Cinema» (Frikom), jue/vie/sáb a las 21:00, repartido por Tašmajdan, Slavija, la explanada de San Sava y Studentski trg. En ambos: gratis, y si llueve se cancela (ojo el finde de llegada). Cartelera exacta de cada noche en la app/web de Galerija y en danubeogradu.rs.",
         sitios: [
-          { nombre: "Open Air Cinema · Sava Promenada", zona: "Entrada 4, junto a Galerija · 10 min de casa", coords: [44.8045, 20.4500], nota: "Jue/vie/sáb 21:00, gratis, EN VUESTRA CALLE, con el río al lado. El plan de sobremesa nocturna más fácil del viaje. También proyectan en Tašmajdan, Slavija, la explanada de San Sava y Studentski trg.", fiab: "ok", fuente: "beograd.rs · ver. 21-jul-2026" },
-          { nombre: "A1 Kinoteka — cine en la azotea", zona: "Casa del Ejército, Braće Jugovića 19 (centro)", coords: [44.8168, 20.4622], nota: "Cine de verano en la terraza-azotea de la Casa del Ejército, con vistas de la ciudad, hasta el 31 de agosto. El plan con más encanto de los tres: peli + skyline + copa.", fiab: "ok", fuente: "beograd.rs · ver. 21-jul-2026" },
+          { nombre: "Galerija Open Air Cinema · Sava Promenada", zona: "Entrada 4, junto a Galerija · 10 min de casa", coords: [44.8045, 20.4500], nota: "Vie/sáb 20:30, gratis, EN VUESTRA CALLE, con el río al lado y sonido por auriculares (llevad cascos). El plan de sobremesa nocturna más fácil del viaje. Repertorio en la web/app de Galerija.", fiab: "ok", fuente: "galerijabelgrade.com · ver. 21-jul-2026" },
+          { nombre: "A1 Kinoteka — cine en la azotea", zona: "Casa del Ejército, Braće Jugovića 19 (centro)", coords: [44.8168, 20.4622], nota: "Cine de verano en la terraza-azotea de la Casa del Ejército, con vistas de la ciudad, hasta el 31 de agosto. El plan con más encanto de todos: peli + skyline + copa.", fiab: "ok", fuente: "beograd.rs · ver. 21-jul-2026" },
         ]
       },
       {

@@ -475,7 +475,7 @@
         ...(esp ? [`<li class="dl-open"><b>${esc(esp.nota)}</b></li>`] : []),
         ...regla.cierran.map((c) => `<li class="dl-close">Cierra: ${esc(c)}</li>`),
         ...regla.abren.map((a) => `<li class="dl-open">${esc(a)}</li>`),
-        ...evs.map((e) => `<li class="dl-event">${esc(e.nombre)} · ${esc(e.lugar)} <span class="muted small">(${esc(e.genero)})</span> ${fiab(e.fiab)}</li>`),
+        ...evs.map((e) => `<li class="dl-event">${esc(e.nombre)} · ${esc(e.lugar)} <span class="muted small">(${esc(e.genero)})</span> ${fiab(e.fiab)}${e.estilo ? `<span class="ev-estilo">${esc(e.estilo)}</span>` : ""}</li>`),
         ...(regla.sug ? [`<li>💡 ${esc(regla.sug)}</li>`] : []),
       ].join("");
       const conCoords = mios.filter((id) => PLANNABLES[id].coords).length;

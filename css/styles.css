@@ -1432,3 +1432,10 @@ html[data-theme="dark"] .fiab-sug { color: #c8b0ea; }
 .cart-films .cart-dir { color: var(--muted); font-size: .72rem; }
 .cart-joya b::before { content: "★ "; color: var(--gold); }
 .cart-joya b { font-weight: 800; }
+
+/* estilo/descripción de concierto en la agenda */
+.ev-estilo {
+  display: block; font-size: .8rem; color: var(--muted); line-height: 1.45;
+  margin: 3px 0 2px 22px; padding-left: 10px;
+  border-left: 2px solid color-mix(in srgb, var(--sec) 35%, transparent);
+}
